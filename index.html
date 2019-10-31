@@ -5,17 +5,67 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Document</title>
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="./styles/styles.css">
     </head>
     <body>
         <header><h1>Welcome to Hackamon</h1></header>
         <section class="game-container">
+            <div class='guide'>
+                <h4>Instructions</h4>
+                <p>
+                    Pokem ipsum dolor sit amet Shuppet Professor Elm Taillow Delcatty Musharna Exploud. 
+                    Body Slam Purugly Omanyte Cradily Sharpedo Delcatty Victini. 
+                    Leaf Green MysteryBerry Gligar Misdreavus ullamco laboris nisi Staryu Deerling.
+                    S.S. Anne Cyndaquil Staravia Mamoswine Deino Ninetales Drilbur. 
+                    Rising Badge Tranquill Basculin Wynaut Nidoran Grovyle Manaphy.
+                </p>
+                <h4>Controls</h4>
+                <p>
+                    Hydro Pump Bibarel Dragon Rage Mint Berry Wooper Tauros Purrloin. Bug Magnezone Plain Badge Wingull Ferrothorn Skuntank Croagunk. Psychic Mew Running Shoes Growlithe Mothim The Power Of One Plusle. Ut labore et dolore magna aliqua Cleffa Lickilicky Klang Gardevoir Flying Liepard. Growl Lunatone Bayleef Fuchsia City Grass Ash's mother Ducklett.
+                </p>
+
+
+            </div>
             <canvas id="game-board"></canvas>
+            <div class='score'>
+                <span>Score:</span><span>0</span>
+                <div class='stats'>
+                    <div id='health'>
+                        <h4>Health</h4>
+                        <div class='health-bar'>
+                            <div class='healthbar1'></div>
+                            <div class='healthbar2'></div>
+                            <div class='healthbar3'></div>
+                            <div class='healthbar4'></div>
+                            <div class='healthbar5'></div>
+                            <div class='healthbar6'></div>
+                            <div class='healthbar7'></div>
+                            <div class='healthbar8'></div>
+                            <div class='healthbar9'></div>
+                            <div class='healthbar10'></div>
+                        </div>
+                    </div>
+                    <div id='skill'>
+                        <h4>Skill</h4>
+                        <div class='skill-bar'>
+                            <div class='skillbar1'></div>
+                            <div class='skillbar2'></div>
+                            <div class='skillbar3'></div>
+                            <div class='skillbar4'></div>
+                            <div class='skillbar5'></div>
+                            <div class='skillbar6'></div>
+                            <div class='skillbar7'></div>
+                            <div class='skillbar8'></div>
+                            <div class='skillbar9'></div>
+                            <div class='skillbar10'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <div class="score">
-            <span>Score:</span>
-            <span>0</span>
-        </div>
+
+
+
         <script src="./js/player.js"></script>
         <script src="./js/game.js"></script>
         <script src="./js/main.js"></script>
