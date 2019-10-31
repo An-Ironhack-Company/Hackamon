@@ -1,14 +1,13 @@
 // Resources
-const ctx = document.getElementById('gamePage').getContext('2d');
+const ctx = document.getElementById('game-board').getContext('2d');
 let frames = 0;
 
-let playerTemplate = [
-    [
-        spriteLoader('../images/player/playerFacingStill.png'),
-        spriteLoader('../images/player/playerFacingMoveLeftFoot.png'),
-        spr,
-    ], // Facing
-];
+// let playerTemplate = [
+//     [
+//         spriteLoader('../images/player/playerFacingStill.png'),
+//         spriteLoader('../images/player/playerFacingMoveLeftFoot.png'),
+//     ], // Facing
+// ];
 
 // Logic
 

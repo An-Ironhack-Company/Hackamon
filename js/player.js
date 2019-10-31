@@ -1,5 +1,5 @@
-let canvas = document.getElementById('game-board')
-let ctx = canvas.getContext('2d')
+// let canvas = document.getElementById('game-board')
+// let ctx = canvas.getContext('2d')
 
 class Player {
     constructor(x, y, width, height) {
