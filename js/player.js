@@ -6,13 +6,6 @@ class Player {
         this.width = width;
         this.height = height;
     }
-    
-    movePlayer = () => {
-        
-    }
-
-
-
 
     // load player
     loadPlayer = () => {

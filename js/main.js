@@ -38,3 +38,22 @@ function drawSelf(obs) {
 //     newSprite.src = sprite;
 //     return newSprite;
 // }
+
+
+
+
+function gameControls(e){
+    if (e.key === 'ArrowUp' || e.key === 'w'){
+        theGame.player.movePlayer('y', -5)
+    }
+    if (e.key === 'ArrowDown' || e.key === 's'){
+        theGame.player.movePlayer('y', 5)
+    }
+    if (e.key === 'ArrowRight' || e.key === 'd'){
+        theGame.player.movePlayer('x', 5)
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'a'){
+        theGame.player.movePlayer('x', -5)
+    }
+  }
+  document.onkeydown = gameControls

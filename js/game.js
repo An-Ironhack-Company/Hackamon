@@ -4,3 +4,5 @@ class Game {
         this.enemies = [];
     }
 }
+
+
