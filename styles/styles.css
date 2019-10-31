@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+canvas {
+    border: 1px solid black;
+    width: 1000px;
+    height:700px
+}
+
+.score {
+    font-size: 30px;
+    margin-top: 20px;
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 5px;
+}
+
