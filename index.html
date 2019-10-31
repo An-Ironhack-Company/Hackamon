@@ -7,7 +7,7 @@
         <title>Document</title>
         <link rel="stylesheet" href="./styles/styles.css">
     </head>
-    <body>
+    <body onload="grid">
         <header><h1>Welcome to Hackamon</h1></header>
         <section class="game-container">
             <div class='guide'>
@@ -28,26 +28,23 @@
             </div>
 
             <canvas id="game-board"></canvas>
-
-            <section id='rightPannel'>
-
-                <div class='score'>
-                    <span>Score:</span><span>0</span>
-                    <div class='stats'>
-                        <div id='health'>
-                            <h4>Health</h4>
-                            <div class='health-bar'>
-                                <div class='healthbar1'></div>
-                                <div class='healthbar2'></div>
-                                <div class='healthbar3'></div>
-                                <div class='healthbar4'></div>
-                                <div class='healthbar5'></div>
-                                <div class='healthbar6'></div>
-                                <div class='healthbar7'></div>
-                                <div class='healthbar8'></div>
-                                <div class='healthbar9'></div>
-                                <div class='healthbar10'></div>
-                            </div>
+            <section id="rightPannel">
+            <div class='score'>
+                <span>Score:</span><span>0</span>
+                <div class='stats'>
+                    <div id='health'>
+                        <h4>Health</h4>
+                        <div class='health-bar'>
+                            <div class='healthbar1'></div>
+                            <div class='healthbar2'></div>
+                            <div class='healthbar3'></div>
+                            <div class='healthbar4'></div>
+                            <div class='healthbar5'></div>
+                            <div class='healthbar6'></div>
+                            <div class='healthbar7'></div>
+                            <div class='healthbar8'></div>
+                            <div class='healthbar9'></div>
+                            <div class='healthbar10'></div>
                         </div>
                         <div id='skill'>
                             <h4>Skill</h4>
