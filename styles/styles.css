@@ -6,9 +6,12 @@
 
 * {
     margin: 0;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1, h2, h3 {
+    font-family: 'Press Start 2P', cursive;
+}
 body {
     background-color: rgba(75, 75, 75, .9);
 }
