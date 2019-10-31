@@ -1,0 +1,57 @@
+.health-bar {
+    width: 200px;
+    height: 30px;
+    background-color: black;
+    display: flex;
+}
+
+.healthbar1 {
+    border: 1px dotted white;
+    background-color: #b81200;
+    width:20px;
+}
+.healthbar2 {
+    border: 1px dotted white;
+    background-color: #b81200;
+    width:20px;
+}
+.healthbar3 {
+    border: 1px dotted white;
+    background-color: #ff1900;
+    width:20px;
+}
+.healthbar4 {
+    border: 1px dotted white;
+    background-color: #ff1900;
+    width:20px;
+}
+.healthbar5 {
+    border: 1px dotted white;
+    background-color: #6e5f09;
+    width:20px;
+}
+.healthbar6 {
+    border: 1px dotted white;
+    background-color: #6e5f09;
+    width:20px;
+}
+.healthbar7 {
+    border: 1px dotted white;
+    background-color: #6e5f09;
+    width:20px;
+}
+.healthbar8 {
+    border: 1px dotted white;
+    background-color: #917e0d;
+    width:20px;
+}
+.healthbar9 {
+    border: 1px dotted white;
+    background-color: #917e0d;
+    width:20px;
+}
+.healthbar10 {
+    border: 1px dotted white;
+    background-color: #917e0d;
+    width:20px;
+}
