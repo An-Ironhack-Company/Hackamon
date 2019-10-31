@@ -1,0 +1,20 @@
+.guide {
+    width: 250px;
+    margin-right: 50px;
+    background-color: #a3b7d9;
+    padding: 20px;
+    border-radius: 55px;
+
+}
+
+.guide h4 {
+    margin:10px
+}
+
+.guide p {
+    margin-top: 10px;
+    background-color: #8ea0bf;
+    padding: 10px;
+    border-radius: 5px;
+
+}
