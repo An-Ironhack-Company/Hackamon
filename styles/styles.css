@@ -1,3 +1,8 @@
+* {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+
 header {
     display: flex;
     flex-direction: column;
@@ -18,12 +23,8 @@ canvas {
 }
 
 .score {
-    font-size: 30px;
-    margin-left: 50px;
-    background-color: yellow;
-    padding: 10px;
-    border-radius: 5px;
-    width: 250px;
+    padding: 10px
+  
 
 }
 
@@ -47,16 +48,17 @@ canvas {
     border-radius: 5px;
 
 }
-.score h4 {
+h4 {
     font-size: 25px; 
     margin-right: 5px;
-    margin-top:20px;
+    margin-top:10px;
     margin-bottom: 10px;
 }
 
 .stats {
-    background-color: #969fb0;
-    padding: 10px
+    background-color: rgba(32, 176, 166, .7);
+    padding: 10px;
+    margin-top: 15px;
 }
 
 
@@ -178,3 +180,31 @@ canvas {
     width:20px;
 }
 
+
+
+#rightPannel {
+    font-size: 30px;
+    margin-left: 50px;
+    background-image: url(/images/game-board/red-bricks.png);
+    padding: 10px;
+    border-radius: 5px;
+    width: 250px;
+    height: 600px;
+    color: white;
+    border: 10px dotted white;
+
+}
+
+#rightPannel p {
+    font-size: 20px;
+    margin: 10px;
+}
+
+#rightPannel span {
+    margin: 5px
+}
+
+.tracker {
+    padding: 10px;
+    background-color: rgba(32, 176, 166, .7);
+}
