@@ -61,6 +61,11 @@ function drawMap() {
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
+                            if (row[j]===3){
+                                ctx.fillStyle= 'brown';
+                                ctx.fillRect(positionX, positionY, 10, 10);
+                                positionX += 10;
+                            }
                         }
                         positionY += 10;
                     }
@@ -101,5 +106,32 @@ function gameControls(e) {
     if (e.key === 'ArrowLeft' || e.key === 'a') {
         theGame.player.movePlayer('x', 'W', -theGame.player.width);
     }
+  }
+  document.onkeydown = gameControls
+
+
+// sprite function
+function sprite(options) {
+    let that = {}
+
+    that.context = option.context
+    that.width = option.width
+    that.height = option.height
+    that.img = option.img
+
+    that.render = function (){
+        ctx.drawImage(
+          theGame.player.img,
+          0,
+          0,
+          theGame.player.width,
+          theGame.player.height,
+          0,
+          0,
+          theGame.player.width,
+          theGame.player.height,
+        )
+    }
+
+    return that
 }
-document.onkeydown = gameControls;
