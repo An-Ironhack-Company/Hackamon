@@ -51,13 +51,17 @@ function drawMap(){
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
+                            if (row[j]===1){
+                                ctx.fillStyle= 'blue';
+                                ctx.fillRect(positionX, positionY, 10, 10);
+                                positionX += 10;
+                            }
                         }
                         positionY += 10;
                     }
 }
 
 
-ctx.fillStyle = 'black'
 
 
 
@@ -74,16 +78,16 @@ ctx.fillStyle = 'black'
 
 function gameControls(e){
     if (e.key === 'ArrowUp' || e.key === 'w'){
-        theGame.player.movePlayer('y', - theGame.player.height)
+        theGame.player.movePlayer('y', 'N', - theGame.player.height)
     }
     if (e.key === 'ArrowDown' || e.key === 's'){
-        theGame.player.movePlayer('y', theGame.player.height)
+        theGame.player.movePlayer('y', 'S', theGame.player.height)
     }
     if (e.key === 'ArrowRight' || e.key === 'd'){
-        theGame.player.movePlayer('x', theGame.player.width)
+        theGame.player.movePlayer('x', 'E', theGame.player.width)
     }
     if (e.key === 'ArrowLeft' || e.key === 'a'){
-        theGame.player.movePlayer('x', - theGame.player.width)
+        theGame.player.movePlayer('x', 'W', - theGame.player.width)
     }
   }
   document.onkeydown = gameControls
