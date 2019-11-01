@@ -36,7 +36,7 @@ console.log(theGame.map.mapArray);
 // Additional Functions
 function drawSelf(obs) {
     console.log(obs)
-    ctx.drawImage(obs.img, 0, 0, 32, 36, theGame.player.x, theGame.player.y, 25, 25);
+    ctx.drawImage(obs.img, 0, 0, 32, 36, theGame.player.x, theGame.player.y, 14, 16);
 }
 
 function drawMap() {
@@ -80,34 +80,34 @@ function drawMap() {
 //     return newSprite;
 // }
 
-function drawBaseMap() {
-    let map = theGame.map.mapArray;
-    for (let i = 0; i < map.length; i++) {
-        let positionX = 0;
-        let positionY = 0;
-        for (let j = 0; j < map.length; j++) {
-            if (map.mapArray[i] === 0) {
-                ctx.fillStyle = 'black';
-                ctx.fillRect(positionX, positionY, 10, 10);
-                positionX += 10;
-                positionY += 10;
-            }
-        }
-    }
-}
+// function drawBaseMap() {
+//     let map = theGame.map.mapArray;
+//     for (let i = 0; i < map.length; i++) {
+//         let positionX = 0;
+//         let positionY = 0;
+//         for (let j = 0; j < map.length; j++) {
+//             if (map.mapArray[i] === 0) {
+//                 ctx.fillStyle = 'black';
+//                 ctx.fillRect(positionX, positionY, 10, 10);
+//                 positionX += 10;
+//                 positionY += 10;
+//             }
+//         }
+//     }
+// }
 
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', 'N', -theGame.player.height);
+        theGame.player.movePlayer('y', 'N', -5);
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 'S', theGame.player.height);
+        theGame.player.movePlayer('y', 'S', 5);
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 'E', theGame.player.width);
+        theGame.player.movePlayer('x', 'E', 5);
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', 'W', -theGame.player.width);
+        theGame.player.movePlayer('x', 'W', -5);
     }
   }
   document.onkeydown = gameControls
