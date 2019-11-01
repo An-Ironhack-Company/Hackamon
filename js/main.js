@@ -23,7 +23,7 @@ function mainLoop() {
 let theGame;
 function startGame() {
     theGame = new Game();
-    theGame.player.loadPlayer();
+    theGame.player.loadPlayer(theGame.player.direction);
     mainLoop();
 }
 
