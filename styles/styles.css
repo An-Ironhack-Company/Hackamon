@@ -20,6 +20,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 50px 0 50px 0;
 }
 
 .score {
@@ -27,8 +28,8 @@ header {
 }
 
 
-h4 {
-    font-size: 25px; 
+h2 {
+    font-size: 20px; 
     margin-right: 5px;
     margin-top:10px;
     margin-bottom: 10px;
