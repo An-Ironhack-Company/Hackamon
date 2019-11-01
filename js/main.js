@@ -2,14 +2,6 @@
 const ctx = document.getElementById('game-board').getContext('2d');
 let frameIndex = 0;
 
-// let playerTemplate = [
-//     [
-//         spriteLoader('../images/player/playerFacingStill.png'),
-//         spriteLoader('../images/player/playerFacingMoveLeftFoot.png'),
-//         spr,
-//     ], // Facing
-// ];
-
 // Logic
 
 function mainLoop() {
@@ -82,29 +74,6 @@ function drawMap() {
         positionY += 10;
     }
 }
-
-// function spriteLoader(sprite) {
-//     let newSprite = new Image();
-//     newSprite.src = sprite;
-//     return newSprite;
-// }
-
-function drawBaseMap() {
-    let map = theGame.map.mapArray;
-    for (let i = 0; i < map.length; i++) {
-        let positionX = 0;
-        let positionY = 0;
-        for (let j = 0; j < map.length; j++) {
-            if (map.mapArray[i] === 0) {
-                ctx.fillStyle = 'black';
-                ctx.fillRect(positionX, positionY, 10, 10);
-                positionX += 10;
-                positionY += 10;
-            }
-        }
-    }
-}
-
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
         theGame.player.movePlayer('y', 'N', -10);
