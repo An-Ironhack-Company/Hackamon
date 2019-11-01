@@ -3,8 +3,8 @@ class Player {
         this.img = new Image();
         this.x = x;
         this.y = y;
-        this.width = 32;
-        this.height = 36;
+        this.width = 16;
+        this.height = 18;
         this.direction = 'S';
         this.sprite;
     }
@@ -16,19 +16,23 @@ class Player {
         switch (spriteDirection) {
             case 'N':
                 this.direction = 'N';
-                this.img.src = '../images/player/playerNorth.png';
+                // this.img.src = '../images/player/playerNorth.png';
+                this.img.src = '../images/player/playerBackStill.png';
                 break;
             case 'S':
                 this.direction = 'S';
-                this.img.src = '../images/player/playerSouth.png';
+                // this.img.src = '../images/player/playerSouth.png';
+                this.img.src = '../images/player/playerFacingStill.png';
                 break;
             case 'W':
                 this.direction = 'W';
-                this.img.src = '../images/player/playerWest.png';
+                // this.img.src = '../images/player/playerWest.png';
+                this.img.src = '../images/player/playerLeftStill.png';
                 break;
             case 'E':
                 this.direction = 'E';
-                this.img.src = '../images/player/playerEast.png';
+                // this.img.src = '../images/player/playerEast.png';
+                this.img.src = '../images/player/playerRightStill.png';
                 break;
             default:
                 break;
