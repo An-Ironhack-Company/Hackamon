@@ -25,6 +25,7 @@ header {
     margin: 50px 0 50px 0;
 }
 
+<<<<<<< HEAD
 .score {
     padding: 10px
 }
@@ -32,6 +33,10 @@ header {
 
 h2 {
     font-size: 20px; 
+=======
+h2 {
+    font-size: 25px; 
+>>>>>>> bf952b04933ef9996728ac7cf4791c598c65fcc2
     margin-right: 5px;
     margin-top:10px;
     margin-bottom: 10px;

@@ -15,18 +15,18 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
-        switch (direction) {
-            case N:
-                break;
-            case S:
-                break;
-            case W:
-                break;
-            case E:
-                break;
-            default:
-                break;
-        }
+        // switch (direction) {
+        //     case N:
+        //         break;
+        //     case S:
+        //         break;
+        //     case W:
+        //         break;
+        //     case E:
+        //         break;
+        //     default:
+        //         break;
+        // }
         this[axis] += value;
     };
 }

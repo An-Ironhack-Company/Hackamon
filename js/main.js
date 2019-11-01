@@ -29,20 +29,20 @@ function startGame() {
 
 startGame();
 theGame.map.chooseMap();
-console.log(theGame.map.mapArray)
+console.log(theGame.map.mapArray);
 
 // Additional Functions
 function drawSelf(obs) {
     ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
 }
 
-function drawMap(){
+function drawMap() {
     let positionY = 0;
     let newMap = theGame.map.mapArray;
-    for (i=0; i < newMap.length; i++){
+    for (i = 0; i < newMap.length; i++) {
         let row = newMap[i];
         let positionX = 0;
-        console.log(row[0])
+        console.log(row[0]);
 
                         for (j=0; j < row.length; j++){
                             console.log(row[j])
@@ -52,12 +52,12 @@ function drawMap(){
                                 positionX += 10;
                             }
                             if (row[j]===1){
-                                ctx.fillStyle= 'blue';
+                                ctx.fillStyle= 'lightgrey';
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
                             if (row[j]===2){
-                                ctx.fillStyle= 'green';
+                                ctx.fillStyle= 'black';
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
@@ -65,12 +65,6 @@ function drawMap(){
                         positionY += 10;
                     }
 }
-
-
-
-
-
-
 
 // function spriteLoader(sprite) {
 //     let newSprite = new Image();
@@ -94,26 +88,18 @@ function drawBaseMap() {
     }
 }
 
-
-
-function gameControls(e){
-    if (e.key === 'ArrowUp' || e.key === 'w'){
-        theGame.player.movePlayer('y', 'N', - theGame.player.height)
+function gameControls(e) {
+    if (e.key === 'ArrowUp' || e.key === 'w') {
+        theGame.player.movePlayer('y', 'N', -theGame.player.height);
     }
-    if (e.key === 'ArrowDown' || e.key === 's'){
-        theGame.player.movePlayer('y', 'S', theGame.player.height)
+    if (e.key === 'ArrowDown' || e.key === 's') {
+        theGame.player.movePlayer('y', 'S', theGame.player.height);
     }
-    if (e.key === 'ArrowRight' || e.key === 'd'){
-        theGame.player.movePlayer('x', 'E', theGame.player.width)
+    if (e.key === 'ArrowRight' || e.key === 'd') {
+        theGame.player.movePlayer('x', 'E', theGame.player.width);
     }
-    if (e.key === 'ArrowLeft' || e.key === 'a'){
-        theGame.player.movePlayer('x', 'W', - theGame.player.width)
+    if (e.key === 'ArrowLeft' || e.key === 'a') {
+        theGame.player.movePlayer('x', 'W', -theGame.player.width);
     }
-  }
-  document.onkeydown = gameControls
-
-
-
-
-
-
+}
+document.onkeydown = gameControls;
