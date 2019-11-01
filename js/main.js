@@ -47,7 +47,7 @@ function drawMap() {
                         for (j=0; j < row.length; j++){
                             console.log(row[j])
                             if (row[j] === 0){
-                                ctx.fillStyle = 'green';
+                                ctx.fillStyle = 'seagreen';
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
