@@ -12,6 +12,7 @@
 h1, h2, h3 {
     font-family: 'Press Start 2P', cursive;
 }
+
 body {
     background-color: rgba(75, 75, 75, .9);
     overflow: hidden;

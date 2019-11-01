@@ -78,6 +78,21 @@ function drawMap(){
 //     return newSprite;
 // }
 
+function drawBaseMap() {
+    let map = theGame.map.mapArray;
+    for (let i = 0; i < map.length; i++) {
+        let positionX = 0;
+        let positionY = 0;
+        for (let j = 0; j < map.length; j++) {
+            if (map.mapArray[i] === 0) {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+                positionY += 10;
+            }
+        }
+    }
+}
 
 
 
