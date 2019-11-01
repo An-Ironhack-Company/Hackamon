@@ -3,32 +3,32 @@ class Player {
         this.img = new Image();
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = 32;
+        this.height = 36;
         this.direction = 'S';
         this.sprite;
     }
 
     // load player
-    loadPlayer = (newDirection) => {
+    loadPlayer = newDirection => {
         // this.img.src = '../images/player/MainGuySpriteSheet.png';
-        let spriteDirection = newDirection || this.direction
+        let spriteDirection = newDirection || this.direction;
         switch (spriteDirection) {
             case 'N':
                 this.direction = 'N';
-                this.img.src = '../images/player/playerNorth.png'
+                this.img.src = '../images/player/playerNorth.png';
                 break;
             case 'S':
                 this.direction = 'S';
-                this.img.src = '../images/player/playerSouth.png'
+                this.img.src = '../images/player/playerSouth.png';
                 break;
             case 'W':
-                this.direction = 'W'
-                this.img.src = '../images/player/playerWest.png'
+                this.direction = 'W';
+                this.img.src = '../images/player/playerWest.png';
                 break;
             case 'E':
-                this.direction = 'E'
-                this.img.src = '../images/player/playerEast.png'
+                this.direction = 'E';
+                this.img.src = '../images/player/playerEast.png';
                 break;
             default:
                 break;
@@ -37,8 +37,8 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
-        if(this.direction !== direction){
-            this.loadPlayer(direction)
+        if (this.direction !== direction) {
+            this.loadPlayer(direction);
         }
         this[axis] += value;
     };
