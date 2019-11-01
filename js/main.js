@@ -1,6 +1,8 @@
 // Resources
 const ctx = document.getElementById('game-board').getContext('2d');
-let frames = 0;
+let frameIndex = 0;
+
+
 
 // let playerTemplate = [
 //     [
@@ -13,7 +15,7 @@ let frames = 0;
 // Logic
 
 function mainLoop() {
-    frames++;
+    frameIndex++;
     ctx.clearRect(0, 0, 500, 500);
     drawMap();
     drawSelf(theGame.player);
@@ -33,7 +35,8 @@ console.log(theGame.map.mapArray);
 
 // Additional Functions
 function drawSelf(obs) {
-    ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
+    console.log(obs)
+    ctx.drawImage(obs.img, 0, 0, 32, 36, theGame.player.x, theGame.player.y, 25, 25);
 }
 
 function drawMap() {
@@ -99,29 +102,3 @@ function gameControls(e) {
   }
   document.onkeydown = gameControls
 
-
-// sprite function
-function sprite(options) {
-    let that = {}
-
-    that.context = option.context
-    that.width = option.width
-    that.height = option.height
-    that.img = option.img
-
-    that.render = function (){
-        ctx.drawImage(
-          theGame.player.img,
-          0,
-          0,
-          theGame.player.width,
-          theGame.player.height,
-          0,
-          0,
-          theGame.player.width,
-          theGame.player.height,
-        )
-    }
-
-    return that
-}
