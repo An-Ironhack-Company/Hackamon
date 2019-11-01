@@ -57,3 +57,30 @@ function gameControls(e){
     }
   }
   document.onkeydown = gameControls
+
+
+// sprite function
+function sprite(options) {
+    let that = {}
+
+    that.context = option.context
+    that.width = option.width
+    that.height = option.height
+    that.img = option.img
+
+    that.render = function (){
+        ctx.drawImage(
+          theGame.player.img,
+          0,
+          0,
+          theGame.player.width,
+          theGame.player.height,
+          0,
+          0,
+          theGame.player.width,
+          theGame.player.height,
+        )
+    }
+
+    return that
+}
