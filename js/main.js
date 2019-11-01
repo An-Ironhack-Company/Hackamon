@@ -29,43 +29,37 @@ function startGame() {
 
 startGame();
 theGame.map.chooseMap();
-console.log(theGame.map.mapArray)
+console.log(theGame.map.mapArray);
 
 // Additional Functions
 function drawSelf(obs) {
     ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
 }
 
-function drawMap(){
+function drawMap() {
     let positionY = 0;
     let newMap = theGame.map.mapArray;
-    for (i=0; i < newMap.length; i++){
+    for (i = 0; i < newMap.length; i++) {
         let row = newMap[i];
         let positionX = 0;
-        console.log(row[0])
+        console.log(row[0]);
 
-                        for (j=0; j < row.length; j++){
-                            console.log(row[j])
-                            if (row[j] === 0){
-                                ctx.fillStyle = 'black';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                            if (row[j]===1){
-                                ctx.fillStyle= 'blue';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                        }
-                        positionY += 10;
-                    }
+        for (j = 0; j < row.length; j++) {
+            console.log(row[j]);
+            if (row[j] === 0) {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 1) {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+        }
+        positionY += 10;
+    }
 }
-
-
-
-
-
-
 
 // function spriteLoader(sprite) {
 //     let newSprite = new Image();
@@ -89,44 +83,18 @@ function drawBaseMap() {
     }
 }
 
-<<<<<<< HEAD
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', -5);
+        theGame.player.movePlayer('y', 'N', -theGame.player.height);
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 5);
+        theGame.player.movePlayer('y', 'S', theGame.player.height);
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 5);
+        theGame.player.movePlayer('x', 'E', theGame.player.width);
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', -5);
+        theGame.player.movePlayer('x', 'W', -theGame.player.width);
     }
 }
 document.onkeydown = gameControls;
-=======
-
-
-function gameControls(e){
-    if (e.key === 'ArrowUp' || e.key === 'w'){
-        theGame.player.movePlayer('y', 'N', - theGame.player.height)
-    }
-    if (e.key === 'ArrowDown' || e.key === 's'){
-        theGame.player.movePlayer('y', 'S', theGame.player.height)
-    }
-    if (e.key === 'ArrowRight' || e.key === 'd'){
-        theGame.player.movePlayer('x', 'E', theGame.player.width)
-    }
-    if (e.key === 'ArrowLeft' || e.key === 'a'){
-        theGame.player.movePlayer('x', 'W', - theGame.player.width)
-    }
-  }
-  document.onkeydown = gameControls
-
-
-
-
-
-
->>>>>>> 34524df70ca9abf37adeb0174d6f528bdc1999e5
