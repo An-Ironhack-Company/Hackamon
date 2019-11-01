@@ -2,16 +2,6 @@
 const ctx = document.getElementById('game-board').getContext('2d');
 let frameIndex = 0;
 
-
-
-// let playerTemplate = [
-//     [
-//         spriteLoader('../images/player/playerFacingStill.png'),
-//         spriteLoader('../images/player/playerFacingMoveLeftFoot.png'),
-//         spr,
-//     ], // Facing
-// ];
-
 // Logic
 
 function mainLoop() {
@@ -35,8 +25,19 @@ console.log(theGame.map.mapArray);
 
 // Additional Functions
 function drawSelf(obs) {
-    console.log(obs)
-    ctx.drawImage(obs.img, 0, 0, 32, 36, theGame.player.x, theGame.player.y, 14, 16);
+    console.log(obs);
+    // ctx.drawImage(
+    //     obs.img,
+    //     0,
+    //     0,
+    //     32,
+    //     36,
+    //     theGame.player.x,
+    //     theGame.player.y,
+    //     16,
+    //     18,
+    // );
+    ctx.drawImage(obs.img, obs.x, obs.y, 16, 18);
 }
 
 function drawMap() {
@@ -47,68 +48,44 @@ function drawMap() {
         let positionX = 0;
         console.log(row[0]);
 
-                        for (j=0; j < row.length; j++){
-                            console.log(row[j])
-                            if (row[j] === 0){
-                                ctx.fillStyle = 'seagreen';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                            if (row[j]===1){
-                                ctx.fillStyle= 'lightgrey';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                            if (row[j]===2){
-                                ctx.fillStyle= 'black';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                            if (row[j]===3){
-                                ctx.fillStyle= 'brown';
-                                ctx.fillRect(positionX, positionY, 10, 10);
-                                positionX += 10;
-                            }
-                        }
-                        positionY += 10;
-                    }
+        for (j = 0; j < row.length; j++) {
+            console.log(row[j]);
+            if (row[j] === 0) {
+                ctx.fillStyle = 'seagreen';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 1) {
+                ctx.fillStyle = 'lightgrey';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 2) {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 3) {
+                ctx.fillStyle = 'brown';
+                ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+        }
+        positionY += 10;
+    }
 }
-
-// function spriteLoader(sprite) {
-//     let newSprite = new Image();
-//     newSprite.src = sprite;
-//     return newSprite;
-// }
-
-// function drawBaseMap() {
-//     let map = theGame.map.mapArray;
-//     for (let i = 0; i < map.length; i++) {
-//         let positionX = 0;
-//         let positionY = 0;
-//         for (let j = 0; j < map.length; j++) {
-//             if (map.mapArray[i] === 0) {
-//                 ctx.fillStyle = 'black';
-//                 ctx.fillRect(positionX, positionY, 10, 10);
-//                 positionX += 10;
-//                 positionY += 10;
-//             }
-//         }
-//     }
-// }
-
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', 'N', -5);
+        theGame.player.movePlayer('y', 'N', -10);
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 'S', 5);
+        theGame.player.movePlayer('y', 'S', 10);
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 'E', 5);
+        theGame.player.movePlayer('x', 'E', 10);
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', 'W', -5);
+        theGame.player.movePlayer('x', 'W', -10);
     }
-  }
-  document.onkeydown = gameControls
-
+}
+document.onkeydown = gameControls;
