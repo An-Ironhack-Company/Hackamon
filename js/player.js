@@ -13,12 +13,21 @@ class Player {
         this.img.src = '../images/player/MainGuySpriteSheet.png';
         // this.img = new Sprite(this.img, 0, 0, 32, 36, this.x, this.y, this.width, this.height)
     };
+
     // move player
-    movePlayer = (direction, value) => {
-        this[direction] += value;
-    };
-    // draw player
-    drawPlayer = () => {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    movePlayer = (axis, direction, value) => {
+        // switch (direction) {
+        //     case N:
+        //         break;
+        //     case S:
+        //         break;
+        //     case W:
+        //         break;
+        //     case E:
+        //         break;
+        //     default:
+        //         break;
+        // }
+        this[axis] += value;
     };
 }

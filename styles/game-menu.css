@@ -3,7 +3,9 @@
     padding: 10px;
     margin-top: 15px;
 }
-
+.score {
+    padding: 10px
+}
 #rightPannel {
     font-size: 30px;
     margin-left: 50px;

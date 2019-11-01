@@ -1,5 +1,5 @@
 .guide {
-    width: 250px;
+    width: 300px;
     margin-right: 50px;
     background-color: #a3b7d9;
     padding: 20px;
@@ -7,7 +7,7 @@
 
 }
 
-.guide h4 {
+.guide h2 {
     margin:10px
 }
 
