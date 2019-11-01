@@ -5,29 +5,41 @@ class Player {
         this.y = y;
         this.width = width;
         this.height = height;
+        this.direction = 'S';
         this.sprite;
     }
 
     // load player
-    loadPlayer = () => {
-        this.img.src = '../images/player/MainGuySpriteSheet.png';
-        // this.img = new Sprite(this.img, 0, 0, 32, 36, this.x, this.y, this.width, this.height)
+    loadPlayer = (newDirection) => {
+        // this.img.src = '../images/player/MainGuySpriteSheet.png';
+        let spriteDirection = newDirection || this.direction
+        switch (spriteDirection) {
+            case 'N':
+                this.direction = 'N';
+                this.img.src = '../images/player/playerNorth.png'
+                break;
+            case 'S':
+                this.direction = 'S';
+                this.img.src = '../images/player/playerSouth.png'
+                break;
+            case 'W':
+                this.direction = 'W'
+                this.img.src = '../images/player/playerWest.png'
+                break;
+            case 'E':
+                this.direction = 'E'
+                this.img.src = '../images/player/playerEast.png'
+                break;
+            default:
+                break;
+        }
     };
 
     // move player
     movePlayer = (axis, direction, value) => {
-        // switch (direction) {
-        //     case N:
-        //         break;
-        //     case S:
-        //         break;
-        //     case W:
-        //         break;
-        //     case E:
-        //         break;
-        //     default:
-        //         break;
-        // }
+        if(this.direction !== direction){
+            this.loadPlayer(direction)
+        }
         this[axis] += value;
     };
 }
