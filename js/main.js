@@ -47,12 +47,17 @@ function drawMap(){
                         for (j=0; j < row.length; j++){
                             console.log(row[j])
                             if (row[j] === 0){
-                                ctx.fillStyle = 'black';
+                                ctx.fillStyle = 'green';
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
                             if (row[j]===1){
                                 ctx.fillStyle= 'blue';
+                                ctx.fillRect(positionX, positionY, 10, 10);
+                                positionX += 10;
+                            }
+                            if (row[j]===2){
+                                ctx.fillStyle= 'green';
                                 ctx.fillRect(positionX, positionY, 10, 10);
                                 positionX += 10;
                             }
