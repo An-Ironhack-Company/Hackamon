@@ -6,10 +6,10 @@ let terrainArray = [];
 // Logic
 
 var images = [
-    '/images/environment/youngWheatLarge.png',
-    '/images/environment/tile.png',
-    '/images/game-board/red-bricks.png',
-    '/images/game-board/Purple_Brick_Background.png',
+    './images/environment/youngWheatLarge.png',
+    './images/environment/tile.png',
+    './images/game-board/red-bricks.png',
+    './images/game-board/Purple_Brick_Background.png',
 ];
 var loadedImages = [];
 var promiseArray = images.map(function(imgurl) {
