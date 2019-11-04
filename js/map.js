@@ -1,11 +1,11 @@
 class Map {
     constructor(lvl){
-        this.mapArray = []
-        this.lvl = lvl
+        this.mapArray = [];
+        this.lvl = lvl;
     }
     chooseMap=()=>{
         if (this.lvl === 1){
-            this.mapArray = mapArray1
+            this.mapArray = mapArray1;
         }
     }
 }
