@@ -3,8 +3,8 @@ class Player {
         this.img = new Image();
         this.x = x;
         this.y = y;
-        this.width = 16;
-        this.height = 18;
+        this.width = width;
+        this.height = height;
         this.direction = 'S';
         this.sprite;
     }
