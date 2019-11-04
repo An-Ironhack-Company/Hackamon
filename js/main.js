@@ -148,15 +148,15 @@ function drawMap() {
 
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', 'N', -5);
+        theGame.player.movePlayer('y', 'N', -10);
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 'S', 5);
+        theGame.player.movePlayer('y', 'S', 10);
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 'E', 5);
+        theGame.player.movePlayer('x', 'E', 10);
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', 'W', -5);
+        theGame.player.movePlayer('x', 'W', -10);
     }
 }

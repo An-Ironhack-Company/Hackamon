@@ -6,6 +6,7 @@ class Player {
         this.width = width;
         this.height = height;
         this.direction = 'S';
+        this.position = { x: this.x, y: this.y };
         this.sprite;
     }
 
@@ -39,21 +40,21 @@ class Player {
         }
     };
 
+    updatePlayerPosition = () => {
+        this.position = [Number(this.x / 10), Number(this.y / 10)];
+        console.log(`The player position is [${this.position}]`);
+    };
+
     // move player
     movePlayer = (axis, direction, value) => {
-
-            let ogX = this.x,
+        let ogX = this.x,
             ogY = this.y;
-            if (this.direction !== direction) {
-                this.loadPlayer(direction);
-            }
-            this[axis] += value;
-            if (this.x != ogX || this.y != ogY) {
-                console.log(
-                    `The player is currently at [${this.x / 10}, ${this.y / 10}].`,
-                    );
-                }
-        
-            };
+        if (this.direction !== direction) {
+            this.loadPlayer(direction);
+        }
+        this[axis] += value;
+        if (this.x != ogX || this.y != ogY) {
+            this.updatePlayerPosition();
+        }
+    };
 }
-
