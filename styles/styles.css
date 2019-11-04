@@ -14,8 +14,15 @@ h1, h2, h3 {
     font-family: 'Press Start 2P', cursive;
 }
 
+h1 {
+    color: white;
+    font-size: 2.5em;
+}
+
 body {
-    background-color: rgba(75, 75, 75, .9);
+    background-image: url(/images/game-board/backdrop.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
     overflow: hidden;
 }
 
