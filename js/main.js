@@ -58,8 +58,8 @@ function mainLoop() {
         theGame.enemy.moveEnemy();
     }
 
+    // theGame.main.playMain();
     requestAnimationFrame(mainLoop);
-    theGame.main.playMain()
 }
 
 function startGame() {
