@@ -131,14 +131,14 @@ function drawMap() {
                 // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
-            if (row[j] === 4) {
-                //let tile3 = new Terrain();
-                //tile3.loadTerrain(3);
-                ctx.drawImage(loadedImages[4], positionX, positionY, 10, 10);
-                // ctx.fillStyle = 'brown';
-                // ctx.fillRect(positionX, positionY, 10, 10);
-                positionX += 10;
-            }
+            // if (row[j] === 4) {
+            //     //let tile3 = new Terrain();
+            //     //tile3.loadTerrain(3);
+            //     ctx.drawImage(loadedImages[4], positionX, positionY, 10, 10);
+            //     // ctx.fillStyle = 'brown';
+            //     // ctx.fillRect(positionX, positionY, 10, 10);
+            //     positionX += 10;
+            // }
         }
         positionY += 10;
     }
