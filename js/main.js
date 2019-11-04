@@ -52,17 +52,23 @@ function mainLoop() {
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     drawSelf(theGame.player);
+    drawSelf(theGame.enemy);
+
+    if (frameIndex % 3 == 0) {
+        theGame.enemy.moveEnemy();
+    }
+
     requestAnimationFrame(mainLoop);
 }
 
 function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
-    // mainLoop();
+    theGame.enemy.loadEnemy(theGame.enemy.direction);
 }
 
 function drawSelf(obs) {
-    // Sprite Animation
+    // console.log(obs);
     // ctx.drawImage(
     //     obs.img,
     //     0,
@@ -125,6 +131,14 @@ function drawMap() {
                 // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
+            if (row[j] === 4) {
+                //let tile3 = new Terrain();
+                //tile3.loadTerrain(3);
+                ctx.drawImage(loadedImages[4], positionX, positionY, 10, 10);
+                // ctx.fillStyle = 'brown';
+                // ctx.fillRect(positionX, positionY, 10, 10);
+                positionX += 10;
+            }
         }
         positionY += 10;
     }
@@ -132,15 +146,15 @@ function drawMap() {
 
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', 'N', -10);
+        theGame.player.movePlayer('y', 'N', -5);
     }
     if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 'S', 10);
+        theGame.player.movePlayer('y', 'S', 5);
     }
     if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 'E', 10);
+        theGame.player.movePlayer('x', 'E', 5);
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', 'W', -10);
+        theGame.player.movePlayer('x', 'W', -5);
     }
 }

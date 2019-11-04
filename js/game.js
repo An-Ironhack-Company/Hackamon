@@ -1,10 +1,9 @@
 class Game {
     constructor() {
-        this.player = new Player(0, 0, 50, 60);
+        this.player = new Player(20,20, 50, 60);
         this.enemies = [];
         this.map = new Map(1);
+        this.enemy = new Enemy(250,120, 100, 100)
     }
-    // squareEntry() {
-    //     if
-    // }
+   
 }
