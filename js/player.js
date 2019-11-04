@@ -17,22 +17,22 @@ class Player {
             case 'N':
                 this.direction = 'N';
                 // this.img.src = '../images/player/playerNorth.png';
-                this.img.src = '../images/player/playerBackStill.png';
+                this.img.src = './images/player/playerBackStill.png';
                 break;
             case 'S':
                 this.direction = 'S';
                 // this.img.src = '../images/player/playerSouth.png';
-                this.img.src = '../images/player/playerFacingStill.png';
+                this.img.src = './images/player/playerFacingStill.png';
                 break;
             case 'W':
                 this.direction = 'W';
                 // this.img.src = '../images/player/playerWest.png';
-                this.img.src = '../images/player/playerLeftStill.png';
+                this.img.src = './images/player/playerLeftStill.png';
                 break;
             case 'E':
                 this.direction = 'E';
                 // this.img.src = '../images/player/playerEast.png';
-                this.img.src = '../images/player/playerRightStill.png';
+                this.img.src = './images/player/playerRightStill.png';
                 break;
             default:
                 break;
