@@ -42,6 +42,7 @@ function mainLoop() {
     //ctx.restore()
     drawSelf(theGame.player);
     requestAnimationFrame(mainLoop);
+    theGame.main.playMain()
 }
 
 let theGame;
@@ -49,6 +50,7 @@ function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
     //mainLoop();
+    theGame.main = new Sound('../sound/Epic Powerful Dubstep - AShamaluevMusic.mp3')
 }
 
 startGame();
