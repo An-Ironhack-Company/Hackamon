@@ -1,65 +1,68 @@
 // Resources
 const ctx = document.getElementById('game-board').getContext('2d');
 
+let theGame;
 let frameIndex = 0;
-let terrainArray = [];
-// Logic
-
-var images = [
+let loadedImages = 0;
+let imageAddresses = [
     './images/environment/youngWheatLarge.png',
     './images/environment/tile.png',
     './images/game-board/red-bricks.png',
     './images/game-board/Purple_Brick_Background.png',
 ];
-var loadedImages = [];
-var promiseArray = images.map(function(imgurl) {
-    var prom = new Promise(function(resolve, reject) {
-        var img = new Image();
-        img.onload = function() {
-            loadedImages.push(img);
-            resolve();
-        };
-        img.src = imgurl;
-    });
-    return prom;
-});
-var saved_rect;
 
-Promise.all(promiseArray).then(() => {
-    //When images are done loading. 4 images
-    drawMap();
-    //ctx.save()
-    saved_rect = ctx.getImageData(0, 0, 500, 500);
-    console.log(saved_rect);
-    mainLoop();
-});
+let terrainArray = [];
 
-function mainLoop() {
-    frameIndex++;
-    ctx.clearRect(0, 0, 500, 500);
-    //drawMap();
-    ctx.putImageData(saved_rect, 0, 0);
-    //ctx.restore()
-    drawSelf(theGame.player);
-    requestAnimationFrame(mainLoop);
-}
+let saved_rect;
 
-let theGame;
-function startGame() {
-    theGame = new Game();
-    theGame.player.loadPlayer(theGame.player.direction);
-    //mainLoop();
+// Logic
+
+document.onkeydown = gameControls;
+
+// Load Terrain assets
+for (let i = 0; i < imageAddresses.length; i++) {
+    preLoader(imageAddresses[i], i);
 }
 
 startGame();
 theGame.map.chooseMap();
+let newMap = theGame.map.mapArray;
 
-console.log(theGame.map.mapArray);
-//drawMap();
-console.log('here');
-// Additional Functions
+// Functions
+function preLoader(url, index) {
+    return new Promise(function(resolve, reject) {
+        let img = new Image();
+        img.onload = function() {
+            resolve(url);
+            terrainArray.splice(index, 0, img);
+            loadedImages++;
+            if (loadedImages == imageAddresses.length) {
+                generateMap();
+            }
+        };
+        img.onerror = function() {
+            reject(url);
+        };
+        img.src = url;
+    });
+}
+
+function mainLoop() {
+    frameIndex++;
+    ctx.clearRect(0, 0, 500, 500);
+    ctx.putImageData(saved_rect, 0, 0);
+    drawSelf(theGame.player);
+    requestAnimationFrame(mainLoop);
+}
+
+function startGame() {
+    theGame = new Game();
+    theGame.player.loadPlayer(theGame.player.direction);
+    // mainLoop();
+}
+
 function drawSelf(obs) {
-    console.log(obs);
+    // Sprite Animation
     // ctx.drawImage(
     //     obs.img,
     //     0,
@@ -71,35 +74,37 @@ function drawSelf(obs) {
     //     16,
     //     18,
     // );
+
+    // Still Image Loader
     ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
 }
 
-
-
-
-let newMap = theGame.map.mapArray;
+function generateMap() {
+    drawMap();
+    saved_rect = ctx.getImageData(0, 0, 500, 500);
+    ctx.save();
+    mainLoop();
+}
 
 function drawMap() {
     let positionY = 0;
     for (i = 0; i < newMap.length; i++) {
         let row = newMap[i];
         let positionX = 0;
-        console.log(row[0]);
 
         for (j = 0; j < row.length; j++) {
-            console.log(row[j]);
             if (row[j] === 0) {
                 //let tile = new Terrain();
                 //tile.loadTerrain(0);
-                ctx.drawImage(loadedImages[0], positionX, positionY, 10, 10);
-                //ctx.fillStyle = 'seagreen';
-                //ctx.fillRect(positionX, positionY, 10, 10);
+                ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
+                // ctx.fillStyle = 'seagreen';
+                // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
             if (row[j] === 1) {
                 //let tile2 = new Terrain();
                 //tile2.loadTerrain(1);
-                ctx.drawImage(loadedImages[1], positionX, positionY, 10, 10);
+                ctx.drawImage(terrainArray[1], positionX, positionY, 10, 10);
                 // ctx.fillStyle = 'lightgrey';
                 // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
@@ -107,7 +112,7 @@ function drawMap() {
             if (row[j] === 2) {
                 //let tile3 = new Terrain();
                 //tile3.loadTerrain(2);
-                ctx.drawImage(loadedImages[2], positionX, positionY, 10, 10);
+                ctx.drawImage(terrainArray[2], positionX, positionY, 10, 10);
                 // ctx.fillStyle = 'black';
                 // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
@@ -115,7 +120,7 @@ function drawMap() {
             if (row[j] === 3) {
                 //let tile3 = new Terrain();
                 //tile3.loadTerrain(3);
-                ctx.drawImage(loadedImages[3], positionX, positionY, 10, 10);
+                ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
                 // ctx.fillStyle = 'brown';
                 // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
@@ -124,6 +129,7 @@ function drawMap() {
         positionY += 10;
     }
 }
+
 function gameControls(e) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
         theGame.player.movePlayer('y', 'N', -10);
@@ -138,4 +144,3 @@ function gameControls(e) {
         theGame.player.movePlayer('x', 'W', -10);
     }
 }
-document.onkeydown = gameControls;
