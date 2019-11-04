@@ -7,11 +7,10 @@ class Player {
         this.height = height;
         this.direction = 'S';
         this.map = map;
-        this.position = { x: this.x, y: this.y };
+        // this.position = { x: this.x, y: this.y };
         this.sprite;
         this.position = {up:1, down:1, left:0, right:1} 
         console.log(this, this.map)
-
     }
 
     // load player
@@ -43,10 +42,7 @@ class Player {
         }
     };
 
-    updatePlayerPosition = () => {
-        this.position = [Number(this.x / 10), Number(this.y / 10)];
-        console.log(`The player position is [${this.position}]`);
-    };
+   
 
     // move player
     movePlayer = (axis, direction, value) => {
