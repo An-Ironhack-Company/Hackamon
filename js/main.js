@@ -15,9 +15,7 @@ let terrainArray = [];
 
 let saved_rect;
 
-// Logic
 
-document.onkeydown = gameControls;
 
 // Load Terrain assets
 for (let i = 0; i < imageAddresses.length; i++) {
@@ -100,61 +98,30 @@ function drawMap() {
 
         for (j = 0; j < row.length; j++) {
             if (row[j] === 0) {
-                //let tile = new Terrain();
-                //tile.loadTerrain(0);
                 ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
-                // ctx.fillStyle = 'seagreen';
-                // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
             if (row[j] === 1) {
-                //let tile2 = new Terrain();
-                //tile2.loadTerrain(1);
                 ctx.drawImage(terrainArray[1], positionX, positionY, 10, 10);
-                // ctx.fillStyle = 'lightgrey';
-                // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
             if (row[j] === 2) {
-                //let tile3 = new Terrain();
-                //tile3.loadTerrain(2);
                 ctx.drawImage(terrainArray[2], positionX, positionY, 10, 10);
-                // ctx.fillStyle = 'black';
-                // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
             if (row[j] === 3) {
-                //let tile3 = new Terrain();
-                //tile3.loadTerrain(3);
                 ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
-                // ctx.fillStyle = 'brown';
-                // ctx.fillRect(positionX, positionY, 10, 10);
                 positionX += 10;
             }
-            // if (row[j] === 4) {
-            //     //let tile3 = new Terrain();
-            //     //tile3.loadTerrain(3);
-            //     ctx.drawImage(loadedImages[4], positionX, positionY, 10, 10);
-            //     // ctx.fillStyle = 'brown';
-            //     // ctx.fillRect(positionX, positionY, 10, 10);
-            //     positionX += 10;
-            // }
+        
         }
         positionY += 10;
     }
 }
 
-function gameControls(e) {
-    if (e.key === 'ArrowUp' || e.key === 'w') {
-        theGame.player.movePlayer('y', 'N', -5);
-    }
-    if (e.key === 'ArrowDown' || e.key === 's') {
-        theGame.player.movePlayer('y', 'S', 5);
-    }
-    if (e.key === 'ArrowRight' || e.key === 'd') {
-        theGame.player.movePlayer('x', 'E', 5);
-    }
-    if (e.key === 'ArrowLeft' || e.key === 'a') {
-        theGame.player.movePlayer('x', 'W', -5);
-    }
-}
+
+console.log(theGame)
+
+// Logic
+
+document.onkeydown = theGame.player.gameControls;
