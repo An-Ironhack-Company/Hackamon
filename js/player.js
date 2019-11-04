@@ -41,9 +41,11 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
+
         if (this.direction !== direction) {
             this.loadPlayer(direction);
         }
         this[axis] += value;
     };
 }
+

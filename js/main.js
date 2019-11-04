@@ -98,9 +98,13 @@ function drawSelf(obs) {
     ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
 }
 
+
+
+
+let newMap = theGame.map.mapArray;
+
 function drawMap() {
     let positionY = 0;
-    let newMap = theGame.map.mapArray;
     for (i = 0; i < newMap.length; i++) {
         let row = newMap[i];
         let positionX = 0;
