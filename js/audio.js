@@ -1,4 +1,4 @@
-class Sound {
+class OurAudio {
     constructor(mainSrc, battleSrc){
         this.mainSrc = mainSrc;
         this.battleSrc = battleSrc;

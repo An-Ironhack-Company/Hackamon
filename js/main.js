@@ -58,7 +58,6 @@ function mainLoop() {
         theGame.enemy.moveEnemy();
     }
 
-    // theGame.main.playMain();
     requestAnimationFrame(mainLoop);
 }
 
@@ -66,7 +65,6 @@ function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
     //mainLoop();
-    // theGame.main = new Sound('.git ./sound/Epic Powerful Dubstep - AShamaluevMusic.mp3')
 }
 
 function drawSelf(obs) {
@@ -91,6 +89,7 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
+    // theGame.mainSound.play(); // start playing BGM once the map is generated
     mainLoop();
 }
 
