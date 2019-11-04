@@ -41,9 +41,16 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
+        let ogX = this.x,
+            ogY = this.y;
         if (this.direction !== direction) {
             this.loadPlayer(direction);
         }
         this[axis] += value;
+        if (this.x != ogX || this.y != ogY) {
+            console.log(
+                `The player is currently at [${this.x / 10}, ${this.y / 10}].`,
+            );
+        }
     };
 }
