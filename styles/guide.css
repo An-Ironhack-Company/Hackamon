@@ -18,3 +18,11 @@
     border-radius: 5px;
 
 }
+
+.controls img {
+    margin-left: 10px;
+    width:250px;
+    border: 2px dotted black;
+
+
+}

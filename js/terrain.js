@@ -15,8 +15,9 @@ class Terrain {
             break;
             case 2: this.img.src='/images/game-board/red-bricks.png';
             break; 
-            case 3: this.img.src='/images/game-board/Purple_Brick_Background.png'
+            case 3: this.img.src='/images/environment/youngWheatSquare50.png'
             break;
+            case 4: this.img.src='/images/player/playerFacingStill.png'
             default:
             break;
         }
