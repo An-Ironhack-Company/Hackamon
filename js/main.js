@@ -62,7 +62,7 @@ function mainLoop() {
 function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
-    theGame.enemy.loadEnemy(theGame.enemy.direction);
+    //mainLoop();
 }
 
 function drawSelf(obs) {
@@ -87,6 +87,7 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
+    // theGame.mainSound.play(); // start playing BGM once the map is generated
     mainLoop();
 }
 
