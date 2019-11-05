@@ -71,7 +71,8 @@ class Player {
         // iterate through skills array
         for(let i = 0; i < theGame.skills.length; i++){
             if(this.x === theGame.skills[i].x && this.y === theGame.skills[i].y){
-                theGame.score += 100; 
+                theGame.score += 100;
+                theGame.itemSound.play();
                 theGame.updateScore();
                 theGame.player.collectedSkills.push(theGame.skills[i]) // collect skills in an array
                 theGame.skills[i].clearSkills(); //clear collected skills from canvas
