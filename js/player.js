@@ -11,6 +11,7 @@ class Player {
         this.sprite;
         this.position = { up: 1, down: 1, left: 0, right: 1 };
         this.health = 100;
+        this.collectedSkills = [];
     }
 
     // load player
@@ -67,12 +68,13 @@ class Player {
         };
         this.position = position;
 
-        // iterate through skills array to add score
+        // iterate through skills array
         for(let i = 0; i < theGame.skills.length; i++){
             if(this.x === theGame.skills[i].x && this.y === theGame.skills[i].y){
-                theGame.score += 100;
+                theGame.score += 100; 
                 theGame.updateScore();
-                theGame.skills[i].clearSkills();
+                theGame.player.collectedSkills.push(theGame.skills[i]) // collect skills in an array
+                theGame.skills[i].clearSkills(); //clear collected skills from canvas
             }
         }
         console.log(this.position);
