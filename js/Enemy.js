@@ -19,19 +19,19 @@ class Enemy {
         switch (spriteDirection) {
             case 'N':
                 this.direction = 'N';
-                this.img.src = '../images/player/playerBackStill.png';
+                this.img.src = '../images/environment/dragon north.png';
                 break;
             case 'S':
                 this.direction = 'S';
-                this.img.src = '../images/player/playerFacingStill.png';
+                this.img.src = '../images/environment/dragon-south-copy2.png';
                 break;
             case 'W':
                 this.direction = 'W';
-                this.img.src = '../images/player/playerLeftStill.png';
+                this.img.src = '../images/environment/ dragon left .png';
                 break;
             case 'E':
                 this.direction = 'E';
-                this.img.src = '../images/player/playerRightStill.png';
+                this.img.src = '../images/environment/dragon right  .png';
                 break;
             default:
                 break;
@@ -72,11 +72,13 @@ class Enemy {
 
             if (theGame.player.x >= this.x){
                 if (this.position['right'] == 1){
+                    this.direction = 'E'
                     this.x += 10
                 }
             } 
             else if (theGame.player.x < this.x){
                 if (this.position['left'] == 1){
+                    this.direction = 'W'
                     this.x -= 10
                 }
             } 
@@ -92,11 +94,13 @@ class Enemy {
 
             if (theGame.player.y >= this.y){
                 if (this.position['down'] == 1 && this.position['center']==1 ){
+                    this.direction = 'S'
                     this.y += 10
                 }
             } 
             else if (theGame.player.y < this.y) {
                 if (this.position['up'] == 1 && this.position['center']==1){
+                    this.direction = 'N'
                     this.y -= 10
                 }
             }

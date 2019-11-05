@@ -55,7 +55,7 @@ function mainLoop() {
         drawSelf(theGame.enemies[i]);
     }
 
-if (frameIndex % 443 == 0){
+if (frameIndex % 253 == 0){
     theGame.createEnemy()
 }
     if (frameIndex % 15 == 0) {
