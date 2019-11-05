@@ -24,7 +24,7 @@ class Game {
     updateScore() {
         for (let i=0; i< this.enemies.length; i++){
             if (this.player.x == this.enemies[i].x && this.player.y == this.enemies[i].y ){
-                this.damageSound.play()
+                this.damageSound.play();
                 this.score -= 25;
             }
         }
