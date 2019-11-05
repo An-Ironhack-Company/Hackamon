@@ -29,12 +29,12 @@ let newMap = theGame.map.mapArray;
 gameStatusButton.onclick = () => {
     if (gameStatus != true) {
         gameStatus = true;
-        gameStatusButton.innerText = 'Pause Game';
+        gameStatusButton.innerHTML = '<h2>Pause Game</h2>'
         theGame.mainSound.pause();
         theGame.battleSound.play();
     } else {
         gameStatus = false;
-        gameStatusButton.innerText = 'Start Game';
+        gameStatusButton.innerHTML = '<h2>Start Game</h2>'
         theGame.battleSound.pause();
         theGame.mainSound.play();
     }
@@ -101,6 +101,7 @@ function mainLoop() {
 
 function startGame() {
     theGame = new Game();
+    theGame.updateHealthBar();
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
     theGame.makeSkill();
