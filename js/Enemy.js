@@ -19,19 +19,19 @@ class Enemy {
         switch (spriteDirection) {
             case 'N':
                 this.direction = 'N';
-                this.img.src = '../images/environment/dragon north.png';
+                this.img.src = './images/environment/dragon north.png';
                 break;
             case 'S':
                 this.direction = 'S';
-                this.img.src = '../images/environment/dragon-south-copy2.png';
+                this.img.src = './images/environment/dragon-south-copy2.png';
                 break;
             case 'W':
                 this.direction = 'W';
-                this.img.src = '../images/environment/ dragon left .png';
+                this.img.src = './images/environment/ dragon left .png';
                 break;
             case 'E':
                 this.direction = 'E';
-                this.img.src = '../images/environment/dragon right  .png';
+                this.img.src = './images/environment/dragon right  .png';
                 break;
             default:
                 break;
