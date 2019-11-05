@@ -20,8 +20,16 @@ createEnemy(){
      }
 
      makeSkill(){
-         let newSkill = new Skill(20, 70, 50, 60)
-         newSkill.img.src = ('../images/skill/020006.png')
-         this.skills.push(newSkill)
+         let newSkill01 = new Skill(20, 70, 50, 60)
+         newSkill01.img.src = ('../images/skill/020006.png')
+         let newSkill02 = new Skill(220, 70, 50, 60)
+         newSkill02.img.src = ('../images/skill/020006.png')
+         let newSkill03 = new Skill(220, 200, 50, 60)
+         newSkill03.img.src = ('../images/skill/020006.png')
+         let newSkill04 = new Skill(320, 100, 50, 60)
+         newSkill04.img.src = ('../images/skill/020006.png')
+         let newSkill05 = new Skill(20, 70, 50, 60)
+         newSkill05.img.src = ('../images/skill/020006.png')
+         this.skills.push(newSkill01,newSkill02,newSkill03,newSkill04,newSkill05)
      }
 }
