@@ -11,9 +11,10 @@ class Game {
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
     }
-    createEnemy() {
-        let newEnemy = new Enemy(300, 150, 100, 100, this.map);
-        this.enemies.push(newEnemy);
+
+    createEnemy(){
+        let newEnemy = new Enemy(300, 150, 100, 100, this.map)
+        this.enemies.push(newEnemy)
     }
 
     updateScore() {
