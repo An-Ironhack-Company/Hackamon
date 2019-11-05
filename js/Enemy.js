@@ -9,7 +9,8 @@ class Enemy {
         this.direction = 'S';
         this.map = map;
         this.sprite;
-        this.position = {up:2, down:1, left:1, right:1} 
+        this.position = {up:2, down:1, left:1, right:1, center:1} 
+        let didMove = false
     }
 
     // load player
@@ -38,6 +39,7 @@ class Enemy {
     };
 
 
+
     moveEnemy = () => {
         console.log(this.map.mapArray)
         let m = this.map.mapArray;
@@ -45,7 +47,7 @@ class Enemy {
        let edirection
         let ogX = this.x,
         ogY = this.y;
-        // this[axis] += value;
+      
 
         if (this.x != ogX || this.y != ogY) {
             console.log(
@@ -56,48 +58,55 @@ class Enemy {
             console.log(this.position)
             console.log( m, this.y, this.x )
 
+        
             let enemyPosition =  {
-                right: m[(this.y / 10)-1][(this.x / 10)],
-                left:m[(this.y / 10)+1][(this.x / 10)],
-                up:m[(this.y / 10)][(this.x / 10)-1],
+                up: m[(this.y / 10)-1][(this.x / 10)],
+                down:m[(this.y / 10)+1][(this.x / 10)],
+                left:m[(this.y / 10)][(this.x / 10)-1],
                 right:m[(this.y / 10)][(this.x / 10)+1],
                 center: m[(this.y / 10)][(this.x / 10)]
             }
 
             console.log(enemyPosition)
+            this.position = enemyPosition; 
+
+            if (theGame.player.x >= this.x){
+                if (this.position['right'] == 1){
+                    this.x += 10
+                }
+            } 
+            else if (theGame.player.x < this.x){
+                if (this.position['left'] == 1){
+                    this.x -= 10
+                }
+            } 
+            enemyPosition =  {
+                up: m[(this.y / 10)-1][(this.x / 10)],
+                down:m[(this.y / 10)+1][(this.x / 10)],
+                left:m[(this.y / 10)][(this.x / 10)-1],
+                right:m[(this.y / 10)][(this.x / 10)+1],
+                center: m[(this.y / 10)][(this.x / 10)]
+            }
             this.position = enemyPosition;
 
 
-
-            if (theGame.player.x > theGame.enemy.x){
-                if (this.position['right'] == 1)
-                edirection = 'E'
-                console.log(`E changed ${theGame.enemy.direction}`)
-                theGame.enemy.x += 10
+            if (theGame.player.y >= this.y){
+                if (this.position['down'] == 1 && this.position['center']==1 ){
+                    this.y += 10
+                }
             } 
-            if (theGame.player.x <= theGame.enemy.x){
-                if (this.position['left'] == 1)
-                edirection = 'W'
-                console.log(`W changed ${theGame.enemy.direction}`)
-                theGame.enemy.x -= 10
+            else if (theGame.player.y < this.y) {
+                if (this.position['up'] == 1 && this.position['center']==1){
+                    this.y -= 10
+                }
             }
-            if (theGame.player.y >= theGame.enemy.y){
-                if (this.position['down'] == 1)
-                edirection = 'S'
-                console.log(`S changed ${theGame.enemy.direction}`)
-                theGame.enemy.y += 10
-            } 
-            if (theGame.player.y < theGame.enemy.y) {
-                if (this.position['up'] == 1)
-               edirection = 'N'
-                console.log(`N changed ${theGame.enemy.direction}`)
-                theGame.enemy.y -= 10
-            }
-            if (this.direction !== edirection) {
+        
+         if (this.direction !== edirection) {
                 this.loadEnemy(edirection);
                 this.direction = edirection
             }
         }
+        
                    
 }
   

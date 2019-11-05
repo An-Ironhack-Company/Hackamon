@@ -51,17 +51,23 @@ function mainLoop() {
     ctx.putImageData(saved_rect, 0, 0);
 
     drawSelf(theGame.player);
-    drawSelf(theGame.enemy);
 
-    // iterate through skills array to draw
-    for(let i = 0; i < theGame.skills.length; i++){
+    for (let i = 0; i < theGame.skills.length; i++) { // iterate through skills array to draw
         drawSelf(theGame.skills[i]);
     }
 
-    // Enemy Speed Control
-    if (frameIndex % 3333 == 0) {
-        theGame.enemy.moveEnemy();
+    for (let i = 0; i < theGame.enemies.length; i++){
+        drawSelf(theGame.enemies[i]);
     }
+
+    if (frameIndex % 443 == 0){
+        theGame.createEnemy()
+    }
+    if (frameIndex % 15 == 0) {
+        for (let i = 0; i < theGame.enemies.length; i++){
+            theGame.enemies[i].moveEnemy();
+        }
+}
 
     // Score Management
     if (frameIndex % 200 === 0) {

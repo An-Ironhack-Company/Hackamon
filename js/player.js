@@ -75,7 +75,6 @@ class Player {
                 theGame.skills[i].clearSkills();
             }
         }
-
         console.log(this.position);
     };
 
