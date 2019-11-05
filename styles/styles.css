@@ -20,7 +20,7 @@ h1 {
 }
 
 body {
-    background-image: url('/images/game-board/backdrop.jpg');
+    background-image: url('../images/game-board/backdrop.jpg');
     background-repeat: repeat-y;
     background-size: cover;
     overflow: hidden;

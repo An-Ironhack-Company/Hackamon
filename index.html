@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
+        <title>Hackamon</title>
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300|Press+Start+2P&display=swap"
             rel="stylesheet"
@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="./styles/styles.css" />
     </head>
     <body>
-        <!-- <div class="bg-video">
-  <div class="overlay"></div>
-  <div id="player"></div>
-</div> -->
         <header><h1>Welcome to Hackamon</h1></header>
         <section class="game-container">
             <div class="guide">
@@ -33,8 +29,8 @@
                         Move the player:
                         <img src="/images/game-board/arrow_orig.png" />
 
-                        Toggle power up: <img
-                        src="/images/game-board/spacekey.png"
+                        Toggle power up:
+                        <img src="/images/game-board/spacekey.png" />
                     </p>
                 </div>
             </div>
@@ -42,7 +38,7 @@
             <canvas id="game-board" width="500" height="250"></canvas>
             <section id="rightPannel">
                 <div class="score">
-                    <span>Score:</span><span>0</span>
+                    <span>Score:</span><span id="score">0</span>
                     <div class="stats">
                         <div id="health">
                             <h2>Health</h2>
@@ -87,11 +83,11 @@
             </section>
         </section>
 
+        <script src="./js/skill.js"></script>
         <script src="./js/audio.js"></script>
         <script src="./js/terrain.js"></script>
         <script src="./js/player.js"></script>
         <script src="./js/Enemy.js"></script>
-        <!-- <script src="./js/background.js"></script> -->
         <script src="./js/sprite.js"></script>
         <script src="./js/map.js"></script>
         <script src="./js/game.js"></script>

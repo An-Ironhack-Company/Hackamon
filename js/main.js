@@ -15,8 +15,6 @@ let terrainArray = [];
 
 let saved_rect;
 
-
-
 // Load Terrain assets
 for (let i = 0; i < imageAddresses.length; i++) {
     preLoader(imageAddresses[i], i);
@@ -48,13 +46,16 @@ function preLoader(url, index) {
 function mainLoop() {
     frameIndex++;
     ctx.clearRect(0, 0, 500, 500);
+
+    // Loads Saved Map
     ctx.putImageData(saved_rect, 0, 0);
+
     drawSelf(theGame.player);
     for (let i = 0; i < theGame.enemies.length; i++){
         drawSelf(theGame.enemies[i]);
     }
 
-if (frameIndex % 543 == 0){
+if (frameIndex % 443 == 0){
     theGame.createEnemy()
 }
     if (frameIndex % 15 == 0) {
@@ -62,12 +63,25 @@ if (frameIndex % 543 == 0){
             theGame.enemies[i].moveEnemy();
         }
 }
+  
+    drawSelf(theGame.skills[0]);
+
+
+
+    // Score Management
+    if (frameIndex % 200 === 0) {
+        theGame.score -= 1;
+        theGame.updateScore();
+    }
+
     requestAnimationFrame(mainLoop);
 }
 
 function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
+    theGame.updateScore();
+    theGame.makeSkill()
     //mainLoop();
 }
 
@@ -93,7 +107,7 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
-    //theGame.mainSound.play(); // start playing BGM once the map is generated
+    // theGame.mainSound.play(); // start playing BGM once the map is generated
     mainLoop();
 }
 
@@ -120,14 +134,12 @@ function drawMap() {
                 ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
                 positionX += 10;
             }
-        
         }
         positionY += 10;
     }
 }
 
-
-console.log(theGame)
+console.log(theGame);
 
 // Logic
 
