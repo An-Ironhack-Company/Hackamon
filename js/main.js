@@ -52,22 +52,24 @@ function mainLoop() {
 
     drawSelf(theGame.player);
 
-    for (let i = 0; i < theGame.skills.length; i++) { // iterate through skills array to draw
+    for (let i = 0; i < theGame.skills.length; i++) {
+        // iterate through skills array to draw
         drawSelf(theGame.skills[i]);
     }
 
-    for (let i = 0; i < theGame.enemies.length; i++){
+    for (let i = 0; i < theGame.enemies.length; i++) {
         drawSelf(theGame.enemies[i]);
     }
 
-    if (frameIndex % 443 == 0){
-        theGame.createEnemy()
+    if (frameIndex % 443 == 0) {
+        theGame.createEnemy();
     }
+
     if (frameIndex % 15 == 0) {
-        for (let i = 0; i < theGame.enemies.length; i++){
+        for (let i = 0; i < theGame.enemies.length; i++) {
             theGame.enemies[i].moveEnemy();
         }
-}
+    }
 
     // Score Management
     if (frameIndex % 200 === 0) {
@@ -83,7 +85,7 @@ function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
-    theGame.makeSkill()
+    theGame.makeSkill();
     //mainLoop();
 }
 
