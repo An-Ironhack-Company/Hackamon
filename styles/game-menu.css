@@ -9,7 +9,7 @@
 #rightPannel {
     font-size: 30px;
     margin-left: 50px;
-    background-image: url('../images/game-board/red-bricks.png');
+    background-image: url('./images/game-board/red-bricks.png');
     padding: 10px;
     border-radius: 5px;
     width: 250px;
