@@ -101,6 +101,7 @@ function mainLoop() {
 
 function startGame() {
     theGame = new Game();
+    theGame.updateHealthBar();
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
     theGame.makeSkill();

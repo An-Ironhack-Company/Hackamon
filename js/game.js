@@ -6,6 +6,7 @@ class Game {
         this.enemies = [this.enemy];
         this.mainSound = new Audio('../sound/Caketown-1.mp3'); // create audio element and start loading the file
         this.battleSound = new Audio('../sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
+        this.battleSound.volume = 0.5;
         this.scoreDisplay = document.getElementById('score');
         this.score = 100;
         this.healthBar = document.getElementById('health-bar-container');
