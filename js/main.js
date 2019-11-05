@@ -51,7 +51,13 @@ function mainLoop() {
     ctx.putImageData(saved_rect, 0, 0);
 
     drawSelf(theGame.player);
-    for (let i = 0; i < theGame.enemies.length; i++){
+
+    for (let i = 0; i < theGame.skills.length; i++) {
+        // iterate through skills array to draw
+        drawSelf(theGame.skills[i]);
+    }
+
+    for (let i = 0; i < theGame.enemies.length; i++) {
         drawSelf(theGame.enemies[i]);
     }
 
@@ -59,14 +65,10 @@ if (frameIndex % 253 == 0){
     theGame.createEnemy()
 }
     if (frameIndex % 15 == 0) {
-        for (let i = 0; i < theGame.enemies.length; i++){
+        for (let i = 0; i < theGame.enemies.length; i++) {
             theGame.enemies[i].moveEnemy();
         }
-}
-  
-    drawSelf(theGame.skills[0]);
-
-
+    }
 
     // Score Management
     if (frameIndex % 200 === 0) {
@@ -74,6 +76,7 @@ if (frameIndex % 253 == 0){
         theGame.updateScore();
     }
 
+    theGame.updateHealthBar();
     requestAnimationFrame(mainLoop);
 }
 
@@ -81,7 +84,7 @@ function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
-    theGame.makeSkill()
+    theGame.makeSkill();
     //mainLoop();
 }
 

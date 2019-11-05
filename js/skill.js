@@ -7,6 +7,8 @@ class Skill {
         this.height = height;
     }
 
-    // loadSkills = () => {
-    // }
+    clearSkills = () => {
+        this.x = -10;
+        this.y = -10;
+    }
 }

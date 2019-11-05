@@ -10,7 +10,7 @@ class Player {
         // this.position = { x: this.x, y: this.y };
         this.sprite;
         this.position = { up: 1, down: 1, left: 0, right: 1 };
-        console.log(this, this.map);
+        this.health = 100;
     }
 
     // load player
@@ -66,6 +66,15 @@ class Player {
             center: m[this.y / 10][this.x / 10],
         };
         this.position = position;
+
+        // iterate through skills array to add score
+        for(let i = 0; i < theGame.skills.length; i++){
+            if(this.x === theGame.skills[i].x && this.y === theGame.skills[i].y){
+                theGame.score += 100;
+                theGame.updateScore();
+                theGame.skills[i].clearSkills();
+            }
+        }
         console.log(this.position);
     };
 
