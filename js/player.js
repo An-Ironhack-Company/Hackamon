@@ -10,7 +10,7 @@ class Player {
         // this.position = { x: this.x, y: this.y };
         this.sprite;
         this.position = { up: 1, down: 1, left: 0, right: 1 };
-        console.log(this, this.map);
+        this.health = 100;
     }
 
     // load player

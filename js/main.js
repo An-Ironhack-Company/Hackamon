@@ -64,6 +64,7 @@ function mainLoop() {
         theGame.updateScore();
     }
 
+    theGame.updateHealthBar();
     requestAnimationFrame(mainLoop);
 }
 
