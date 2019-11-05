@@ -20,6 +20,12 @@ class Game {
     }
 
     updateScore() {
+        for (let i=0; i< this.enemies.length; i++){
+            if (this.player.x == this.enemies[i].x && this.player.y == this.enemies[i].y ){
+    
+                this.score -= 25;
+            }
+        }
         this.scoreDisplay.innerText = this.score;
         if (this.score <= 90) {
             this.player.health = Math.round(this.score);
