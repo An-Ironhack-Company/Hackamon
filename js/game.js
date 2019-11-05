@@ -10,10 +10,11 @@ class Game {
         this.score = 100;
         this.skills = [];
     }
-createEnemy(){
-    let newEnemy = new Enemy(300, 150, 100, 100, this.map)
-    this.enemies.push(newEnemy)
- }
+
+    createEnemy(){
+        let newEnemy = new Enemy(300, 150, 100, 100, this.map)
+        this.enemies.push(newEnemy)
+    }
 
     updateScore() {
         this.scoreDisplay.innerText = this.score;
