@@ -16,7 +16,7 @@ class Game {
      }
 
      makeSkill(){
-         let newSkill = new Skill(220, 70, 50, 60)
+         let newSkill = new Skill(20, 70, 50, 60)
          newSkill.img.src = ('../images/skill/020006.png')
          this.skills.push(newSkill)
      }

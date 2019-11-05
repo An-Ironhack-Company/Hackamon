@@ -52,7 +52,11 @@ function mainLoop() {
 
     drawSelf(theGame.player);
     drawSelf(theGame.enemy);
-    drawSelf(theGame.skills[0]);
+
+    // iterate through skills array to draw
+    for(let i = 0; i < theGame.skills.length; i++){
+        drawSelf(theGame.skills[i]);
+    }
 
     // Enemy Speed Control
     if (frameIndex % 3333 == 0) {
