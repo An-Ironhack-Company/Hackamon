@@ -39,51 +39,59 @@ class Enemy {
 
 
     moveEnemy = () => {
+        console.log(this.map.mapArray)
         let m = this.map.mapArray;
 
        let edirection
         let ogX = this.x,
         ogY = this.y;
         // this[axis] += value;
+
         if (this.x != ogX || this.y != ogY) {
             console.log(
-                `The enemy is currently at [${this.x / 10}, ${this.y / 10}].`,
+                `The player is currently at [${this.x / 10}, ${this.y / 10}].`, 
                 );
             }
+
+            console.log(this.position)
+            console.log( m, this.y, this.x )
+
             let enemyPosition =  {
-                up:m[(this.y / 10)-1][(this.x / 10)],
-                down:m[(this.y / 10)+1][(this.x / 10)],
-                left:m[(this.y / 10)][(this.x / 10)-1],
+                right: m[(this.y / 10)-1][(this.x / 10)],
+                left:m[(this.y / 10)+1][(this.x / 10)],
+                up:m[(this.y / 10)][(this.x / 10)-1],
                 right:m[(this.y / 10)][(this.x / 10)+1],
-                center:m[(this.y / 10)][(this.x / 10)]
+                center: m[(this.y / 10)][(this.x / 10)]
             }
+
             console.log(enemyPosition)
             this.position = enemyPosition;
-            console.log(this.position)
-        
+
+
+
             if (theGame.player.x > theGame.enemy.x){
                 if (this.position['right'] == 1)
                 edirection = 'E'
                 console.log(`E changed ${theGame.enemy.direction}`)
-                theGame.enemy.x += 1
+                theGame.enemy.x += 10
             } 
             if (theGame.player.x <= theGame.enemy.x){
                 if (this.position['left'] == 1)
                 edirection = 'W'
                 console.log(`W changed ${theGame.enemy.direction}`)
-                theGame.enemy.x -= 1
+                theGame.enemy.x -= 10
             }
             if (theGame.player.y >= theGame.enemy.y){
                 if (this.position['down'] == 1)
                 edirection = 'S'
                 console.log(`S changed ${theGame.enemy.direction}`)
-                theGame.enemy.y += 1
+                theGame.enemy.y += 10
             } 
             if (theGame.player.y < theGame.enemy.y) {
                 if (this.position['up'] == 1)
                edirection = 'N'
                 console.log(`N changed ${theGame.enemy.direction}`)
-                theGame.enemy.y -= 1
+                theGame.enemy.y -= 10
             }
             if (this.direction !== edirection) {
                 this.loadEnemy(edirection);

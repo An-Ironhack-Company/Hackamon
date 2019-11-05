@@ -52,7 +52,7 @@ function mainLoop() {
     drawSelf(theGame.player);
     drawSelf(theGame.enemy);
 
-    if (frameIndex % 3 == 0) {
+    if (frameIndex % 3333 == 0) {
         theGame.enemy.moveEnemy();
     }
 

@@ -47,9 +47,6 @@ class Player {
     // move player
     movePlayer = (axis, direction, value) => {
             let m = this.map.mapArray;
-
-
-
             let ogX = this.x+1,
             ogY = this.y;
             if (this.direction !== direction) {
@@ -61,7 +58,6 @@ class Player {
                     `The player is currently at [${this.x / 10}, ${this.y / 10}].`, 
                     );
             }
-
             console.log( m[this.y / 10][this.x / 10] )
 
             let position =  {
@@ -72,9 +68,7 @@ class Player {
                 center: m[(this.y / 10)][(this.x / 10)]
             }
             this.position = position;
-            console.log(this.position)
-
-                
+            console.log(this.position)                
     };
 
 
