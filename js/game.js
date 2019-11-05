@@ -4,15 +4,15 @@ class Game {
         this.player = new Player(20, 30, 50, 60, this.map);
         this.enemy = new Enemy(150, 100, 500, 500, this.map);
         this.enemies = [this.enemy];
-        this.mainSound = new Audio('../sound/Caketown-1.mp3'); // create audio element and start loading the file
-        this.battleSound = new Audio('../sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
+        this.mainSound = new Audio('./sound/Caketown-1.mp3'); // create audio element and start loading the file
+        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
         this.battleSound.volume = 0.5;
-        this.itemSound = new Audio('../sound/gotitem.mp3'); // create audio element and start loading the file
+        this.itemSound = new Audio('./sound/gotitem.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
         this.score = 100;
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
-        this.damageSound = new Audio ('../sound/Owe.wav')
+        this.damageSound = new Audio ('./sound/Owe.wav')
         this.damageSound.volume = 0.8
     }
 
