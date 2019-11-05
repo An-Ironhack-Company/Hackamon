@@ -52,6 +52,7 @@ function mainLoop() {
 
     drawSelf(theGame.player);
     drawSelf(theGame.enemy);
+    drawSelf(theGame.skills[0]);
 
     // Enemy Speed Control
     if (frameIndex % 3333 == 0) {
@@ -71,6 +72,7 @@ function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
+    theGame.makeSkill()
     //mainLoop();
 }
 
@@ -96,7 +98,7 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
-    //theGame.mainSound.play(); // start playing BGM once the map is generated
+    // theGame.mainSound.play(); // start playing BGM once the map is generated
     mainLoop();
 }
 

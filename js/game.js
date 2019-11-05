@@ -8,9 +8,16 @@ class Game {
         this.battleSound = new Audio('../sound/battle.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
         this.score = 100;
+        this.skills = [];
     }
 
     updateScore() {
         this.scoreDisplay.innerText = this.score;
-    }
+     }
+
+     makeSkill(){
+         let newSkill = new Skill(220, 70, 50, 60)
+         newSkill.img.src = ('../images/skill/020006.png')
+         this.skills.push(newSkill)
+     }
 }
