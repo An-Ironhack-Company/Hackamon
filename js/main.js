@@ -15,8 +15,6 @@ let terrainArray = [];
 
 let saved_rect;
 
-
-
 // Load Terrain assets
 for (let i = 0; i < imageAddresses.length; i++) {
     preLoader(imageAddresses[i], i);
@@ -48,12 +46,22 @@ function preLoader(url, index) {
 function mainLoop() {
     frameIndex++;
     ctx.clearRect(0, 0, 500, 500);
+
+    // Loads Saved Map
     ctx.putImageData(saved_rect, 0, 0);
+
     drawSelf(theGame.player);
     drawSelf(theGame.enemy);
 
+    // Enemy Speed Control
     if (frameIndex % 3333 == 0) {
         theGame.enemy.moveEnemy();
+    }
+
+    // Score Management
+    if (frameIndex % 200 === 0) {
+        theGame.score -= 1;
+        theGame.updateScore();
     }
 
     requestAnimationFrame(mainLoop);
@@ -62,6 +70,7 @@ function mainLoop() {
 function startGame() {
     theGame = new Game();
     theGame.player.loadPlayer(theGame.player.direction);
+    theGame.updateScore();
     //mainLoop();
 }
 
@@ -114,14 +123,12 @@ function drawMap() {
                 ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
                 positionX += 10;
             }
-        
         }
         positionY += 10;
     }
 }
 
-
-console.log(theGame)
+console.log(theGame);
 
 // Logic
 
