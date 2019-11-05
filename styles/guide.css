@@ -1,18 +1,25 @@
 .guide {
-    width: 300px;
-    margin-right: 50px;
-    background-color: #a3b7d9;
+    width: 200px;
+    margin-right: 20px;
+    margin-left: 10px;
+    background-image: url('../images/game-board/Purple_Brick_Background.png');
+    background-size: contain;
+    background-repeat: repeat-y;
     padding: 20px;
-    border-radius: 55px;
-
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white
 }
 
+
 .guide h2 {
-    margin:10px
+    margin:10px;
+    font-size: 15px;
 }
 
 .guide p {
     margin-top: 10px;
+    font-size: 14px;
     background-color: #8ea0bf;
     padding: 10px;
     border-radius: 5px;
@@ -21,7 +28,7 @@
 
 .controls img {
     margin-left: 10px;
-    width:250px;
+    width:150px;
     border: 2px dotted black;
 
 

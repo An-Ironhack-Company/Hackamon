@@ -7,28 +7,24 @@
     padding: 10px
 }
 #rightPannel {
-    font-size: 30px;
-    margin-left: 50px;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
     background-image: url('../images/game-board/red-bricks.png');
     padding: 10px;
     border-radius: 5px;
     width: 250px;
-    height: 600px;
+    height:250px;
     color: white;
-    border: 10px solid white;
+    border: 2px solid white;
 
 }
 
 #rightPannel p {
-    font-size: 20px;
+    font-size: 15px;
     margin: 10px;
 }
 
 #rightPannel span {
     margin: 5px
-}
-
-.tracker {
-    padding: 10px;
-    background-color: rgba(32, 176, 166, .7);
 }
