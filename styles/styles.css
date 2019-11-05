@@ -46,3 +46,10 @@ h2 {
     margin-bottom: 10px;
 }
 
+.footer {
+    margin: 2vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

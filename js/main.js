@@ -2,6 +2,8 @@
 const ctx = document.getElementById('game-board').getContext('2d');
 
 let theGame;
+let gameStatus = false;
+let gameStatusButton = document.getElementById('game-status');
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -24,6 +26,20 @@ startGame();
 theGame.map.chooseMap();
 let newMap = theGame.map.mapArray;
 
+gameStatusButton.onclick = () => {
+    if (gameStatus != true) {
+        gameStatus = true;
+        gameStatusButton.innerText = 'Pause Game';
+        theGame.mainSound.pause();
+        theGame.battleSound.play();
+    } else {
+        gameStatus = false;
+        gameStatusButton.innerText = 'Start Game';
+        theGame.battleSound.pause();
+        theGame.mainSound.play();
+    }
+};
+
 // Functions
 function preLoader(url, index) {
     return new Promise(function(resolve, reject) {
@@ -44,39 +60,42 @@ function preLoader(url, index) {
 }
 
 function mainLoop() {
-    frameIndex++;
-    ctx.clearRect(0, 0, 500, 500);
+    if (gameStatus === true) {
+        frameIndex++;
+        ctx.clearRect(0, 0, 500, 500);
 
-    // Loads Saved Map
-    ctx.putImageData(saved_rect, 0, 0);
+        // Loads Saved Map
+        ctx.putImageData(saved_rect, 0, 0);
 
-    drawSelf(theGame.player);
+        drawSelf(theGame.player);
 
-    for (let i = 0; i < theGame.skills.length; i++) {
-        // iterate through skills array to draw
-        drawSelf(theGame.skills[i]);
-    }
-
-    for (let i = 0; i < theGame.enemies.length; i++) {
-        drawSelf(theGame.enemies[i]);
-    }
-
-if (frameIndex % 253 == 0){
-    theGame.createEnemy()
-}
-    if (frameIndex % 15 == 0) {
-        for (let i = 0; i < theGame.enemies.length; i++) {
-            theGame.enemies[i].moveEnemy();
+        for (let i = 0; i < theGame.skills.length; i++) {
+            // iterate through skills array to draw
+            drawSelf(theGame.skills[i]);
         }
+
+        for (let i = 0; i < theGame.enemies.length; i++) {
+            drawSelf(theGame.enemies[i]);
+        }
+
+        if (frameIndex % 253 == 0) {
+            theGame.createEnemy();
+        }
+        if (frameIndex % 15 == 0) {
+            for (let i = 0; i < theGame.enemies.length; i++) {
+                theGame.enemies[i].moveEnemy();
+            }
+        }
+
+        // Score Management
+        if (frameIndex % 20 === 0) {
+            theGame.score -= 1;
+            theGame.updateScore();
+        }
+
+        theGame.updateHealthBar();
     }
 
-    // Score Management
-    if (frameIndex % 200 === 0) {
-        theGame.score -= 1;
-        theGame.updateScore();
-    }
-
-    theGame.updateHealthBar();
     requestAnimationFrame(mainLoop);
 }
 
