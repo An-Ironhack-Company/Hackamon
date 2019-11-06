@@ -19,27 +19,33 @@ class Game {
         this.enemies.push(newEnemy);
     }
 
-    updateScore() {
-        for (let i=0; i< this.enemies.length; i++){
-            if (this.player.x == this.enemies[i].x && this.player.y == this.enemies[i].y ){
-    
-                this.score -= 25;
+    checkForDamage() {
+        for (let i = 0; i < this.enemies.length; i++) {
+            if (
+                this.player.x == this.enemies[i].x &&
+                this.player.y == this.enemies[i].y
+            ) {
+                this.player.health -= 10;
             }
         }
+    }
+    updateScore() {
         this.scoreDisplay.innerText = this.score;
-        if (this.score <= 90) {
-            this.player.health = Math.round(this.score);
-        }
+        // if (this.score <= 90) {
+        //     this.player.health = Math.round(this.score);
+        // }
     }
 
     updateHealthBar() {
         let currentHealth = this.player.health;
+        let alive = currentHealth > 0 ? true : false;
         this.healthBar.innerHTML = '';
         for (let i = 0; i < currentHealth / 10; i++) {
             let healthNode = document.createElement('div');
             healthNode.classList.add('health-bar');
             this.healthBar.appendChild(healthNode);
         }
+        return alive;
     }
 
     makeSkill() {
