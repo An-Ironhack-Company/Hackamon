@@ -2,7 +2,7 @@ class Game {
     constructor() {
         this.map = new Map(1);
         this.player = new Player(460, 10, 50, 60, this.map);
-        this.enemy = new Enemy(20, 230, 500, 500, this.map);
+        this.enemy = new Enemy(20, 230, 50, 60, this.map);
         this.enemies = [this.enemy];
         this.mainSound = new Audio('./sound/Caketown-1.mp3'); // create audio element and start loading the file
         this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
