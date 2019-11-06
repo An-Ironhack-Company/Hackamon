@@ -9,7 +9,7 @@ class Player {
         this.map = map;
         // this.position = { x: this.x, y: this.y };
         this.sprite;
-        this.position = { up: 1, down: 1, left: 0, right: 1 };
+        this.position = { up: 0, down: 1, left: 1, right: 1 };
         this.health = 100;
         this.collectedSkills = [];
         this.attack = new Attack

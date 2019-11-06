@@ -94,8 +94,10 @@ function mainLoop() {
         if (frameIndex % 15 == 0) {
             for (let i = 0; i < theGame.enemies.length; i++) {
                 theGame.enemies[i].moveEnemy();
-                theGame.checkForDamage();
             }
+        }
+        if (frameIndex % 60 ==0){
+            theGame.checkForDamage();
         }
 
         // Score Management
