@@ -69,8 +69,11 @@ function mainLoop() {
 
         drawSelf(theGame.player);
 
+        if (frameIndex % 578 == 0) {
+            theGame.makeSkill();
+        }
+        // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
-            // iterate through skills array to draw
             drawSelf(theGame.skills[i]);
         }
 
@@ -174,19 +177,6 @@ function endGame() {
     message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
-    // ctx.font = '30px Comic Sans MS';
-    // ctx.fillStyle = 'red';
-    // ctx.textAlign = 'center';
-    // // ctx.fillText(
-    // //     `You've died!`,
-    // //     document.getElementById('game-board').width / 2,
-    // //     document.getElementById('game-board').height / 2,
-    // // );
-    // ctx.fillText(
-    //     `Score: ${theGame.score}`,
-    //     document.getElementById('game-board').width / 2,
-    //     document.getElementById('game-board').height / 2,
-    // );
 }
 
 // Logic
