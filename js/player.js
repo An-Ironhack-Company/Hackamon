@@ -124,11 +124,11 @@ class Player {
             this.attack.moveAttack(this.direction, 20);
         }
         if (e.key === 'b') {
-            // console.log('Waaall Buster!!!');
-            theGame.wallBuster();
+            console.log('Waaall Buster!!!');
+            theGame.wallBuster();``
         }
         if (e.key === 'Shift') {
-            // console.log('Built! A! Wall!');
+            console.log('Built! A! Wall!');
             theGame.wallBuilder();
         }
     };

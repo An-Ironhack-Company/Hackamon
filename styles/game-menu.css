@@ -14,10 +14,14 @@
     padding: 10px;
     border-radius: 5px;
     width: 300px;
-    height:250px;
+    height:450px;
     color: white;
     border: 2px solid white;
 
+}
+
+.time {
+    margin-bottom: 30px
 }
 
 #rightPannel p {
