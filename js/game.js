@@ -11,6 +11,7 @@ class Game {
         this.finalScore = this.time*this.score
         this.skills = [];
         this.life = [];
+        this.bricks = 0
 
         // sound
         this.healthBar = document.getElementById('health-bar-container');
@@ -64,9 +65,9 @@ class Game {
     }
 
     makeSkill() {
-        console.log('took effect');
+        // console.log('took effect');
         let randomIndex = Math.floor(Math.random() * 8);
-        console.log(randomIndex);
+        // console.log(randomIndex);
         let newSkill01 = new Skill(20, 70, 50, 60);
         newSkill01.img.src = './images/skill/020006.png';
         let newSkill02 = new Skill(220, 60, 50, 60);
@@ -93,17 +94,17 @@ class Game {
             newSkill07,
             newSkill08,
         ];
-        console.log(this.skillsList);
+        // console.log(this.skillsList);
         let randomSkill = skillsList.splice(randomIndex, 1);
-        console.log(randomSkill);
+        // console.log(randomSkill);
         this.skills.push(randomSkill[0]);
-        console.log(this.skills);
+        // console.log(this.skills);
     }
 
     makeHealth() {
-        console.log('took effect');
+        // console.log('took effect');
         let randomIndex = Math.floor(Math.random() * 4);
-        console.log(randomIndex);
+        // console.log(randomIndex);
         let newHealth01 = new Health(40, 170, 50, 60);
         newHealth01.img.src = './images/game-board/health.png';
         let newHealth02 = new Health(220, 10, 50, 60);
@@ -113,14 +114,14 @@ class Game {
         let newHealth04 = new Health(450, 60, 50, 60);
         newHealth04.img.src = './images/game-board/health.png';
         let healthList = [newHealth01, newHealth02, newHealth03, newHealth04];
-        console.log(this.healthList);
+        // console.log(this.healthList);
         let randomHealth = healthList.splice(randomIndex, 1);
-        console.log(randomHealth);
+        // console.log(randomHealth);
         this.life.push(randomHealth[0]);
-        console.log(this.life);
+        // console.log(this.life);
     }
     wallBuster = () => {
-        console.log('in wallBuster');
+        // console.log('in wallBuster');
         let busted;
         this.player.mapY = this.player.x / 10;
         this.player.mapX = this.player.y / 10;
@@ -135,6 +136,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('y', 'N', -10);
+                    this.bricks++
                 }
                 break;
             case 'S':
@@ -147,6 +149,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('y', 'S', 10);
+                    this.bricks++
                 }
                 break;
             case 'W':
@@ -159,6 +162,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('x', 'W', -10);
+                    this.bricks++
                 }
                 break;
             case 'E':
@@ -171,14 +175,16 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('x', 'E', 10);
+                    this.bricks++
                 }
                 break;
             default:
                 break;
         }
+        console.log(this.bricks)
     };
     wallBuilder = () => {
-        console.log('in wallBuilder');
+        // console.log('in wallBuilder');
         let build;
         this.player.mapY = this.player.x / 10;
         this.player.mapX = this.player.y / 10;
@@ -188,7 +194,7 @@ class Game {
                     this.player.position.up != 2 &&
                     this.player.position.up != 3
                 ) {
-                    this.map.mapArray[this.player.mapX - 1][
+                    this.map.mapArray[this.player.mapX + 1][
                         this.player.mapY
                     ] = 3;
                     generateNewMap();
@@ -199,7 +205,7 @@ class Game {
                     this.player.position.down != 2 &&
                     this.player.position.down != 3
                 ) {
-                    this.map.mapArray[this.player.mapX + 1][
+                    this.map.mapArray[this.player.mapX - 1][
                         this.player.mapY
                     ] = 3;
                     generateNewMap();
@@ -211,7 +217,7 @@ class Game {
                     this.player.position.left != 3
                 ) {
                     this.map.mapArray[this.player.mapX][
-                        this.player.mapY - 1
+                        this.player.mapY + 1
                     ] = 3;
                     generateNewMap();
                 }
@@ -222,7 +228,7 @@ class Game {
                     this.player.position.right != 3
                 ) {
                     this.map.mapArray[this.player.mapX][
-                        this.player.mapY + 1
+                        this.player.mapY - 1
                     ] = 3;
                     generateNewMap();
                 }
