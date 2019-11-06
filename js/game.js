@@ -184,57 +184,65 @@ class Game {
         console.log(this.bricks)
     };
     wallBuilder = () => {
-        // console.log('in wallBuilder');
-        let build;
-        this.player.mapY = this.player.x / 10;
-        this.player.mapX = this.player.y / 10;
-        switch (this.player.direction) {
-            case 'N':
-                if (
-                    this.player.position.up != 2 &&
-                    this.player.position.up != 3
-                ) {
-                    this.map.mapArray[this.player.mapX + 1][
-                        this.player.mapY
-                    ] = 3;
-                    generateNewMap();
-                }
-                break;
-            case 'S':
-                if (
-                    this.player.position.down != 2 &&
-                    this.player.position.down != 3
-                ) {
-                    this.map.mapArray[this.player.mapX - 1][
-                        this.player.mapY
-                    ] = 3;
-                    generateNewMap();
-                }
-                break;
-            case 'W':
-                if (
-                    this.player.position.left != 2 &&
-                    this.player.position.left != 3
-                ) {
-                    this.map.mapArray[this.player.mapX][
-                        this.player.mapY + 1
-                    ] = 3;
-                    generateNewMap();
-                }
-                break;
-            case 'E':
-                if (
-                    this.player.position.right != 2 &&
-                    this.player.position.right != 3
-                ) {
-                    this.map.mapArray[this.player.mapX][
-                        this.player.mapY - 1
-                    ] = 3;
-                    generateNewMap();
-                }
-                break;
-            default:
-                break;
-        }
-    };
-}
+        if (this.bricks > 0){
+
+            // console.log('in wallBuilder');
+            let build;
+            this.player.mapY = this.player.x / 10;
+            this.player.mapX = this.player.y / 10;
+            switch (this.player.direction) {
+                case 'N':
+                    if (
+                        this.player.position.up != 2 &&
+                        this.player.position.up != 3
+                        ) {
+                            this.map.mapArray[this.player.mapX + 1][
+                                this.player.mapY
+                            ] = 3;
+                            this.bricks--
+                            generateNewMap();
+                        }
+                        break;
+                        case 'S':
+                            if (
+                                this.player.position.down != 2 &&
+                                this.player.position.down != 3
+                                ) {
+                                    this.map.mapArray[this.player.mapX - 1][
+                                        this.player.mapY
+                                    ] = 3;
+                                    this.bricks--
+                                    generateNewMap();
+                                }
+                                break;
+                                case 'W':
+                                    if (
+                                        this.player.position.left != 2 &&
+                                        this.player.position.left != 3
+                                        ) {
+                                            this.map.mapArray[this.player.mapX][
+                                                this.player.mapY + 1
+                                            ] = 3;
+                                            this.bricks--
+                                            generateNewMap();
+                                        }
+                                        break;
+                                        case 'E':
+                                            if (
+                                                this.player.position.right != 2 &&
+                                                this.player.position.right != 3
+                                                ) {
+                                                    this.map.mapArray[this.player.mapX][
+                                                        this.player.mapY - 1
+                                                    ] = 3;
+                                                    this.bricks--
+                                                    generateNewMap();
+                                                }
+                                                break;
+                                                default:
+                                                    break;
+                                                }
+                                            };
+                                        }
+                                    }
+                                        
