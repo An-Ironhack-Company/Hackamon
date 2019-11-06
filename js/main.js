@@ -180,6 +180,7 @@ function drawMap() {
 }
 
 function endGame() {
+    theGame.finalScore = theGame.time * theGame.score
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
