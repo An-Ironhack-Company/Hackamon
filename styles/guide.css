@@ -33,9 +33,37 @@
 }
 
 .b-key {
-    width: 30px;
-    height:30px;
+    width: 40px;
+    height:40px;
     position: relative;
-    left: 25px;
+    left: 10px;
     top: 5px;
+}
+
+.shift-key{
+    width: 90px;
+    height: 40px;
+    position: relative;
+    left:40px;
+    top: 5px;
+}
+
+.mine {
+    font-size: 10px;
+    color: red
+}
+
+.build {
+    font-size: 10px;
+    position: relative;
+    color: red;
+    left: 30px;
+}
+
+.inst{
+    font-size: 10px;
+}
+
+.moveGuide {
+    font-size: 10px;
 }
