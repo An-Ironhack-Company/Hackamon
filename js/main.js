@@ -101,10 +101,13 @@ function mainLoop() {
         }
 
         // Score Management
-        if (frameIndex % 20 === 0) {
-            // theGame.score -= 1;
-            theGame.updateScore();
+        if (frameIndex % 60 === 0) {
+            theGame.updateTime();
+            theGame.time += 1;
+            console.log(theGame.time)
         }
+
+
 
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {

@@ -9,6 +9,8 @@ class Game {
         this.battleSound.volume = 0.5;
         this.itemSound = new Audio('./sound/gotitem.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
+        this.timeDisplay =document.getElementById('time')
+        this.time = 0
         this.score = 0;
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
@@ -39,6 +41,11 @@ class Game {
         //     this.player.health = Math.round(this.score);
         // }
     }
+
+    updateTime(){
+        this.timeDisplay.innerText = this.time;
+    }
+
 
     updateHealthBar() {
         let currentHealth = this.player.health;
