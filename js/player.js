@@ -77,6 +77,16 @@ class Player {
                 theGame.skills[i].clearSkills(); //clear collected skills from canvas
             }
         }
+        for (let i = 0; i < theGame.life.length; i++) {
+            if (
+                this.x === theGame.life[i].x &&
+                this.y === theGame.life[i].y
+            ) {
+                this.health += 20;
+                theGame.itemSound.play();
+                theGame.life[i].clearHealth(); //clear collected health from canvas
+            }
+        }
     };
 
     gameControls = e => {

@@ -9,9 +9,10 @@ class Game {
         this.battleSound.volume = 0.5;
         this.itemSound = new Audio('./sound/gotitem.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
-        this.score = 100;
+        this.score = 0;
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
+        this.life = [];
         this.damageSound = new Audio('./sound/ouch.mp3');
         this.damageSound.volume = 0.8;
     }
@@ -88,4 +89,31 @@ class Game {
         console.log(this.skills);
 
     }
+
+    makeHealth() {
+        console.log('took effect');
+    let randomIndex = Math.floor(Math.random()*4)
+    console.log(randomIndex)
+        let newHealth01 = new Health(40, 170, 50, 60);
+        newHealth01.img.src = './images/game-board/health.png';
+        let newHealth02 = new Health(220, 10, 50, 60);
+        newHealth02.img.src = './images/game-board/health.png';
+        let newHealth03 = new Health(340, 180, 50, 60);
+        newHealth03.img.src = './images/game-board/health.png';
+        let newHealth04 = new Health(450, 60, 50, 60);
+        newHealth04.img.src = './images/game-board/health.png';
+       let healthList = [
+            newHealth01,
+            newHealth02,
+            newHealth03,
+            newHealth04,
+       ]
+        console.log(this.healthList);
+        let randomHealth = healthList.splice(randomIndex, 1);
+        console.log(randomHealth);
+        this.life.push(randomHealth[0]);
+        console.log(this.life);
+
+    }
+
 }

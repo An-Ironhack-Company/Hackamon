@@ -72,9 +72,16 @@ function mainLoop() {
         if (frameIndex % 578 == 0){
             theGame.makeSkill();
         }
+        if (frameIndex % 888 == 0){
+        theGame.makeHealth()
+        }
         // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
             drawSelf(theGame.skills[i]);
+        }
+
+        for (let i = 0; i < theGame.life.length; i++) {
+            drawSelf(theGame.life[i]);
         }
 
         for (let i = 0; i < theGame.enemies.length; i++) {
