@@ -12,8 +12,8 @@ class Game {
         this.score = 100;
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
-        this.damageSound = new Audio ('./sound/ouch.mp3')
-        this.damageSound.volume = 0.8
+        this.damageSound = new Audio('./sound/ouch.mp3');
+        this.damageSound.volume = 0.8;
     }
 
     createEnemy() {
@@ -21,27 +21,34 @@ class Game {
         this.enemies.push(newEnemy);
     }
 
-    updateScore() {
-        for (let i=0; i< this.enemies.length; i++){
-            if (this.player.x == this.enemies[i].x && this.player.y == this.enemies[i].y ){
+    checkForDamage() {
+        for (let i = 0; i < this.enemies.length; i++) {
+            if (
+                this.player.x == this.enemies[i].x &&
+                this.player.y == this.enemies[i].y
+            ) {
                 this.damageSound.play();
-                this.score -= 25;
+                this.player.health -= 10;
             }
         }
+    }
+    updateScore() {
         this.scoreDisplay.innerText = this.score;
-        if (this.score <= 90) {
-            this.player.health = Math.round(this.score);
-        }
+        // if (this.score <= 90) {
+        //     this.player.health = Math.round(this.score);
+        // }
     }
 
     updateHealthBar() {
         let currentHealth = this.player.health;
+        let alive = currentHealth > 0 ? true : false;
         this.healthBar.innerHTML = '';
         for (let i = 0; i < currentHealth / 10; i++) {
             let healthNode = document.createElement('div');
             healthNode.classList.add('health-bar');
             this.healthBar.appendChild(healthNode);
         }
+        return alive;
     }
 
     makeSkill() {
