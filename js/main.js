@@ -69,8 +69,16 @@ function mainLoop() {
 
         drawSelf(theGame.player);
 
-        if (frameIndex % 578 == 0) {
+        if (frameIndex % 478 == 0) {
             theGame.makeSkill();
+        }
+
+        if (frameIndex % 786 == 0){
+            theGame.makeHealth()
+        }
+
+        for (let i = 0; i < theGame.life.length; i++) {
+            drawSelf(theGame.life[i]);
         }
         // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
@@ -89,7 +97,7 @@ function mainLoop() {
                 theGame.enemies[i].moveEnemy();
             }
         }
-        if (frameIndex % 60 ==0){
+        if (frameIndex % 35 ==0){
             theGame.checkForDamage();
         }
 

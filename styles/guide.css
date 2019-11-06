@@ -26,10 +26,16 @@
 
 }
 
-.controls img {
+.arrows {
     margin-left: 10px;
     width:150px;
     border: 2px dotted black;
+}
 
-
+.b-key {
+    width: 30px;
+    height:30px;
+    position: relative;
+    left: 25px;
+    top: 5px;
 }
