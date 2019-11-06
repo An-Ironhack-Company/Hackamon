@@ -68,9 +68,12 @@ function mainLoop() {
         ctx.putImageData(saved_rect, 0, 0);
 
         drawSelf(theGame.player);
-
+        
+        if (frameIndex % 578 == 0){
+            theGame.makeSkill();
+        }
+        // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
-            // iterate through skills array to draw
             drawSelf(theGame.skills[i]);
         }
 
@@ -105,6 +108,7 @@ function startGame() {
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
     theGame.makeSkill();
+    
     //mainLoop();
 }
 

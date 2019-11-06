@@ -46,23 +46,39 @@ class Game {
 
     makeSkill() {
         console.log('took effect');
-
+    let randomIndex = Math.floor(Math.random()*8)
+    console.log(randomIndex)
         let newSkill01 = new Skill(20, 70, 50, 60);
         newSkill01.img.src = './images/skill/020006.png';
-        let newSkill02 = new Skill(220, 70, 50, 60);
+        let newSkill02 = new Skill(220, 60, 50, 60);
         newSkill02.img.src = './images/skill/020006.png';
-        let newSkill03 = new Skill(220, 200, 50, 60);
+        let newSkill03 = new Skill(390, 210, 50, 60);
         newSkill03.img.src = './images/skill/020006.png';
-        let newSkill04 = new Skill(320, 100, 50, 60);
+        let newSkill04 = new Skill(420, 90, 50, 60);
         newSkill04.img.src = './images/skill/020006.png';
-        let newSkill05 = new Skill(20, 70, 50, 60);
+        let newSkill05 = new Skill(230, 190, 50, 60);
         newSkill05.img.src = './images/skill/020006.png';
-        this.skills.push(
+        let newSkill06 = new Skill(120, 270, 50, 60);
+        newSkill06.img.src = './images/skill/020006.png';
+        let newSkill07 = new Skill(100, 30, 50, 60);
+        newSkill07.img.src = './images/skill/020006.png';
+        let newSkill08 = new Skill(30, 170, 50, 60);
+        newSkill08.img.src = './images/skill/020006.png';
+       let skillsList = [
             newSkill01,
             newSkill02,
             newSkill03,
             newSkill04,
             newSkill05,
-        );
+            newSkill06,
+            newSkill07,
+            newSkill08,
+       ]
+        console.log(this.skillsList);
+        let randomSkill = skillsList.splice(randomIndex, 1);
+        console.log(randomSkill);
+        this.skills.push(randomSkill[0]);
+        console.log(this.skills);
+
     }
 }
