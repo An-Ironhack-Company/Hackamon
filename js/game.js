@@ -8,6 +8,7 @@ class Game {
         this.timeDisplay =document.getElementById('time')
         this.time = 0
         this.score = 0;
+        this.finalScore = this.time*this.score
         this.skills = [];
         this.life = [];
 
