@@ -29,12 +29,12 @@ let newMap = theGame.map.mapArray;
 gameStatusButton.onclick = () => {
     if (gameStatus != true) {
         gameStatus = true;
-        gameStatusButton.innerHTML = '<h2>Pause Game</h2>'
+        gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
         theGame.mainSound.pause();
         theGame.battleSound.play();
     } else {
         gameStatus = false;
-        gameStatusButton.innerHTML = '<h2>Start Game</h2>'
+        gameStatusButton.innerHTML = '<h2>Start Game</h2>';
         theGame.battleSound.pause();
         theGame.mainSound.play();
     }
@@ -68,9 +68,12 @@ function mainLoop() {
         ctx.putImageData(saved_rect, 0, 0);
 
         drawSelf(theGame.player);
-
+        
+        if (frameIndex % 578 == 0){
+            theGame.makeSkill();
+        }
+        // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
-            // iterate through skills array to draw
             drawSelf(theGame.skills[i]);
         }
 
@@ -84,18 +87,21 @@ function mainLoop() {
         if (frameIndex % 15 == 0) {
             for (let i = 0; i < theGame.enemies.length; i++) {
                 theGame.enemies[i].moveEnemy();
+                theGame.checkForDamage();
             }
         }
 
         // Score Management
         if (frameIndex % 20 === 0) {
-            theGame.score -= 1;
+            // theGame.score -= 1;
             theGame.updateScore();
         }
 
-        theGame.updateHealthBar();
+        gameStatus = theGame.updateHealthBar(gameStatus);
     }
-
+    // if (theGame.skills.length === 0) {
+    //     theGame.endGame();
+    // }
     requestAnimationFrame(mainLoop);
 }
 
@@ -105,6 +111,7 @@ function startGame() {
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
     theGame.makeSkill();
+    
     //mainLoop();
 }
 
@@ -162,7 +169,11 @@ function drawMap() {
     }
 }
 
-console.log(theGame);
+function endGame() {
+    if (this.skills.length === 0) {
+        gameStatus = false;
+    }
+}
 
 // Logic
 

@@ -54,11 +54,7 @@ class Player {
         }
         this[axis] += value;
         if (this.x != ogX || this.y != ogY) {
-            console.log(
-                `The player is currently at [${this.x / 10}, ${this.y / 10}].`,
-            );
         }
-        console.log(m[this.y / 10][this.x / 10]);
 
         let position = {
             up: m[this.y / 10 - 1][this.x / 10],
@@ -70,16 +66,18 @@ class Player {
         this.position = position;
 
         // iterate through skills array
-        for(let i = 0; i < theGame.skills.length; i++){
-            if(this.x === theGame.skills[i].x && this.y === theGame.skills[i].y){
+        for (let i = 0; i < theGame.skills.length; i++) {
+            if (
+                this.x === theGame.skills[i].x &&
+                this.y === theGame.skills[i].y
+            ) {
                 theGame.score += 100;
                 theGame.itemSound.play();
                 theGame.updateScore();
-                theGame.player.collectedSkills.push(theGame.skills[i]) // collect skills in an array
+                theGame.player.collectedSkills.push(theGame.skills[i]); // collect skills in an array
                 theGame.skills[i].clearSkills(); //clear collected skills from canvas
             }
         }
-        console.log(this.position);
     };
 
     gameControls = e => {
