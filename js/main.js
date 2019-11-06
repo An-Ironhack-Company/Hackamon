@@ -73,8 +73,8 @@ function mainLoop() {
             theGame.makeSkill();
         }
 
-        if (frameIndex % 786 == 0){
-            theGame.makeHealth()
+        if (frameIndex % 786 == 0) {
+            theGame.makeHealth();
         }
 
         for (let i = 0; i < theGame.life.length; i++) {
@@ -97,7 +97,7 @@ function mainLoop() {
                 theGame.enemies[i].moveEnemy();
             }
         }
-        if (frameIndex % 35 ==0){
+        if (frameIndex % 35 == 0) {
             theGame.checkForDamage();
         }
 
@@ -108,11 +108,9 @@ function mainLoop() {
             // console.log(theGame.time)
         }
 
-
-
+        theGame.updateBrickBar();
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {
-
             endGame();
         }
     }
@@ -188,13 +186,18 @@ function drawMap() {
 }
 
 function endGame() {
+    theGame.finalScore = theGame.time * theGame.score
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
     let message = document.createElement('div');
     messageContainer.classList.add('end-game-container');
     message.classList.add('end-game-message');
-    message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
+    message.innerHTML = `
+    <h1>You've died!</h1>
+    <h2>Score: ${theGame.score}</h2>
+    <h2>Time Survived: ${theGame.time}</h2>
+    <h2>Final Score: ${theGame.finalScore}</h2>`;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
     theGame.battleSound.pause();
