@@ -4,19 +4,22 @@ class Game {
         this.player = new Player(460, 10, 50, 60, this.map);
         this.enemy = new Enemy(20, 230, 50, 60, this.map);
         this.enemies = [this.enemy];
-        this.mainSound = new Audio('./sound/Caketown-1.mp3'); // create audio element and start loading the file
-        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
-        this.battleSound.volume = 0.5;
-        this.itemSound = new Audio('./sound/gotitem.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
         this.timeDisplay =document.getElementById('time')
         this.time = 0
         this.score = 0;
-        this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
         this.life = [];
+
+        // sound
+        this.healthBar = document.getElementById('health-bar-container');
+        this.mainSound = new Audio('./sound/Caketown-1.mp3'); 
+        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); 
+        this.battleSound.volume = 0.5;
+        this.itemSound = new Audio('./sound/gotitem.mp3'); 
         this.damageSound = new Audio('./sound/ouch.mp3');
         this.damageSound.volume = 0.8;
+        this.gameOverSound = new Audio('./sound/game-over.wav');
     }
 
     createEnemy() {
@@ -61,8 +64,8 @@ class Game {
 
     makeSkill() {
         console.log('took effect');
-    let randomIndex = Math.floor(Math.random()*8)
-    console.log(randomIndex)
+        let randomIndex = Math.floor(Math.random() * 8);
+        console.log(randomIndex);
         let newSkill01 = new Skill(20, 70, 50, 60);
         newSkill01.img.src = './images/skill/020006.png';
         let newSkill02 = new Skill(220, 60, 50, 60);
@@ -79,7 +82,7 @@ class Game {
         newSkill07.img.src = './images/skill/020006.png';
         let newSkill08 = new Skill(30, 170, 50, 60);
         newSkill08.img.src = './images/skill/020006.png';
-       let skillsList = [
+        let skillsList = [
             newSkill01,
             newSkill02,
             newSkill03,
@@ -88,19 +91,18 @@ class Game {
             newSkill06,
             newSkill07,
             newSkill08,
-       ]
+        ];
         console.log(this.skillsList);
         let randomSkill = skillsList.splice(randomIndex, 1);
         console.log(randomSkill);
         this.skills.push(randomSkill[0]);
         console.log(this.skills);
-
     }
 
     makeHealth() {
         console.log('took effect');
-    let randomIndex = Math.floor(Math.random()*4)
-    console.log(randomIndex)
+        let randomIndex = Math.floor(Math.random() * 4);
+        console.log(randomIndex);
         let newHealth01 = new Health(40, 170, 50, 60);
         newHealth01.img.src = './images/game-board/health.png';
         let newHealth02 = new Health(220, 10, 50, 60);
@@ -109,18 +111,123 @@ class Game {
         newHealth03.img.src = './images/game-board/health.png';
         let newHealth04 = new Health(450, 60, 50, 60);
         newHealth04.img.src = './images/game-board/health.png';
-       let healthList = [
-            newHealth01,
-            newHealth02,
-            newHealth03,
-            newHealth04,
-       ]
+        let healthList = [newHealth01, newHealth02, newHealth03, newHealth04];
         console.log(this.healthList);
         let randomHealth = healthList.splice(randomIndex, 1);
         console.log(randomHealth);
         this.life.push(randomHealth[0]);
         console.log(this.life);
-
     }
-
+    wallBuster = () => {
+        console.log('in wallBuster');
+        let busted;
+        this.player.mapY = this.player.x / 10;
+        this.player.mapX = this.player.y / 10;
+        switch (this.player.direction) {
+            case 'N':
+                if (
+                    this.player.position.up != 1 &&
+                    this.player.position.up != 0
+                ) {
+                    this.map.mapArray[this.player.mapX - 1][
+                        this.player.mapY
+                    ] = 1;
+                    generateNewMap();
+                    this.player.movePlayer('y', 'N', -10);
+                }
+                break;
+            case 'S':
+                if (
+                    this.player.position.down != 1 &&
+                    this.player.position.down != 0
+                ) {
+                    this.map.mapArray[this.player.mapX + 1][
+                        this.player.mapY
+                    ] = 1;
+                    generateNewMap();
+                    this.player.movePlayer('y', 'S', 10);
+                }
+                break;
+            case 'W':
+                if (
+                    this.player.position.left != 1 &&
+                    this.player.position.left != 0
+                ) {
+                    this.map.mapArray[this.player.mapX][
+                        this.player.mapY - 1
+                    ] = 1;
+                    generateNewMap();
+                    this.player.movePlayer('x', 'W', -10);
+                }
+                break;
+            case 'E':
+                if (
+                    this.player.position.right != 1 &&
+                    this.player.position.right != 0
+                ) {
+                    this.map.mapArray[this.player.mapX][
+                        this.player.mapY + 1
+                    ] = 1;
+                    generateNewMap();
+                    this.player.movePlayer('x', 'E', 10);
+                }
+                break;
+            default:
+                break;
+        }
+    };
+    wallBuilder = () => {
+        console.log('in wallBuilder');
+        let build;
+        this.player.mapY = this.player.x / 10;
+        this.player.mapX = this.player.y / 10;
+        switch (this.player.direction) {
+            case 'N':
+                if (
+                    this.player.position.up != 2 &&
+                    this.player.position.up != 3
+                ) {
+                    this.map.mapArray[this.player.mapX - 1][
+                        this.player.mapY
+                    ] = 3;
+                    generateNewMap();
+                }
+                break;
+            case 'S':
+                if (
+                    this.player.position.down != 2 &&
+                    this.player.position.down != 3
+                ) {
+                    this.map.mapArray[this.player.mapX + 1][
+                        this.player.mapY
+                    ] = 3;
+                    generateNewMap();
+                }
+                break;
+            case 'W':
+                if (
+                    this.player.position.left != 2 &&
+                    this.player.position.left != 3
+                ) {
+                    this.map.mapArray[this.player.mapX][
+                        this.player.mapY - 1
+                    ] = 3;
+                    generateNewMap();
+                }
+                break;
+            case 'E':
+                if (
+                    this.player.position.right != 2 &&
+                    this.player.position.right != 3
+                ) {
+                    this.map.mapArray[this.player.mapX][
+                        this.player.mapY + 1
+                    ] = 3;
+                    generateNewMap();
+                }
+                break;
+            default:
+                break;
+        }
+    };
 }

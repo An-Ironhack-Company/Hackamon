@@ -72,16 +72,9 @@ function mainLoop() {
         if (frameIndex % 578 == 0) {
             theGame.makeSkill();
         }
-        if (frameIndex % 888 == 0){
-        theGame.makeHealth()
-        }
         // iterate through skills array to draw
         for (let i = 0; i < theGame.skills.length; i++) {
             drawSelf(theGame.skills[i]);
-        }
-
-        for (let i = 0; i < theGame.life.length; i++) {
-            drawSelf(theGame.life[i]);
         }
 
         for (let i = 0; i < theGame.enemies.length; i++) {
@@ -111,6 +104,7 @@ function mainLoop() {
 
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {
+
             endGame();
         }
     }
@@ -148,10 +142,15 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
-    theGame.player.attack.loadAttack() // load attack img here
     mainLoop();
 }
 
+function generateNewMap() {
+    newMap = theGame.map.mapArray;
+    drawMap();
+    saved_rect = ctx.getImageData(0, 0, 500, 500);
+    ctx.save();
+}
 function drawMap() {
     let positionY = 0;
     for (i = 0; i < newMap.length; i++) {
@@ -190,6 +189,8 @@ function endGame() {
     message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
+    theGame.battleSound.pause();
+    theGame.gameOverSound.play();
 }
 
 // Logic
