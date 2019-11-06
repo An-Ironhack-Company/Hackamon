@@ -12,6 +12,7 @@ class Player {
         this.position = { up: 1, down: 1, left: 0, right: 1 };
         this.health = 100;
         this.collectedSkills = [];
+        this.attack = new Attack
     }
 
     // load player
@@ -109,6 +110,10 @@ class Player {
             if (this.position['left'] == 1) {
                 theGame.player.movePlayer('x', 'W', -10);
             }
+        }
+        if (e.key === 'f'){
+            console.log('attack!')
+            this.attack.moveAttack(this.direction, 20)
         }
     };
 }
