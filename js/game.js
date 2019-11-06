@@ -5,6 +5,8 @@ class Game {
         this.enemy = new Enemy(20, 230, 500, 500, this.map);
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
+        this.timeDisplay =document.getElementById('time')
+        this.time = 0
         this.score = 0;
         this.skills = [];
         this.life = [];
@@ -42,6 +44,11 @@ class Game {
         //     this.player.health = Math.round(this.score);
         // }
     }
+
+    updateTime(){
+        this.timeDisplay.innerText = this.time;
+    }
+
 
     updateHealthBar() {
         let currentHealth = this.player.health;
