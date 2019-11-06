@@ -1,57 +1,14 @@
-.skill-bar {
-    width: 200px;
-    height: 30px;
+.brick-bar-container {
+    min-width: 250px;
+    min-height: 30px;
     background-color: black;
-    display: flex;
 }
 
-.skillbar1 {
+.brick-bar {
+    display: inline-block;
+    margin: 1px;
     border: 1px dotted white;
-    background-color: #b81200;
-    width:20px;
-}
-.skillbar2 {
-    border: 1px dotted white;
-    background-color: #b81200;
-    width:20px;
-}
-.skillbar3 {
-    border: 1px dotted white;
-    background-color: #ff1900;
-    width:20px;
-}
-.skillbar4 {
-    border: 1px dotted white;
-    background-color: #ff1900;
-    width:20px;
-}
-.skillbar5 {
-    border: 1px dotted white;
-    background-color: #6e5f09;
-    width:20px;
-}
-.skillbar6 {
-    border: 1px dotted white;
-    background-color: #6e5f09;
-    width:20px;
-}
-.skillbar7 {
-    border: 1px dotted white;
-    background-color: #6e5f09;
-    width:20px;
-}
-.skillbar8 {
-    border: 1px dotted white;
-    background-color: #917e0d;
-    width:20px;
-}
-.skillbar9 {
-    border: 1px dotted white;
-    background-color: #917e0d;
-    width:20px;
-}
-.skillbar10 {
-    border: 1px dotted white;
-    background-color: #917e0d;
-    width:20px;
+    background-color: #ff5025;
+    min-width: 8%;
+    height: 30px;
 }

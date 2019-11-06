@@ -5,19 +5,20 @@ class Game {
         this.enemy = new Enemy(20, 230, 50, 60, this.map);
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
-        this.timeDisplay =document.getElementById('time')
-        this.time = 0
+        this.timeDisplay = document.getElementById('time');
+        this.time = 0;
         this.score = 0;
         this.skills = [];
         this.life = [];
-        this.bricks = 0
+        this.bricks = 0;
+        this.healthBar = document.getElementById('health-bar-container');
+        this.brickBar = document.getElementById('brick-bar-container');
 
         // sound
-        this.healthBar = document.getElementById('health-bar-container');
-        this.mainSound = new Audio('./sound/Caketown-1.mp3'); 
-        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); 
+        this.mainSound = new Audio('./sound/Caketown-1.mp3');
+        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3');
         this.battleSound.volume = 0.5;
-        this.itemSound = new Audio('./sound/gotitem.mp3'); 
+        this.itemSound = new Audio('./sound/gotitem.mp3');
         this.damageSound = new Audio('./sound/ouch.mp3');
         this.damageSound.volume = 0.8;
         this.gameOverSound = new Audio('./sound/game-over.wav');
@@ -46,10 +47,9 @@ class Game {
         // }
     }
 
-    updateTime(){
+    updateTime() {
         this.timeDisplay.innerText = this.time;
     }
-
 
     updateHealthBar() {
         let currentHealth = this.player.health;
@@ -61,6 +61,14 @@ class Game {
             this.healthBar.appendChild(healthNode);
         }
         return alive;
+    }
+    updateBrickBar() {
+        this.brickBar.innerHTML = '';
+        for (let i = 0; i < this.bricks; i++) {
+            let brickNode = document.createElement('div');
+            brickNode.classList.add('brick-bar');
+            this.brickBar.appendChild(brickNode);
+        }
     }
 
     makeSkill() {
@@ -135,7 +143,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('y', 'N', -10);
-                    this.bricks++
+                    this.bricks++;
                 }
                 break;
             case 'S':
@@ -148,7 +156,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('y', 'S', 10);
-                    this.bricks++
+                    this.bricks++;
                 }
                 break;
             case 'W':
@@ -161,7 +169,7 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('x', 'W', -10);
-                    this.bricks++
+                    this.bricks++;
                 }
                 break;
             case 'E':
@@ -174,17 +182,16 @@ class Game {
                     ] = 1;
                     generateNewMap();
                     this.player.movePlayer('x', 'E', 10);
-                    this.bricks++
+                    this.bricks++;
                 }
                 break;
             default:
                 break;
         }
-        console.log(this.bricks)
+        console.log(this.bricks);
     };
     wallBuilder = () => {
-        if (this.bricks > 0){
-
+        if (this.bricks > 0) {
             // console.log('in wallBuilder');
             let build;
             this.player.mapY = this.player.x / 10;
@@ -194,54 +201,53 @@ class Game {
                     if (
                         this.player.position.up != 2 &&
                         this.player.position.up != 3
-                        ) {
-                            this.map.mapArray[this.player.mapX + 1][
-                                this.player.mapY
-                            ] = 3;
-                            this.bricks--
-                            generateNewMap();
-                        }
-                        break;
-                        case 'S':
-                            if (
-                                this.player.position.down != 2 &&
-                                this.player.position.down != 3
-                                ) {
-                                    this.map.mapArray[this.player.mapX - 1][
-                                        this.player.mapY
-                                    ] = 3;
-                                    this.bricks--
-                                    generateNewMap();
-                                }
-                                break;
-                                case 'W':
-                                    if (
-                                        this.player.position.left != 2 &&
-                                        this.player.position.left != 3
-                                        ) {
-                                            this.map.mapArray[this.player.mapX][
-                                                this.player.mapY + 1
-                                            ] = 3;
-                                            this.bricks--
-                                            generateNewMap();
-                                        }
-                                        break;
-                                        case 'E':
-                                            if (
-                                                this.player.position.right != 2 &&
-                                                this.player.position.right != 3
-                                                ) {
-                                                    this.map.mapArray[this.player.mapX][
-                                                        this.player.mapY - 1
-                                                    ] = 3;
-                                                    this.bricks--
-                                                    generateNewMap();
-                                                }
-                                                break;
-                                                default:
-                                                    break;
-                                                }
-                                            };
-                                        }
-                                    }
-                                        
+                    ) {
+                        this.map.mapArray[this.player.mapX + 1][
+                            this.player.mapY
+                        ] = 3;
+                        this.bricks--;
+                        generateNewMap();
+                    }
+                    break;
+                case 'S':
+                    if (
+                        this.player.position.down != 2 &&
+                        this.player.position.down != 3
+                    ) {
+                        this.map.mapArray[this.player.mapX - 1][
+                            this.player.mapY
+                        ] = 3;
+                        this.bricks--;
+                        generateNewMap();
+                    }
+                    break;
+                case 'W':
+                    if (
+                        this.player.position.left != 2 &&
+                        this.player.position.left != 3
+                    ) {
+                        this.map.mapArray[this.player.mapX][
+                            this.player.mapY + 1
+                        ] = 3;
+                        this.bricks--;
+                        generateNewMap();
+                    }
+                    break;
+                case 'E':
+                    if (
+                        this.player.position.right != 2 &&
+                        this.player.position.right != 3
+                    ) {
+                        this.map.mapArray[this.player.mapX][
+                            this.player.mapY - 1
+                        ] = 3;
+                        this.bricks--;
+                        generateNewMap();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+}

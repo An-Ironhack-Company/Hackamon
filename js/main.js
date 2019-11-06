@@ -73,8 +73,8 @@ function mainLoop() {
             theGame.makeSkill();
         }
 
-        if (frameIndex % 786 == 0){
-            theGame.makeHealth()
+        if (frameIndex % 786 == 0) {
+            theGame.makeHealth();
         }
 
         for (let i = 0; i < theGame.life.length; i++) {
@@ -97,7 +97,7 @@ function mainLoop() {
                 theGame.enemies[i].moveEnemy();
             }
         }
-        if (frameIndex % 35 ==0){
+        if (frameIndex % 35 == 0) {
             theGame.checkForDamage();
         }
 
@@ -108,11 +108,9 @@ function mainLoop() {
             // console.log(theGame.time)
         }
 
-
-
+        theGame.updateBrickBar();
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {
-
             endGame();
         }
     }
