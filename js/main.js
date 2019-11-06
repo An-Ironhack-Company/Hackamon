@@ -87,18 +87,24 @@ function mainLoop() {
         if (frameIndex % 15 == 0) {
             for (let i = 0; i < theGame.enemies.length; i++) {
                 theGame.enemies[i].moveEnemy();
-                theGame.checkForDamage();
             }
+        }
+        if (frameIndex % 60 ==0){
+            theGame.checkForDamage();
         }
 
         // Score Management
-        if (frameIndex % 20 === 0) {
-            // theGame.score -= 1;
-            theGame.updateScore();
+        if (frameIndex % 60 === 0) {
+            theGame.updateTime();
+            theGame.time += 1;
+            console.log(theGame.time)
         }
+
+
 
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {
+
             endGame();
         }
     }
@@ -183,6 +189,8 @@ function endGame() {
     message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
+    theGame.battleSound.pause();
+    theGame.gameOverSound.play();
 }
 
 // Logic

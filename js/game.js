@@ -4,17 +4,22 @@ class Game {
         this.player = new Player(460, 10, 50, 60, this.map);
         this.enemy = new Enemy(20, 230, 500, 500, this.map);
         this.enemies = [this.enemy];
-        this.mainSound = new Audio('./sound/Caketown-1.mp3'); // create audio element and start loading the file
-        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); // create audio element and start loading the file
-        this.battleSound.volume = 0.5;
-        this.itemSound = new Audio('./sound/gotitem.mp3'); // create audio element and start loading the file
         this.scoreDisplay = document.getElementById('score');
+        this.timeDisplay =document.getElementById('time')
+        this.time = 0
         this.score = 0;
-        this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
         this.life = [];
+
+        // sound
+        this.healthBar = document.getElementById('health-bar-container');
+        this.mainSound = new Audio('./sound/Caketown-1.mp3'); 
+        this.battleSound = new Audio('./sound/Orbital-Colossus.mp3'); 
+        this.battleSound.volume = 0.5;
+        this.itemSound = new Audio('./sound/gotitem.mp3'); 
         this.damageSound = new Audio('./sound/ouch.mp3');
         this.damageSound.volume = 0.8;
+        this.gameOverSound = new Audio('./sound/game-over.wav');
     }
 
     createEnemy() {
@@ -39,6 +44,11 @@ class Game {
         //     this.player.health = Math.round(this.score);
         // }
     }
+
+    updateTime(){
+        this.timeDisplay.innerText = this.time;
+    }
+
 
     updateHealthBar() {
         let currentHealth = this.player.health;
