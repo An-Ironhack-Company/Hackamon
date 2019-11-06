@@ -97,7 +97,7 @@ function mainLoop() {
         if (frameIndex % 60 === 0) {
             theGame.updateTime();
             theGame.time += 1;
-            console.log(theGame.time)
+            // console.log(theGame.time)
         }
 
 

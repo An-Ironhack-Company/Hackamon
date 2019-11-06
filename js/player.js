@@ -90,7 +90,7 @@ class Player {
     };
 
     gameControls = e => {
-        console.log(e.key);
+        // console.log(e.key);
         if (e.key === 'ArrowUp' || e.key === 'w') {
             if (this.position['up'] == 1) {
                 theGame.player.movePlayer('y', 'N', -10);
@@ -120,15 +120,15 @@ class Player {
             }
         }
         if (e.key === 'f') {
-            console.log('attack!');
+            // console.log('attack!');
             this.attack.moveAttack(this.direction, 20);
         }
         if (e.key === 'b') {
-            console.log('Waaall Buster!!!');
+            // console.log('Waaall Buster!!!');
             theGame.wallBuster();
         }
         if (e.key === 'Shift') {
-            console.log('Built! A! Wall!');
+            // console.log('Built! A! Wall!');
             theGame.wallBuilder();
         }
     };
