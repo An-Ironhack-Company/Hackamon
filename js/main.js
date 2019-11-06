@@ -68,8 +68,8 @@ function mainLoop() {
         ctx.putImageData(saved_rect, 0, 0);
 
         drawSelf(theGame.player);
-        
-        if (frameIndex % 578 == 0){
+
+        if (frameIndex % 578 == 0) {
             theGame.makeSkill();
         }
         // iterate through skills array to draw
@@ -98,10 +98,11 @@ function mainLoop() {
         }
 
         gameStatus = theGame.updateHealthBar(gameStatus);
+        if (gameStatus === false) {
+            endGame();
+        }
     }
-    // if (theGame.skills.length === 0) {
-    //     theGame.endGame();
-    // }
+
     requestAnimationFrame(mainLoop);
 }
 
@@ -111,8 +112,6 @@ function startGame() {
     theGame.player.loadPlayer(theGame.player.direction);
     theGame.updateScore();
     theGame.makeSkill();
-    
-    //mainLoop();
 }
 
 function drawSelf(obs) {
@@ -170,9 +169,15 @@ function drawMap() {
 }
 
 function endGame() {
-    if (this.skills.length === 0) {
-        gameStatus = false;
-    }
+    ctx.clearRect(0, 0, 500, 500);
+    ctx.putImageData(saved_rect, 0, 0);
+    let messageContainer = document.createElement('div');
+    let message = document.createElement('div');
+    messageContainer.classList.add('end-game-container');
+    message.classList.add('end-game-message');
+    message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
+    messageContainer.appendChild(message);
+    document.getElementById('game-container').appendChild(messageContainer);
 }
 
 // Logic
