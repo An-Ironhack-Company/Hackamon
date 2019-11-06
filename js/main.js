@@ -108,6 +108,7 @@ function mainLoop() {
 
         gameStatus = theGame.updateHealthBar(gameStatus);
         if (gameStatus === false) {
+
             endGame();
         }
     }
@@ -187,6 +188,8 @@ function endGame() {
     message.innerHTML = `<h1>You've died!</h1><h2>Score: ${theGame.score}</h2>`;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
+    theGame.battleSound.pause();
+    theGame.gameOverSound.play();
 }
 
 // Logic
