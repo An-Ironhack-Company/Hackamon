@@ -3,6 +3,8 @@ class Player {
         this.img = new Image();
         this.x = x;
         this.y = y;
+        this.mapX;
+        this.mapY;
         this.width = width;
         this.height = height;
         this.direction = 'S';
@@ -12,7 +14,7 @@ class Player {
         this.position = { up: 1, down: 1, left: 0, right: 1 };
         this.health = 100;
         this.collectedSkills = [];
-        this.attack = new Attack
+        this.attack = new Attack();
     }
 
     // load player
@@ -79,10 +81,7 @@ class Player {
             }
         }
         for (let i = 0; i < theGame.life.length; i++) {
-            if (
-                this.x === theGame.life[i].x &&
-                this.y === theGame.life[i].y
-            ) {
+            if (this.x === theGame.life[i].x && this.y === theGame.life[i].y) {
                 this.health += 20;
                 theGame.itemSound.play();
                 theGame.life[i].clearHealth(); //clear collected health from canvas
@@ -91,29 +90,46 @@ class Player {
     };
 
     gameControls = e => {
+        console.log(e.key);
         if (e.key === 'ArrowUp' || e.key === 'w') {
             if (this.position['up'] == 1) {
                 theGame.player.movePlayer('y', 'N', -10);
+            } else {
+                theGame.player.movePlayer('y', 'N', 0);
             }
         }
         if (e.key === 'ArrowDown' || e.key === 's') {
             if (this.position['down'] == 1) {
                 theGame.player.movePlayer('y', 'S', 10);
+            } else {
+                theGame.player.movePlayer('y', 'S', 0);
             }
         }
         if (e.key === 'ArrowRight' || e.key === 'd') {
             if (this.position['right'] == 1) {
                 theGame.player.movePlayer('x', 'E', 10);
+            } else {
+                theGame.player.movePlayer('x', 'E', 0);
             }
         }
         if (e.key === 'ArrowLeft' || e.key === 'a') {
             if (this.position['left'] == 1) {
                 theGame.player.movePlayer('x', 'W', -10);
+            } else {
+                theGame.player.movePlayer('x', 'W', 0);
             }
         }
-        if (e.key === 'f'){
-            console.log('attack!')
-            this.attack.moveAttack(this.direction, 20)
+        if (e.key === 'f') {
+            console.log('attack!');
+            this.attack.moveAttack(this.direction, 20);
+        }
+        if (e.key === 'b') {
+            console.log('Waaall Buster!!!');
+            theGame.wallBuster();
+        }
+        if (e.key === 'Shift') {
+            console.log('Built! A! Wall!');
+            theGame.wallBuilder();
         }
     };
 }
