@@ -130,6 +130,7 @@ function generateMap() {
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
+    theGame.player.attack.loadAttack() // load attack img here
     mainLoop();
 }
 

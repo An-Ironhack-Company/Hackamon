@@ -41,10 +41,10 @@ class Enemy {
 
 
     moveEnemy = () => {
-        console.log(this.map.mapArray)
+        // console.log(this.map.mapArray)
         let m = this.map.mapArray;
 
-       let edirection
+        let edirection
         let ogX = this.x,
         ogY = this.y;
       
@@ -55,8 +55,8 @@ class Enemy {
                 );
             }
 
-            console.log(this.position)
-            console.log( m, this.y, this.x )
+            // console.log(this.position)
+            // console.log( m, this.y, this.x )
 
         
             let enemyPosition =  {
@@ -67,7 +67,7 @@ class Enemy {
                 center: m[(this.y / 10)][(this.x / 10)]
             }
 
-            console.log(enemyPosition)
+            // console.log(enemyPosition)
             this.position = enemyPosition; 
 
             if (theGame.player.x >= this.x){

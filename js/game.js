@@ -12,8 +12,8 @@ class Game {
         this.score = 100;
         this.healthBar = document.getElementById('health-bar-container');
         this.skills = [];
-        this.damageSound = new Audio ('./sound/ouch.mp3')
-        this.damageSound.volume = 0.8
+        this.damageSound = new Audio ('./sound/ouch.mp3');
+        this.damageSound.volume = 0.8;
     }
 
     createEnemy() {
@@ -65,4 +65,5 @@ class Game {
             newSkill05,
         );
     }
+
 }
