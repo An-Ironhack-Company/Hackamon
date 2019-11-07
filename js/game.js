@@ -23,6 +23,8 @@ class Game {
         this.damageSound = new Audio('./sound/ouch.mp3');
         this.damageSound.volume = 0.8;
         this.gameOverSound = new Audio('./sound/game-over.wav');
+        this.smashSound = new Audio('./sound/smash.mp3')
+        this.smashSound.volume = 0.3
     }
 
     createEnemy() {
