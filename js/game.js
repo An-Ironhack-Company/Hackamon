@@ -100,9 +100,22 @@ class Game {
 
     updateRound(){
         this.roundDisplay.innerText = this.round;
-        this.roundValue++
+        if (this.time > 60){
+            this.roundValue = 2
+        }
+        if (this.time > 120){
+            this.roundValue = 3
+        }
+        if (this.time > 180){
+            this.roundValue = 4
+        }
+        if (this.time > 240){
+            this.roundValue = 5
+        }
+        if (this.time > 300){
+            this.roundValue = 4
+        }
     }
-
 
     updateHealthBar() {
         let currentHealth = this.player.health;

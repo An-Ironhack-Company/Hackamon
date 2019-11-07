@@ -343,6 +343,9 @@ function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
     theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
+    console.log(theGame.score)
+    console.log(theGame.roundValue)
+    console.log(theGame.time/10)
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
