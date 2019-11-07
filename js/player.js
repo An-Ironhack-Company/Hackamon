@@ -1,6 +1,5 @@
 class Player {
-    constructor(x, y, width, height, map, r) {
-        this.r = r;
+    constructor(x, y, width, height, map) {
         this.img = new Image();
         this.x = x;
         this.y = y;
@@ -10,7 +9,6 @@ class Player {
         this.height = height;
         this.direction = 'S';
         this.map = map;
-        // this.position = { x: this.x, y: this.y };
         this.sprite;
         this.position = { up: 0, down: 1, left: 1, right: 1 };
         this.health = 100;
@@ -123,10 +121,11 @@ class Player {
             // console.log('attack!');
             theGame.player.attack.moveAttack(this.direction, 20);
         }
-        if (e.key === 'b') {
-            // console.log('Waaall Buster!!!');
+        if (e.key === 'b' || e.key === 'x') {
+            console.log('Waaall Buster!!!');
             theGame.wallBuster();
             ``;
+            theGame.smashSound.play();
         }
         if (e.key === 'Shift') {
             // console.log('Built! A! Wall!');

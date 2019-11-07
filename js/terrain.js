@@ -17,9 +17,15 @@ class Terrain {
             break; 
             case 3: this.img.src='/images/environment/youngWheatSquare50.png'
             break;
-            case 4: this.img.src='/images/player/playerFacingStill.png'
-            default:
+            case 4: this.img.src='/images/environment/4.png'
             break;
+            case 5: this.img.src='/images/environment/5.png'
+            break;
+            case 6: this.img.src='/images/environment/6.png'
+            break;
+            case 7: this.img.src='/images/environment/7.jpg'
+            break;
+            default:
         }
         console.log('----', this.img)
       }

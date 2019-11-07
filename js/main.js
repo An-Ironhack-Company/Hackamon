@@ -1,12 +1,14 @@
 // RESOURCES
 const ctx = document.getElementById('game-board').getContext('2d');
 let gameStatusButton = document.getElementById('game-status');
+let soundStatusButton = document.getElementById('sound-status');
 
 let theGame, newMap, saved_rect;
 let terrainArray = [];
 
 let gameStatus = false;
 let loaded = false;
+let soundStatus = true;
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -14,6 +16,10 @@ let imageAddresses = [
     './images/environment/tile.png',
     './images/game-board/red-bricks.png',
     './images/game-board/Purple_Brick_Background.png',
+    './images/environment/4.png',
+    './images/environment/5.png',
+    './images/environment/6.png',
+    './images/environment/7.jpg',
 ];
 
 // LOGIC
@@ -27,14 +33,39 @@ gameStatusButton.onclick = () => {
         window.location.reload();
     } else if (gameStatus != true) {
         gameStatus = true;
-        buttonManagement(gameStatus);
+        gameButtonManagement(gameStatus);
     } else {
         gameStatus = false;
-        buttonManagement(gameStatus);
+        gameButtonManagement(gameStatus);
     }
 };
 
-function buttonManagement(status) {
+soundStatusButton.onclick = () => {
+    console.log(soundStatus);
+    if (soundStatus != true) {
+        soundStatus = true;
+        soundStatusButton.innerHTML =
+            '<img src="./images/game-board/sound-48.png">';
+        theGame.battleSound.muted = false;
+        theGame.mainSound.muted = false;
+        theGame.itemSound.muted = false;
+        theGame.damageSound.muted = false;
+        theGame.gameOverSound.muted = false;
+        theGame.smashSound.muted = false;
+    } else {
+        soundStatus = false;
+        soundStatusButton.innerHTML =
+            '<img src="./images/game-board/mute-48.png">';
+        theGame.battleSound.muted = true;
+        theGame.mainSound.muted = true;
+        theGame.itemSound.muted = true;
+        theGame.damageSound.muted = true;
+        theGame.gameOverSound.muted = true;
+        theGame.smashSound.muted = true;
+    }
+};
+
+function gameButtonManagement(status) {
     if (status === 'end') {
         gameStatus = '';
         gameStatusButton.innerHTML = '<h2>Restart Game</h2>';
@@ -70,7 +101,7 @@ function preLoader(url, index) {
 }
 
 function generateMap() {
-    ctx.clearRect(0, 0, 500, 500);
+    // ctx.clearRect(0, 0, 500, 500);
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
 }
@@ -116,13 +147,28 @@ function drawMap() {
                 ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
                 positionX += 10;
             }
+            if (row[j] === 4) {
+                ctx.drawImage(terrainArray[4], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 5) {
+                ctx.drawImage(terrainArray[5], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 6) {
+                ctx.drawImage(terrainArray[6], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 7) {
+                ctx.drawImage(terrainArray[7], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
         }
         positionY += 10;
     }
 }
 
 // Game Functions
-
 function mainLoop() {
     if (gameStatus === true) {
         frameIndex++;
@@ -133,12 +179,86 @@ function mainLoop() {
 
         drawSelf(theGame.player);
 
-        if (frameIndex % 478 == 0) {
-            theGame.makeSkill();
-        }
-
-        if (frameIndex % 786 == 0) {
-            theGame.makeHealth();
+        //Round 1
+        if (theGame.time <= 60) {
+            if (frameIndex % 367 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 587 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 489 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 35 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } //Round 2
+        else if (theGame.time > 60 && theGame.time < 120) {
+            if (frameIndex % 587 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 843 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 313 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 25 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } //Round 3
+        else if (theGame.time >= 120 && theGame.time < 180) {
+            if (frameIndex % 832 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 211 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 10 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } // Round 4
+        else if (theGame.time >= 180 && theGame.time < 240) {
+            if (frameIndex % 832 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 143 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 8 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } // Round 5
+        else if (theGame.time >= 240 && theGame.time < 420) {
+            if (frameIndex % 1234 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1453 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 97 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 5 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
         }
 
         for (let i = 0; i < theGame.life.length; i++) {
@@ -153,14 +273,6 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-        if (frameIndex % 253 == 0) {
-            theGame.createEnemy();
-        }
-        if (frameIndex % 15 == 0) {
-            for (let i = 0; i < theGame.enemies.length; i++) {
-                theGame.enemies[i].moveEnemy();
-            }
-        }
         if (frameIndex % 35 == 0) {
             theGame.checkForDamage();
         }
@@ -189,12 +301,13 @@ function loadGame() {
     theGame.updateHealthBar();
     theGame.updateBrickBar();
     theGame.updateScore();
+    theGame.makeSkill();
     theGame.player.loadPlayer(theGame.player.direction);
     mainLoop();
 }
 
 function endGame() {
-    buttonManagement('end');
+    gameButtonManagement('end');
     gameStatus = 'end';
     theGame.finalScore = theGame.time * theGame.score;
     ctx.clearRect(0, 0, 500, 500);
@@ -207,7 +320,8 @@ function endGame() {
     <h1>You've died!</h1>
     <h2>Score: ${theGame.score}</h2>
     <h2>Time Survived: ${theGame.time}</h2>
-    <h2>Final Score: ${theGame.finalScore}</h2>`;
+    <h2>Final Score: ${theGame.finalScore}</h2>
+    `;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
     theGame.battleSound.pause();
