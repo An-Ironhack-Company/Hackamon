@@ -4,6 +4,8 @@ const ctx = document.getElementById('game-board').getContext('2d');
 let theGame;
 let gameStatus = false;
 let gameStatusButton = document.getElementById('game-status');
+let soundStatus = true;
+let soundStatusButton = document.getElementById('sound-status');
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -31,6 +33,7 @@ theGame.map.chooseMap();
 let newMap = theGame.map.mapArray;
 
 gameStatusButton.onclick = () => {
+    console.log(gameStatus)
     if (gameStatus != true) {
         gameStatus = true;
         gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
@@ -41,6 +44,30 @@ gameStatusButton.onclick = () => {
         gameStatusButton.innerHTML = '<h2>Start Game</h2>';
         theGame.battleSound.pause();
         theGame.mainSound.play();
+    }
+};
+
+soundStatusButton.onclick = () => {
+    console.log(soundStatus)
+    if(soundStatus != true) {
+        soundStatus = true;
+        soundStatusButton.innerHTML = '<h2>Mute Sound</h2>';
+        theGame.battleSound.muted = false;
+        theGame.mainSound.muted = false;
+        theGame.itemSound.muted = false;
+        theGame.damageSound.muted = false;
+        theGame.gameOverSound.muted = false;
+        theGame.smashSound.muted = false;
+    }
+    else{
+        soundStatus = false;
+        soundStatusButton.innerHTML = '<h2>Play Sound</h2>';
+        theGame.battleSound.muted = true;
+        theGame.mainSound.muted = true;
+        theGame.itemSound.muted = true;
+        theGame.damageSound.muted = true;
+        theGame.gameOverSound.muted = true;
+        theGame.smashSound.muted = true;
     }
 };
 

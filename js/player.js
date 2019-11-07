@@ -126,6 +126,7 @@ class Player {
         if (e.key === 'b' || e.key === 'x') {
             console.log('Waaall Buster!!!');
             theGame.wallBuster();``
+            theGame.smashSound.play();
         }
         if (e.key === 'Shift') {
             console.log('Built! A! Wall!');
