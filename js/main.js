@@ -233,9 +233,6 @@ function mainLoop() {
                     theGame.enemies[i].moveEnemy();
                 }
             }
-            if (theGame.time === 60) {
-                theGame.enemies = [];
-            }
         } // Round 4
         else if (theGame.time >= 180 && theGame.time < 240) {
             if (theGame.time === 180) {
@@ -290,9 +287,6 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-
-
-    
         if (frameIndex % 20 == 0) {
             theGame.checkForDamage();
         }
@@ -302,21 +296,21 @@ function mainLoop() {
             theGame.updateTime();
             theGame.time += 1;
         }
-        if (theGame.time >= 60 && theGame.time < 120){
+        if (theGame.time >= 60 && theGame.time < 120) {
             theGame.updateRound();
-            theGame.round = "II"
+            theGame.round = 'II';
         }
-        if (theGame.time >= 120 && theGame.time < 180){
+        if (theGame.time >= 120 && theGame.time < 180) {
             theGame.updateRound();
-            theGame.round = "III"
+            theGame.round = 'III';
         }
-        if (theGame.time >= 180 && theGame.time < 240){
+        if (theGame.time >= 180 && theGame.time < 240) {
             theGame.updateRound();
-            theGame.round = "IV"
+            theGame.round = 'IV';
         }
-        if (theGame.time >= 240 && theGame.time < 300){
+        if (theGame.time >= 240 && theGame.time < 300) {
             theGame.updateRound();
-            theGame.round = "V"
+            theGame.round = 'V';
         }
 
         theGame.updateBrickBar();
@@ -345,7 +339,8 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
+    theGame.finalScore =
+        theGame.score * theGame.roundValue * (theGame.time / 10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
