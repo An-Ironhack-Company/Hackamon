@@ -290,7 +290,10 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-        if (frameIndex % 35 == 0) {
+
+
+    
+        if (frameIndex % 20 == 0) {
             theGame.checkForDamage();
         }
 
@@ -298,6 +301,22 @@ function mainLoop() {
         if (frameIndex % 60 === 0) {
             theGame.updateTime();
             theGame.time += 1;
+        }
+        if (theGame.time >= 60 && theGame.time < 120){
+            theGame.updateRound();
+            theGame.round = "II"
+        }
+        if (theGame.time >= 120 && theGame.time < 180){
+            theGame.updateRound();
+            theGame.round = "III"
+        }
+        if (theGame.time >= 180 && theGame.time < 240){
+            theGame.updateRound();
+            theGame.round = "IV"
+        }
+        if (theGame.time >= 240 && theGame.time < 300){
+            theGame.updateRound();
+            theGame.round = "V"
         }
 
         theGame.updateBrickBar();

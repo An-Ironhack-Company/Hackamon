@@ -6,7 +6,9 @@ class Game {
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
         this.timeDisplay = document.getElementById('time');
+        this.roundDisplay = document.getElementById('round')
         this.time = 0;
+        this.round = "I" 
         this.score = 0;
         this.finalScore = 0;
         this.skills = [];
@@ -63,6 +65,10 @@ class Game {
 
     updateTime() {
         this.timeDisplay.innerText = this.time;
+    }
+
+    updateRound(){
+        this.roundDisplay.innerText = this.round;
     }
 
     updateHealthBar() {
@@ -226,6 +232,8 @@ class Game {
                             this.player.mapY + 1
                         ] -= 1;
                     } else {
+                        console.log(this.player.mapX)
+                        console.log(this.player.mapY)
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1
                         ] = 1;
@@ -238,6 +246,9 @@ class Game {
             default:
                 break;
         }
+        console.log(this.player.mapX)
+        console.log(this.player.mapY)
+        console.log(this.map.mapArray[2])
         console.log(this.bricks);
     };
     wallBuilder = () => {
