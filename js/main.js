@@ -47,7 +47,7 @@ soundStatusButton.onclick = () => {
     console.log(soundStatus)
     if(soundStatus != true) {
         soundStatus = true;
-        soundStatusButton.innerHTML = '<h2>Mute Sound</h2>';
+        soundStatusButton.innerHTML = '<img src="./images/game-board/sound-48.png">';
         theGame.battleSound.muted = false;
         theGame.mainSound.muted = false;
         theGame.itemSound.muted = false;
@@ -57,7 +57,7 @@ soundStatusButton.onclick = () => {
     }
     else{
         soundStatus = false;
-        soundStatusButton.innerHTML = '<h2>Play Sound</h2>';
+        soundStatusButton.innerHTML = '<img src="./images/game-board/mute-48.png">';
         theGame.battleSound.muted = true;
         theGame.mainSound.muted = true;
         theGame.itemSound.muted = true;
