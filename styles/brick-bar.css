@@ -8,7 +8,9 @@
     display: inline-block;
     margin: 1px;
     border: 1px dotted white;
-    background-color: #ff5025;
+    /* background-color: #ff5025; */
+    background-image: url(../images/game-board/red-bricks.png);
+    background-size: cover;
     min-width: 8%;
-    height: 30px;
+    height: 15px;
 }
