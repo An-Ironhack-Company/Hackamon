@@ -47,7 +47,6 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
-        let m = this.map.mapArray;
         let ogX = this.x + 1,
             ogY = this.y;
         if (this.direction !== direction) {
@@ -56,15 +55,6 @@ class Player {
         this[axis] += value;
         if (this.x != ogX || this.y != ogY) {
         }
-
-        let position = {
-            up: m[this.y / 10 - 1][this.x / 10],
-            down: m[this.y / 10 + 1][this.x / 10],
-            left: m[this.y / 10][this.x / 10 - 1],
-            right: m[this.y / 10][this.x / 10 + 1],
-            center: m[this.y / 10][this.x / 10],
-        };
-        this.position = position;
 
         // iterate through skills array
         for (let i = 0; i < theGame.skills.length; i++) {
@@ -88,8 +78,21 @@ class Player {
         }
     };
 
+    checkPosition() {
+        let m = this.map.mapArray;
+        let position = {
+            up: m[this.y / 10 - 1][this.x / 10],
+            down: m[this.y / 10 + 1][this.x / 10],
+            left: m[this.y / 10][this.x / 10 - 1],
+            right: m[this.y / 10][this.x / 10 + 1],
+            center: m[this.y / 10][this.x / 10],
+        };
+        this.position = position;
+    }
+
     gameControls = e => {
         if (e.key === 'ArrowUp' || e.key === 'w') {
+            this.checkPosition();
             if (theGame.player.position['up'] == 1) {
                 theGame.player.movePlayer('y', 'N', -10);
             } else {
@@ -97,6 +100,7 @@ class Player {
             }
         }
         if (e.key === 'ArrowDown' || e.key === 's') {
+            this.checkPosition();
             if (theGame.player.position['down'] == 1) {
                 theGame.player.movePlayer('y', 'S', 10);
             } else {
@@ -104,6 +108,7 @@ class Player {
             }
         }
         if (e.key === 'ArrowRight' || e.key === 'd') {
+            this.checkPosition();
             if (theGame.player.position['right'] == 1) {
                 theGame.player.movePlayer('x', 'E', 10);
             } else {
@@ -111,6 +116,7 @@ class Player {
             }
         }
         if (e.key === 'ArrowLeft' || e.key === 'a') {
+            this.checkPosition();
             if (theGame.player.position['left'] == 1) {
                 theGame.player.movePlayer('x', 'W', -10);
             } else {

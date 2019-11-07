@@ -152,6 +152,7 @@ class Game {
         let busted;
         this.player.mapY = this.player.x / 10;
         this.player.mapX = this.player.y / 10;
+        this.player.checkPosition();
         switch (this.player.direction) {
             case 'N':
                 if (
@@ -159,6 +160,11 @@ class Game {
                     this.player.position.up != 0
                 ) {
                     if (this.player.position.up >= 3) {
+                        console.log(
+                            this.map.mapArray[this.player.mapX - 1][
+                                this.player.mapY
+                            ],
+                        );
                         this.map.mapArray[this.player.mapX - 1][
                             this.player.mapY
                         ] -= 1;
