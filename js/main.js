@@ -328,7 +328,7 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore = theGame.time * theGame.score;
+    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -336,7 +336,7 @@ function endGame() {
     messageContainer.classList.add('end-game-container');
     message.classList.add('end-game-message');
     message.innerHTML = `
-    <h1>You've died!</h1>
+    <h1>You've died in ${theGame.round} !</h1>
     <h2>Score: ${theGame.score}</h2>
     <h2>Time Survived: ${theGame.time}</h2>
     <h2>Final Score: ${theGame.finalScore}</h2>

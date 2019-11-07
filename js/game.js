@@ -9,6 +9,7 @@ class Game {
         this.roundDisplay = document.getElementById('round')
         this.time = 0;
         this.round = "I" 
+        this.roundValue = 1
         this.score = 0;
         this.finalScore = 0;
         this.skills = [];
@@ -69,7 +70,9 @@ class Game {
 
     updateRound(){
         this.roundDisplay.innerText = this.round;
+        this.roundValue++
     }
+
 
     updateHealthBar() {
         let currentHealth = this.player.health;
