@@ -47,6 +47,36 @@ class Game {
             this.enemies.push(spawn2);
             this.enemies.push(spawn3);
         }
+        else if (this.time < 240) {
+            let spawn1 = new Enemy(470, 230, 10, 10, this.map);
+            let spawn2 = new Enemy(20, 10, 10, 10, this.map);
+            let spawn3 = new Enemy(20, 230, 10, 10, this.map);
+            let spawn4 = new Enemy(470, 20, 10, 10, this.map);
+            this.enemies.push(spawn1);
+            this.enemies.push(spawn2);
+            this.enemies.push(spawn3);
+            this.enemies.push(spawn4);
+        }
+        else if (this.time < 300) {
+            let spawn1 = new Enemy(470, 230, 10, 10, this.map);
+            let spawn2 = new Enemy(20, 10, 10, 10, this.map);
+            let spawn3 = new Enemy(20, 230, 10, 10, this.map);
+            let spawn4 = new Enemy(470, 20, 10, 10, this.map);
+            this.enemies.push(spawn1);
+            this.enemies.push(spawn2);
+            this.enemies.push(spawn3);
+            this.enemies.push(spawn4);
+        }
+        else if (this.time>= 300) {
+            let spawn1 = new Enemy(470, 230, 10, 10, this.map);
+            let spawn2 = new Enemy(20, 10, 10, 10, this.map);
+            let spawn3 = new Enemy(20, 230, 10, 10, this.map);
+            let spawn4 = new Enemy(470, 20, 10, 10, this.map);
+            this.enemies.push(spawn1);
+            this.enemies.push(spawn2);
+            this.enemies.push(spawn3);
+            this.enemies.push(spawn4);
+        }
     }
 
     checkForDamage() {

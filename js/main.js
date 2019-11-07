@@ -232,10 +232,7 @@ function mainLoop() {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
-            }
-            if (theGame.time === 60) {
-                theGame.enemies = [];
-            }
+            }          
         } // Round 4
         else if (theGame.time >= 180 && theGame.time < 240) {
             if (theGame.time === 180) {
@@ -247,7 +244,7 @@ function mainLoop() {
             if (frameIndex % 1023 == 0) {
                 theGame.makeHealth();
             }
-            if (frameIndex % 143 == 0) {
+            if (frameIndex % 142 == 0) {
                 theGame.createEnemy();
             }
             if (frameIndex % 8 == 0) {
@@ -256,7 +253,7 @@ function mainLoop() {
                 }
             }
         } // Round 5
-        else if (theGame.time >= 240 && theGame.time < 420) {
+        else if (theGame.time >= 240 && theGame.time < 300) {
             if (theGame.time === 240) {
                 theGame.enemies = [];
             }
@@ -266,7 +263,7 @@ function mainLoop() {
             if (frameIndex % 1453 == 0) {
                 theGame.makeHealth();
             }
-            if (frameIndex % 97 == 0) {
+            if (frameIndex % 98 == 0) {
                 theGame.createEnemy();
             }
             if (frameIndex % 5 == 0) {
