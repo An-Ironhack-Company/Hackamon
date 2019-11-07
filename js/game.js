@@ -113,7 +113,7 @@ class Game {
             this.roundValue = 5
         }
         if (this.time > 300){
-            this.roundValue = 4
+            this.roundValue = 5
         }
     }
 
