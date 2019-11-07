@@ -9,7 +9,6 @@ class Player {
         this.height = height;
         this.direction = 'S';
         this.map = map;
-        // this.position = { x: this.x, y: this.y };
         this.sprite;
         this.position = { up: 0, down: 1, left: 1, right: 1 };
         this.health = 100;
@@ -48,7 +47,6 @@ class Player {
 
     // move player
     movePlayer = (axis, direction, value) => {
-        let m = this.map.mapArray;
         let ogX = this.x + 1,
             ogY = this.y;
         if (this.direction !== direction) {
@@ -57,15 +55,6 @@ class Player {
         this[axis] += value;
         if (this.x != ogX || this.y != ogY) {
         }
-
-        let position = {
-            up: m[this.y / 10 - 1][this.x / 10],
-            down: m[this.y / 10 + 1][this.x / 10],
-            left: m[this.y / 10][this.x / 10 - 1],
-            right: m[this.y / 10][this.x / 10 + 1],
-            center: m[this.y / 10][this.x / 10],
-        };
-        this.position = position;
 
         // iterate through skills array
         for (let i = 0; i < theGame.skills.length; i++) {
@@ -89,31 +78,46 @@ class Player {
         }
     };
 
+    checkPosition() {
+        let m = this.map.mapArray;
+        let position = {
+            up: m[this.y / 10 - 1][this.x / 10],
+            down: m[this.y / 10 + 1][this.x / 10],
+            left: m[this.y / 10][this.x / 10 - 1],
+            right: m[this.y / 10][this.x / 10 + 1],
+            center: m[this.y / 10][this.x / 10],
+        };
+        this.position = position;
+    }
+
     gameControls = e => {
-        // console.log(e.key);
         if (e.key === 'ArrowUp' || e.key === 'w') {
-            if (this.position['up'] == 1) {
+            this.checkPosition();
+            if (theGame.player.position['up'] == 1) {
                 theGame.player.movePlayer('y', 'N', -10);
             } else {
                 theGame.player.movePlayer('y', 'N', 0);
             }
         }
         if (e.key === 'ArrowDown' || e.key === 's') {
-            if (this.position['down'] == 1) {
+            this.checkPosition();
+            if (theGame.player.position['down'] == 1) {
                 theGame.player.movePlayer('y', 'S', 10);
             } else {
                 theGame.player.movePlayer('y', 'S', 0);
             }
         }
         if (e.key === 'ArrowRight' || e.key === 'd') {
-            if (this.position['right'] == 1) {
+            this.checkPosition();
+            if (theGame.player.position['right'] == 1) {
                 theGame.player.movePlayer('x', 'E', 10);
             } else {
                 theGame.player.movePlayer('x', 'E', 0);
             }
         }
         if (e.key === 'ArrowLeft' || e.key === 'a') {
-            if (this.position['left'] == 1) {
+            this.checkPosition();
+            if (theGame.player.position['left'] == 1) {
                 theGame.player.movePlayer('x', 'W', -10);
             } else {
                 theGame.player.movePlayer('x', 'W', 0);
@@ -121,15 +125,16 @@ class Player {
         }
         if (e.key === 'f') {
             // console.log('attack!');
-            this.attack.moveAttack(this.direction, 20);
+            theGame.player.attack.moveAttack(this.direction, 20);
         }
         if (e.key === 'b' || e.key === 'x') {
             console.log('Waaall Buster!!!');
-            theGame.wallBuster();``
+            theGame.wallBuster();
+            ``;
             theGame.smashSound.play();
         }
         if (e.key === 'Shift') {
-            console.log('Built! A! Wall!');
+            // console.log('Built! A! Wall!');
             theGame.wallBuilder();
         }
     };

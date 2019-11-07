@@ -1,11 +1,14 @@
-// Resources
+// RESOURCES
 const ctx = document.getElementById('game-board').getContext('2d');
-
-let theGame;
-let gameStatus = false;
 let gameStatusButton = document.getElementById('game-status');
-let soundStatus = true;
 let soundStatusButton = document.getElementById('sound-status');
+
+let theGame, newMap, saved_rect;
+let terrainArray = [];
+
+let gameStatus = false;
+let loaded = false;
+let soundStatus = true;
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -19,49 +22,40 @@ let imageAddresses = [
     './images/environment/7.jpg',
 ];
 
-let terrainArray = [];
+// LOGIC
+loadGame();
+document.onkeydown = theGame.player.gameControls;
 
-let saved_rect;
-
-// Load Terrain assets
-for (let i = 0; i < imageAddresses.length; i++) {
-    preLoader(imageAddresses[i], i);
-}
-
-startGame();
-theGame.map.chooseMap();
-let newMap = theGame.map.mapArray;
-
+// FUNCTIONS
+// Button Functions
 gameStatusButton.onclick = () => {
-    console.log(gameStatus)
-    if (gameStatus != true) {
+    if (gameStatus === 'end') {
+        window.location.reload();
+    } else if (gameStatus != true) {
         gameStatus = true;
-        gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
-        theGame.mainSound.pause();
-        theGame.battleSound.play();
+        gameButtonManagement(gameStatus);
     } else {
         gameStatus = false;
-        gameStatusButton.innerHTML = '<h2>Start Game</h2>';
-        theGame.battleSound.pause();
-        theGame.mainSound.play();
+        gameButtonManagement(gameStatus);
     }
 };
 
 soundStatusButton.onclick = () => {
-    console.log(soundStatus)
-    if(soundStatus != true) {
+    console.log(soundStatus);
+    if (soundStatus != true) {
         soundStatus = true;
-        soundStatusButton.innerHTML = '<h2>Mute Sound</h2>';
+        soundStatusButton.innerHTML =
+            '<img src="./images/game-board/sound-48.png">';
         theGame.battleSound.muted = false;
         theGame.mainSound.muted = false;
         theGame.itemSound.muted = false;
         theGame.damageSound.muted = false;
         theGame.gameOverSound.muted = false;
         theGame.smashSound.muted = false;
-    }
-    else{
+    } else {
         soundStatus = false;
-        soundStatusButton.innerHTML = '<h2>Play Sound</h2>';
+        soundStatusButton.innerHTML =
+            '<img src="./images/game-board/mute-48.png">';
         theGame.battleSound.muted = true;
         theGame.mainSound.muted = true;
         theGame.itemSound.muted = true;
@@ -71,7 +65,22 @@ soundStatusButton.onclick = () => {
     }
 };
 
-// Functions
+function gameButtonManagement(status) {
+    if (status === 'end') {
+        gameStatus = '';
+        gameStatusButton.innerHTML = '<h2>Restart Game</h2>';
+    } else if (status === false) {
+        gameStatusButton.innerHTML = '<h2>Start Game</h2>';
+        theGame.battleSound.pause();
+        theGame.mainSound.play();
+    } else {
+        gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
+        theGame.mainSound.pause();
+        theGame.battleSound.play();
+    }
+}
+
+// Map Functions
 function preLoader(url, index) {
     return new Promise(function(resolve, reject) {
         let img = new Image();
@@ -80,6 +89,7 @@ function preLoader(url, index) {
             terrainArray.splice(index, 0, img);
             loadedImages++;
             if (loadedImages == imageAddresses.length) {
+                loaded = true;
                 generateMap();
             }
         };
@@ -90,184 +100,21 @@ function preLoader(url, index) {
     });
 }
 
-function mainLoop() {
-    if (gameStatus === true) {
-        frameIndex++;
-        ctx.clearRect(0, 0, 500, 500);
-
-        // Loads Saved Map
-        ctx.putImageData(saved_rect, 0, 0);
-
-        drawSelf(theGame.player);
-//
-
-
-//Round 1
-        if (theGame.time <= 60){
-            if (frameIndex % 367 == 0) {
-                theGame.makeSkill();
-            }
-            if (frameIndex % 587 == 0) {
-                theGame.makeHealth();
-            }
-            if (frameIndex % 489 == 0) {
-                theGame.createEnemy();
-            }
-            if (frameIndex % 35 == 0) {
-                for (let i = 0; i < theGame.enemies.length; i++) {
-                    theGame.enemies[i].moveEnemy();
-                }
-            }
-//Round 2
-        } else if (theGame.time > 60 && theGame.time < 120) {
-            if (frameIndex % 587 == 0){
-                theGame.makeSkill();
-            }
-            if (frameIndex % 843 == 0) {
-                theGame.makeHealth();
-            }
-            if (frameIndex % 313 == 0) {
-                theGame.createEnemy();
-            }
-            if (frameIndex % 25 == 0) {
-                for (let i = 0; i < theGame.enemies.length; i++) {
-                    theGame.enemies[i].moveEnemy();
-                }
-            }
-//Round 3
-        } else if (theGame.time >= 120 && theGame.time < 180) {
-            if (frameIndex % 832 == 0){
-                theGame.makeSkill();
-            }
-            if (frameIndex % 1023 == 0) {
-                theGame.makeHealth();
-            }
-            if (frameIndex % 211 == 0) {
-                theGame.createEnemy();
-            }
-            if (frameIndex % 10 == 0) {
-                for (let i = 0; i < theGame.enemies.length; i++) {
-                    theGame.enemies[i].moveEnemy();
-                }
-            }
-// Round 4
-        } else if (theGame.time >= 180 && theGame.time < 240) {
-            if (frameIndex % 832 == 0){
-                theGame.makeSkill();
-            }
-            if (frameIndex % 1023 == 0) {
-                theGame.makeHealth();
-            }
-            if (frameIndex % 143 == 0) {
-                theGame.createEnemy();
-            }
-            if (frameIndex % 8 == 0) {
-                for (let i = 0; i < theGame.enemies.length; i++) {
-                    theGame.enemies[i].moveEnemy();
-                }
-            }
- // Round 5
-        } else if (theGame.time >= 240 && theGame.time < 420) {
-            if (frameIndex % 1234 == 0){
-                theGame.makeSkill();
-            }
-            if (frameIndex % 1453 == 0) {
-                theGame.makeHealth();
-            }
-            if (frameIndex % 97 == 0) {
-                theGame.createEnemy();
-            }
-            if (frameIndex % 5 == 0) {
-                for (let i = 0; i < theGame.enemies.length; i++) {
-                    theGame.enemies[i].moveEnemy();
-                }
-            }
-        } 
-
-
-        for (let i = 0; i < theGame.life.length; i++) {
-            drawSelf(theGame.life[i]);
-        }
-        // iterate through skills array to draw
-        for (let i = 0; i < theGame.skills.length; i++) {
-            drawSelf(theGame.skills[i]);
-        }
-
-        for (let i = 0; i < theGame.enemies.length; i++) {
-            drawSelf(theGame.enemies[i]);
-        }
-
-
-
-    
-        if (frameIndex % 20 == 0) {
-            theGame.checkForDamage();
-        }
-
-        // Score Management
-        if (frameIndex % 60 === 0) {
-            theGame.updateTime();
-            theGame.time += 1;
-            // console.log(theGame.time)
-        }
-        if (theGame.time >= 60 && theGame.time < 120){
-            theGame.updateRound();
-            theGame.round = "II"
-        }
-        if (theGame.time >= 120 && theGame.time < 180){
-            theGame.updateRound();
-            theGame.round = "III"
-        }
-        if (theGame.time >= 180 && theGame.time < 240){
-            theGame.updateRound();
-            theGame.round = "IV"
-        }
-        if (theGame.time >= 240 && theGame.time < 300){
-            theGame.updateRound();
-            theGame.round = "V"
-        }
-
-        theGame.updateBrickBar();
-        gameStatus = theGame.updateHealthBar(gameStatus);
-        if (gameStatus === false) {
-            endGame();
-        }
-    }
-
-    requestAnimationFrame(mainLoop);
-}
-
-function startGame() {
-    theGame = new Game();
-    theGame.updateHealthBar();
-    theGame.player.loadPlayer(theGame.player.direction);
-    theGame.updateScore();
-    theGame.makeSkill();
-}
-
-function drawSelf(obs) {
-    // console.log(obs);
-    // ctx.drawImage(
-    //     obs.img,
-    //     0,
-    //     0,
-    //     32,
-    //     36,
-    //     theGame.player.x,
-    //     theGame.player.y,
-    //     16,
-    //     18,
-    // );
-
-    // Still Image Loader
-    ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
-}
-
 function generateMap() {
+    // ctx.clearRect(0, 0, 500, 500);
     drawMap();
     saved_rect = ctx.getImageData(0, 0, 500, 500);
-    ctx.save();
-    mainLoop();
+}
+
+function loadMap() {
+    ctx.clearRect(0, 0, 500, 500);
+    if (loaded === false) {
+        for (let i = 0; i < imageAddresses.length; i++) {
+            preLoader(imageAddresses[i], i);
+        }
+    } else {
+        generateMap();
+    }
 }
 
 function generateNewMap() {
@@ -276,6 +123,7 @@ function generateNewMap() {
     saved_rect = ctx.getImageData(0, 0, 500, 500);
     ctx.save();
 }
+
 function drawMap() {
     let positionY = 0;
     for (i = 0; i < newMap.length; i++) {
@@ -283,7 +131,6 @@ function drawMap() {
         let positionX = 0;
 
         for (j = 0; j < row.length; j++) {
-            // console.log("testing")
             if (row[j] === 0) {
                 ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
                 positionX += 10;
@@ -316,15 +163,172 @@ function drawMap() {
                 ctx.drawImage(terrainArray[7], positionX, positionY, 10, 10);
                 positionX += 10;
             }
-            
-
         }
         positionY += 10;
     }
 }
 
+// Game Functions
+function mainLoop() {
+    if (gameStatus === true) {
+        frameIndex++;
+        ctx.clearRect(0, 0, 500, 500);
+
+        // Loads Saved Map
+        ctx.putImageData(saved_rect, 0, 0);
+
+        drawSelf(theGame.player);
+
+        //Round 1
+        if (theGame.time <= 60) {
+            if (frameIndex % 367 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 587 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 489 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 35 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } //Round 2
+        else if (theGame.time > 60 && theGame.time < 120) {
+            if (frameIndex % 587 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 843 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 313 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 25 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } //Round 3
+        else if (theGame.time >= 120 && theGame.time < 180) {
+            if (frameIndex % 832 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 211 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 10 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } // Round 4
+        else if (theGame.time >= 180 && theGame.time < 240) {
+            if (frameIndex % 832 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 143 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 8 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } // Round 5
+        else if (theGame.time >= 240 && theGame.time < 420) {
+            if (frameIndex % 1234 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1453 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 97 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 5 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        }
+
+        for (let i = 0; i < theGame.life.length; i++) {
+            drawSelf(theGame.life[i]);
+        }
+        // iterate through skills array to draw
+        for (let i = 0; i < theGame.skills.length; i++) {
+            drawSelf(theGame.skills[i]);
+        }
+
+        for (let i = 0; i < theGame.enemies.length; i++) {
+            drawSelf(theGame.enemies[i]);
+        }
+
+
+
+    
+        if (frameIndex % 20 == 0) {
+            theGame.checkForDamage();
+        }
+
+        // Score Management
+        if (frameIndex % 60 === 0) {
+            theGame.updateTime();
+            theGame.time += 1;
+        }
+        if (theGame.time >= 60 && theGame.time < 120){
+            theGame.updateRound();
+            theGame.round = "II"
+        }
+        if (theGame.time >= 120 && theGame.time < 180){
+            theGame.updateRound();
+            theGame.round = "III"
+        }
+        if (theGame.time >= 180 && theGame.time < 240){
+            theGame.updateRound();
+            theGame.round = "IV"
+        }
+        if (theGame.time >= 240 && theGame.time < 300){
+            theGame.updateRound();
+            theGame.round = "V"
+        }
+
+        theGame.updateBrickBar();
+        gameStatus = theGame.updateHealthBar(gameStatus);
+        if (gameStatus === 'end') {
+            endGame();
+        }
+    }
+    requestAnimationFrame(mainLoop);
+}
+
+function loadGame() {
+    theGame = new Game();
+    theGame.map.chooseMap();
+    newMap = theGame.map.mapArray;
+    loadMap();
+    theGame.updateTime();
+    theGame.updateHealthBar();
+    theGame.updateBrickBar();
+    theGame.updateScore();
+    theGame.makeSkill();
+    theGame.player.loadPlayer(theGame.player.direction);
+    mainLoop();
+}
+
 function endGame() {
-    theGame.finalScore = theGame.time * theGame.score
+    gameButtonManagement('end');
+    gameStatus = 'end';
+    theGame.finalScore = theGame.time * theGame.score;
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -343,6 +347,21 @@ function endGame() {
     theGame.gameOverSound.play();
 }
 
-// Logic
+// Draw Functions
+function drawSelf(obs) {
+    // console.log(obs);
+    // ctx.drawImage(
+    //     obs.img,
+    //     0,
+    //     0,
+    //     32,
+    //     36,
+    //     theGame.player.x,
+    //     theGame.player.y,
+    //     16,
+    //     18,
+    // );
 
-document.onkeydown = theGame.player.gameControls;
+    // Still Image Loader
+    ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
+}
