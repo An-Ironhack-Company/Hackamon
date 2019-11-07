@@ -87,3 +87,9 @@ button {
 button > h2 {
     font-size: 15px;
 }
+
+#sound-status {
+    padding: 2px;
+    background-color: rgba(102, 53, 238, 0.3);
+    border-radius: 10px;
+}
