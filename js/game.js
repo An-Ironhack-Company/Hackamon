@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.map = new Map(1);
-        this.player = new Player(460, 10, 50, 60, this.map);
+        this.player = new Player(460, 10, 50, 60, this.map, Math.random());
         this.enemy = new Enemy(20, 230, 50, 60, this.map);
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
@@ -43,9 +43,6 @@ class Game {
     }
     updateScore() {
         this.scoreDisplay.innerText = this.score;
-        // if (this.score <= 90) {
-        //     this.player.health = Math.round(this.score);
-        // }
     }
 
     updateTime() {
@@ -54,7 +51,7 @@ class Game {
 
     updateHealthBar() {
         let currentHealth = this.player.health;
-        let alive = currentHealth > 0 ? true : false;
+        let alive = currentHealth > 0 ? true : 'end';
         this.healthBar.innerHTML = '';
         for (let i = 0; i < currentHealth / 10; i++) {
             let healthNode = document.createElement('div');
@@ -193,7 +190,6 @@ class Game {
     };
     wallBuilder = () => {
         if (this.bricks > 0) {
-            // console.log('in wallBuilder');
             let build;
             this.player.mapY = this.player.x / 10;
             this.player.mapX = this.player.y / 10;

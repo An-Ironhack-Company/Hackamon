@@ -1,9 +1,12 @@
-// Resources
+// RESOURCES
 const ctx = document.getElementById('game-board').getContext('2d');
-
-let theGame;
-let gameStatus = false;
 let gameStatusButton = document.getElementById('game-status');
+
+let theGame, newMap, saved_rect;
+let terrainArray = [];
+
+let gameStatus = false;
+let loaded = false;
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -13,34 +16,40 @@ let imageAddresses = [
     './images/game-board/Purple_Brick_Background.png',
 ];
 
-let terrainArray = [];
+// LOGIC
+loadGame();
+document.onkeydown = theGame.player.gameControls;
 
-let saved_rect;
-
-// Load Terrain assets
-for (let i = 0; i < imageAddresses.length; i++) {
-    preLoader(imageAddresses[i], i);
-}
-
-startGame();
-theGame.map.chooseMap();
-let newMap = theGame.map.mapArray;
-
+// FUNCTIONS
+// Button Functions
 gameStatusButton.onclick = () => {
-    if (gameStatus != true) {
+    if (gameStatus === 'end') {
+        window.location.reload();
+    } else if (gameStatus != true) {
         gameStatus = true;
-        gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
-        theGame.mainSound.pause();
-        theGame.battleSound.play();
+        buttonManagement(gameStatus);
     } else {
         gameStatus = false;
-        gameStatusButton.innerHTML = '<h2>Start Game</h2>';
-        theGame.battleSound.pause();
-        theGame.mainSound.play();
+        buttonManagement(gameStatus);
     }
 };
 
-// Functions
+function buttonManagement(status) {
+    if (status === 'end') {
+        gameStatus = '';
+        gameStatusButton.innerHTML = '<h2>Restart Game</h2>';
+    } else if (status === false) {
+        gameStatusButton.innerHTML = '<h2>Start Game</h2>';
+        theGame.battleSound.pause();
+        theGame.mainSound.play();
+    } else {
+        gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
+        theGame.mainSound.pause();
+        theGame.battleSound.play();
+    }
+}
+
+// Map Functions
 function preLoader(url, index) {
     return new Promise(function(resolve, reject) {
         let img = new Image();
@@ -49,6 +58,7 @@ function preLoader(url, index) {
             terrainArray.splice(index, 0, img);
             loadedImages++;
             if (loadedImages == imageAddresses.length) {
+                loaded = true;
                 generateMap();
             }
         };
@@ -58,6 +68,60 @@ function preLoader(url, index) {
         img.src = url;
     });
 }
+
+function generateMap() {
+    ctx.clearRect(0, 0, 500, 500);
+    drawMap();
+    saved_rect = ctx.getImageData(0, 0, 500, 500);
+}
+
+function loadMap() {
+    ctx.clearRect(0, 0, 500, 500);
+    if (loaded === false) {
+        for (let i = 0; i < imageAddresses.length; i++) {
+            preLoader(imageAddresses[i], i);
+        }
+    } else {
+        generateMap();
+    }
+}
+
+function generateNewMap() {
+    newMap = theGame.map.mapArray;
+    drawMap();
+    saved_rect = ctx.getImageData(0, 0, 500, 500);
+    ctx.save();
+}
+
+function drawMap() {
+    let positionY = 0;
+    for (i = 0; i < newMap.length; i++) {
+        let row = newMap[i];
+        let positionX = 0;
+
+        for (j = 0; j < row.length; j++) {
+            if (row[j] === 0) {
+                ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 1) {
+                ctx.drawImage(terrainArray[1], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 2) {
+                ctx.drawImage(terrainArray[2], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 3) {
+                ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+        }
+        positionY += 10;
+    }
+}
+
+// Game Functions
 
 function mainLoop() {
     if (gameStatus === true) {
@@ -105,88 +169,34 @@ function mainLoop() {
         if (frameIndex % 60 === 0) {
             theGame.updateTime();
             theGame.time += 1;
-            // console.log(theGame.time)
         }
 
         theGame.updateBrickBar();
         gameStatus = theGame.updateHealthBar(gameStatus);
-        if (gameStatus === false) {
+        if (gameStatus === 'end') {
             endGame();
         }
     }
-
     requestAnimationFrame(mainLoop);
 }
 
-function startGame() {
+function loadGame() {
     theGame = new Game();
+    theGame.map.chooseMap();
+    newMap = theGame.map.mapArray;
+    loadMap();
+    theGame.updateTime();
     theGame.updateHealthBar();
-    theGame.player.loadPlayer(theGame.player.direction);
+    theGame.updateBrickBar();
     theGame.updateScore();
-    theGame.makeSkill();
-}
-
-function drawSelf(obs) {
-    // console.log(obs);
-    // ctx.drawImage(
-    //     obs.img,
-    //     0,
-    //     0,
-    //     32,
-    //     36,
-    //     theGame.player.x,
-    //     theGame.player.y,
-    //     16,
-    //     18,
-    // );
-
-    // Still Image Loader
-    ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
-}
-
-function generateMap() {
-    drawMap();
-    saved_rect = ctx.getImageData(0, 0, 500, 500);
-    ctx.save();
+    theGame.player.loadPlayer(theGame.player.direction);
     mainLoop();
 }
 
-function generateNewMap() {
-    newMap = theGame.map.mapArray;
-    drawMap();
-    saved_rect = ctx.getImageData(0, 0, 500, 500);
-    ctx.save();
-}
-function drawMap() {
-    let positionY = 0;
-    for (i = 0; i < newMap.length; i++) {
-        let row = newMap[i];
-        let positionX = 0;
-
-        for (j = 0; j < row.length; j++) {
-            if (row[j] === 0) {
-                ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
-                positionX += 10;
-            }
-            if (row[j] === 1) {
-                ctx.drawImage(terrainArray[1], positionX, positionY, 10, 10);
-                positionX += 10;
-            }
-            if (row[j] === 2) {
-                ctx.drawImage(terrainArray[2], positionX, positionY, 10, 10);
-                positionX += 10;
-            }
-            if (row[j] === 3) {
-                ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
-                positionX += 10;
-            }
-        }
-        positionY += 10;
-    }
-}
-
 function endGame() {
-    theGame.finalScore = theGame.time * theGame.score
+    buttonManagement('end');
+    gameStatus = 'end';
+    theGame.finalScore = theGame.time * theGame.score;
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -204,6 +214,21 @@ function endGame() {
     theGame.gameOverSound.play();
 }
 
-// Logic
+// Draw Functions
+function drawSelf(obs) {
+    // console.log(obs);
+    // ctx.drawImage(
+    //     obs.img,
+    //     0,
+    //     0,
+    //     32,
+    //     36,
+    //     theGame.player.x,
+    //     theGame.player.y,
+    //     16,
+    //     18,
+    // );
 
-document.onkeydown = theGame.player.gameControls;
+    // Still Image Loader
+    ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
+}

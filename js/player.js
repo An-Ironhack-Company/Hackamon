@@ -1,5 +1,6 @@
 class Player {
-    constructor(x, y, width, height, map) {
+    constructor(x, y, width, height, map, r) {
+        this.r = r;
         this.img = new Image();
         this.x = x;
         this.y = y;
@@ -90,30 +91,29 @@ class Player {
     };
 
     gameControls = e => {
-        // console.log(e.key);
         if (e.key === 'ArrowUp' || e.key === 'w') {
-            if (this.position['up'] == 1) {
+            if (theGame.player.position['up'] == 1) {
                 theGame.player.movePlayer('y', 'N', -10);
             } else {
                 theGame.player.movePlayer('y', 'N', 0);
             }
         }
         if (e.key === 'ArrowDown' || e.key === 's') {
-            if (this.position['down'] == 1) {
+            if (theGame.player.position['down'] == 1) {
                 theGame.player.movePlayer('y', 'S', 10);
             } else {
                 theGame.player.movePlayer('y', 'S', 0);
             }
         }
         if (e.key === 'ArrowRight' || e.key === 'd') {
-            if (this.position['right'] == 1) {
+            if (theGame.player.position['right'] == 1) {
                 theGame.player.movePlayer('x', 'E', 10);
             } else {
                 theGame.player.movePlayer('x', 'E', 0);
             }
         }
         if (e.key === 'ArrowLeft' || e.key === 'a') {
-            if (this.position['left'] == 1) {
+            if (theGame.player.position['left'] == 1) {
                 theGame.player.movePlayer('x', 'W', -10);
             } else {
                 theGame.player.movePlayer('x', 'W', 0);
@@ -121,14 +121,15 @@ class Player {
         }
         if (e.key === 'f') {
             // console.log('attack!');
-            this.attack.moveAttack(this.direction, 20);
+            theGame.player.attack.moveAttack(this.direction, 20);
         }
         if (e.key === 'b') {
-            console.log('Waaall Buster!!!');
-            theGame.wallBuster();``
+            // console.log('Waaall Buster!!!');
+            theGame.wallBuster();
+            ``;
         }
         if (e.key === 'Shift') {
-            console.log('Built! A! Wall!');
+            // console.log('Built! A! Wall!');
             theGame.wallBuilder();
         }
     };
