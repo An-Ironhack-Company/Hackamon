@@ -8,7 +8,7 @@ class Enemy {
         this.direction = 'S';
         this.map = map;
         this.sprite;
-        this.position = { up: 2, down: 1, left: 1, right: 1, center: 1 };
+        this.position = { up: 0, down: 1, left: 0, right: 1, center: 1 };
         let didMove = false;
     }
 
