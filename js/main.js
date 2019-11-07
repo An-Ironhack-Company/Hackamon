@@ -232,7 +232,11 @@ function mainLoop() {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
+<<<<<<< HEAD
+            }
+=======
             }          
+>>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
         } // Round 4
         else if (theGame.time >= 180 && theGame.time < 240) {
             if (theGame.time === 180) {
@@ -287,9 +291,6 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-
-
-    
         if (frameIndex % 20 == 0) {
             theGame.checkForDamage();
         }
@@ -299,21 +300,21 @@ function mainLoop() {
             theGame.updateTime();
             theGame.time += 1;
         }
-        if (theGame.time >= 60 && theGame.time < 120){
+        if (theGame.time >= 60 && theGame.time < 120) {
             theGame.updateRound();
-            theGame.round = "II"
+            theGame.round = 'II';
         }
-        if (theGame.time >= 120 && theGame.time < 180){
+        if (theGame.time >= 120 && theGame.time < 180) {
             theGame.updateRound();
-            theGame.round = "III"
+            theGame.round = 'III';
         }
-        if (theGame.time >= 180 && theGame.time < 240){
+        if (theGame.time >= 180 && theGame.time < 240) {
             theGame.updateRound();
-            theGame.round = "IV"
+            theGame.round = 'IV';
         }
-        if (theGame.time >= 240 && theGame.time < 300){
+        if (theGame.time >= 240 && theGame.time < 300) {
             theGame.updateRound();
-            theGame.round = "V"
+            theGame.round = 'V';
         }
 
         theGame.updateBrickBar();
@@ -342,10 +343,15 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
+<<<<<<< HEAD
+    theGame.finalScore =
+        theGame.score * theGame.roundValue * (theGame.time / 10);
+=======
     theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
     console.log(theGame.score)
     console.log(theGame.roundValue)
     console.log(theGame.time/10)
+>>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
