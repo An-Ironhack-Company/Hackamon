@@ -11,6 +11,10 @@ let imageAddresses = [
     './images/environment/tile.png',
     './images/game-board/red-bricks.png',
     './images/game-board/Purple_Brick_Background.png',
+    './images/environment/4.png',
+    './images/environment/5.png',
+    './images/environment/6.png',
+    './images/environment/7.jpg',
 ];
 
 let terrainArray = [];
@@ -213,7 +217,7 @@ function drawSelf(obs) {
     // );
 
     // Still Image Loader
-    ctx.drawImage(obs.img, obs.x, obs.y, 10, 10);
+    ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
 }
 
 function generateMap() {
@@ -252,6 +256,24 @@ function drawMap() {
                 ctx.drawImage(terrainArray[3], positionX, positionY, 10, 10);
                 positionX += 10;
             }
+            if (row[j] === 4) {
+                ctx.drawImage(terrainArray[4], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 5) {
+                ctx.drawImage(terrainArray[5], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 6) {
+                ctx.drawImage(terrainArray[6], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            if (row[j] === 7) {
+                ctx.drawImage(terrainArray[7], positionX, positionY, 10, 10);
+                positionX += 10;
+            }
+            
+
         }
         positionY += 10;
     }

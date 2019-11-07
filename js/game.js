@@ -1,8 +1,8 @@
 class Game {
     constructor() {
         this.map = new Map(1);
-        this.player = new Player(460, 10, 50, 60, this.map);
-        this.enemy = new Enemy(20, 230, 50, 60, this.map);
+        this.player = new Player(460, 10, 10, 10, this.map);
+        this.enemy = new Enemy(20, 230, 10, 10, this.map);
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
         this.timeDisplay = document.getElementById('time');
@@ -27,19 +27,19 @@ class Game {
 
     createEnemy() {
         if (this.time < 60){
-            let spawn1 = new Enemy(20, 10, 500, 500, this.map);
+            let spawn1 = new Enemy(20, 10, 10, 10, this.map);
             this.enemies.push(spawn1);
         }
         else  if (this.time < 120){
-            let spawn1 = new Enemy(470, 230, 500, 500, this.map);
-            let spawn2 = new Enemy(20, 10, 500, 500, this.map);
+            let spawn1 = new Enemy(470, 230, 10, 10, this.map);
+            let spawn2 = new Enemy(20, 10, 10, 10, this.map);
             this.enemies.push(spawn1);
             this.enemies.push(spawn2);
         }
         else  if (this.time < 180){
-            let spawn1 = new Enemy(470, 230, 500, 500, this.map);
-            let spawn2 = new Enemy(20, 10, 500, 500, this.map);
-            let spawn3 = new Enemy(20, 230, 500, 500, this.map);
+            let spawn1 = new Enemy(470, 230, 10, 10, this.map);
+            let spawn2 = new Enemy(20, 10, 10, 10, this.map);
+            let spawn3 = new Enemy(20, 230, 10, 10, this.map);
             this.enemies.push(spawn1);
             this.enemies.push(spawn2);
             this.enemies.push(spawn3);
@@ -93,22 +93,26 @@ class Game {
         // console.log('took effect');
         let randomIndex = Math.floor(Math.random() * 8);
         // console.log(randomIndex);
-        let newSkill01 = new Skill(20, 70, 50, 60);
-        newSkill01.img.src = './images/skill/020006.png';
-        let newSkill02 = new Skill(220, 60, 50, 60);
-        newSkill02.img.src = './images/skill/020006.png';
-        let newSkill03 = new Skill(390, 210, 50, 60);
-        newSkill03.img.src = './images/skill/020006.png';
-        let newSkill04 = new Skill(420, 90, 50, 60);
-        newSkill04.img.src = './images/skill/020006.png';
-        let newSkill05 = new Skill(230, 190, 50, 60);
-        newSkill05.img.src = './images/skill/020006.png';
-        let newSkill06 = new Skill(120, 270, 50, 60);
-        newSkill06.img.src = './images/skill/020006.png';
-        let newSkill07 = new Skill(100, 30, 50, 60);
-        newSkill07.img.src = './images/skill/020006.png';
-        let newSkill08 = new Skill(30, 170, 50, 60);
-        newSkill08.img.src = './images/skill/020006.png';
+        let newSkill01 = new Skill(20, 70, 10, 10);
+        newSkill01.img.src = './images/game-board/72TV3d4.png';
+        let newSkill02 = new Skill(220, 60, 10, 10);
+        newSkill02.img.src = './images/game-board/72TV3d4.png';
+        let newSkill03 = new Skill(390, 210, 10, 10);
+        newSkill03.img.src = './images/game-board/72TV3d4.png';
+        let newSkill04 = new Skill(420, 90, 10, 10);
+        newSkill04.img.src = './images/game-board/72TV3d4.png';
+        let newSkill05 = new Skill(230, 190, 10, 10);
+        newSkill05.img.src = './images/game-board/72TV3d4.png';
+        let newSkill06 = new Skill(120, 270, 10, 10);
+        newSkill06.img.src = './images/game-board/72TV3d4.png';
+        let newSkill07 = new Skill(100, 30, 10, 10);
+        newSkill07.img.src = './images/game-board/72TV3d4.png';
+        let newSkill08 = new Skill(30, 170, 10, 10);
+        newSkill08.img.src = './images/game-board/72TV3d4.png';
+        let newSkill09 = new Skill(410, 20, 10, 10);
+        newSkill09.img.src = './images/game-board/72TV3d4.png';
+        let newSkill10 = new Skill(430, 40, 10, 10);
+        newSkill10.img.src = './images/game-board/72TV3d4.png';
         let skillsList = [
             newSkill01,
             newSkill02,
@@ -118,6 +122,8 @@ class Game {
             newSkill06,
             newSkill07,
             newSkill08,
+            newSkill09,
+            newSkill10,
         ];
         // console.log(this.skillsList);
         let randomSkill = skillsList.splice(randomIndex, 1);
@@ -130,13 +136,13 @@ class Game {
         // console.log('took effect');
         let randomIndex = Math.floor(Math.random() * 4);
         // console.log(randomIndex);
-        let newHealth01 = new Health(40, 170, 50, 60);
+        let newHealth01 = new Health(40, 170, 10, 10);
         newHealth01.img.src = './images/game-board/health.png';
-        let newHealth02 = new Health(220, 10, 50, 60);
+        let newHealth02 = new Health(220, 10, 10, 10);
         newHealth02.img.src = './images/game-board/health.png';
-        let newHealth03 = new Health(340, 180, 50, 60);
+        let newHealth03 = new Health(340, 180, 10, 10);
         newHealth03.img.src = './images/game-board/health.png';
-        let newHealth04 = new Health(450, 60, 50, 60);
+        let newHealth04 = new Health(450, 60, 10, 10);
         newHealth04.img.src = './images/game-board/health.png';
         let healthList = [newHealth01, newHealth02, newHealth03, newHealth04];
         // console.log(this.healthList);
@@ -156,11 +162,16 @@ class Game {
                     this.player.position.up != 1 &&
                     this.player.position.up != 0
                 ) {
-                    this.map.mapArray[this.player.mapX - 1][
-                        this.player.mapY
-                    ] = 1;
+                    if (this.player.position.up >= 3){
+                        this.map.mapArray[this.player.mapX - 1][this.player.mapY] -= 1;
+                    }
+                    else {
+                        this.map.mapArray[this.player.mapX - 1][
+                            this.player.mapY
+                        ] = 1;
+                        this.player.movePlayer('y', 'N', -10);
+                    }
                     generateNewMap();
-                    this.player.movePlayer('y', 'N', -10);
                     this.bricks++;
                 }
                 break;
@@ -169,11 +180,16 @@ class Game {
                     this.player.position.down != 1 &&
                     this.player.position.down != 0
                 ) {
-                    this.map.mapArray[this.player.mapX + 1][
-                        this.player.mapY
-                    ] = 1;
+                    if (this.player.position.down >= 3){
+                        this.map.mapArray[this.player.mapX + 1][
+                            this.player.mapY] -=1;
+                    } else {
+                        this.map.mapArray[this.player.mapX + 1][
+                            this.player.mapY
+                        ] = 1;
+                        this.player.movePlayer('y', 'S', 10);
+                    }
                     generateNewMap();
-                    this.player.movePlayer('y', 'S', 10);
                     this.bricks++;
                 }
                 break;
@@ -182,12 +198,17 @@ class Game {
                     this.player.position.left != 1 &&
                     this.player.position.left != 0
                 ) {
+                 if (this.player.position.left >= 3){
                     this.map.mapArray[this.player.mapX][
-                        this.player.mapY - 1
-                    ] = 1;
-                    generateNewMap();
-                    this.player.movePlayer('x', 'W', -10);
-                    this.bricks++;
+                        this.player.mapY - 1] -=1;
+                 } else {
+                     this.map.mapArray[this.player.mapX][
+                         this.player.mapY - 1
+                        ] = 1;
+                        this.player.movePlayer('x', 'W', -10);
+                    }
+                        generateNewMap();
+                        this.bricks++;
                 }
                 break;
             case 'E':
@@ -195,11 +216,15 @@ class Game {
                     this.player.position.right != 1 &&
                     this.player.position.right != 0
                 ) {
-                    this.map.mapArray[this.player.mapX][
-                        this.player.mapY + 1
-                    ] = 1;
+                    if (this.player.position.right >= 3){
+                        this.map.mapArray[this.player.mapX][
+                            this.player.mapY + 1]-=1;
+                    } else {
+                        this.map.mapArray[this.player.mapX][
+                            this.player.mapY + 1] = 1;
+                        this.player.movePlayer('x', 'E', 10);
+                    }
                     generateNewMap();
-                    this.player.movePlayer('x', 'E', 10);
                     this.bricks++;
                 }
                 break;
