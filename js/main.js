@@ -232,11 +232,7 @@ function mainLoop() {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
-<<<<<<< HEAD
             }
-=======
-            }          
->>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
         } // Round 4
         else if (theGame.time >= 180 && theGame.time < 240) {
             if (theGame.time === 180) {
@@ -343,15 +339,10 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-<<<<<<< HEAD
-    theGame.finalScore =
-        theGame.score * theGame.roundValue * (theGame.time / 10);
-=======
     theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
-    console.log(theGame.score)
-    console.log(theGame.roundValue)
-    console.log(theGame.time/10)
->>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
+    // console.log(theGame.score)
+    // console.log(theGame.roundValue)
+    // console.log(theGame.time/10)
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
