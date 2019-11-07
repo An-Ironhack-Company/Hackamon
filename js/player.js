@@ -123,7 +123,7 @@ class Player {
             // console.log('attack!');
             this.attack.moveAttack(this.direction, 20);
         }
-        if (e.key === 'b') {
+        if (e.key === 'b' || e.key === 'x') {
             console.log('Waaall Buster!!!');
             theGame.wallBuster();``
         }

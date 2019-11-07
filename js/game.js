@@ -26,9 +26,26 @@ class Game {
     }
 
     createEnemy() {
-        let newEnemy = new Enemy(20, 230, 500, 500, this.map);
-        this.enemies.push(newEnemy);
+        if (this.time < 60){
+            let spawn1 = new Enemy(20, 10, 500, 500, this.map);
+            this.enemies.push(spawn1);
+        }
+        else  if (this.time < 120){
+            let spawn1 = new Enemy(470, 230, 500, 500, this.map);
+            let spawn2 = new Enemy(20, 10, 500, 500, this.map);
+            this.enemies.push(spawn1);
+            this.enemies.push(spawn2);
+        }
+        else  if (this.time < 180){
+            let spawn1 = new Enemy(470, 230, 500, 500, this.map);
+            let spawn2 = new Enemy(20, 10, 500, 500, this.map);
+            let spawn3 = new Enemy(20, 230, 500, 500, this.map);
+            this.enemies.push(spawn1);
+            this.enemies.push(spawn2);
+            this.enemies.push(spawn3);
+        }
     }
+    
 
     checkForDamage() {
         for (let i = 0; i < this.enemies.length; i++) {

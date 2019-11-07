@@ -68,14 +68,91 @@ function mainLoop() {
         ctx.putImageData(saved_rect, 0, 0);
 
         drawSelf(theGame.player);
+//
 
-        if (frameIndex % 478 == 0) {
-            theGame.makeSkill();
-        }
 
-        if (frameIndex % 786 == 0) {
-            theGame.makeHealth();
-        }
+//Round 1
+        if (theGame.time <= 60){
+            if (frameIndex % 367 == 0) {
+                theGame.makeSkill();
+            }
+            if (frameIndex % 587 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 489 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 35 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+//Round 2
+        } else if (theGame.time > 60 && theGame.time < 120) {
+            if (frameIndex % 587 == 0){
+                theGame.makeSkill();
+            }
+            if (frameIndex % 843 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 313 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 25 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+//Round 3
+        } else if (theGame.time >= 120 && theGame.time < 180) {
+            if (frameIndex % 832 == 0){
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 211 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 10 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+// Round 4
+        } else if (theGame.time >= 180 && theGame.time < 240) {
+            if (frameIndex % 832 == 0){
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1023 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 143 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 8 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+ // Round 5
+        } else if (theGame.time >= 240 && theGame.time < 420) {
+            if (frameIndex % 1234 == 0){
+                theGame.makeSkill();
+            }
+            if (frameIndex % 1453 == 0) {
+                theGame.makeHealth();
+            }
+            if (frameIndex % 97 == 0) {
+                theGame.createEnemy();
+            }
+            if (frameIndex % 5 == 0) {
+                for (let i = 0; i < theGame.enemies.length; i++) {
+                    theGame.enemies[i].moveEnemy();
+                }
+            }
+        } 
+
 
         for (let i = 0; i < theGame.life.length; i++) {
             drawSelf(theGame.life[i]);
@@ -89,14 +166,9 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-        if (frameIndex % 253 == 0) {
-            theGame.createEnemy();
-        }
-        if (frameIndex % 15 == 0) {
-            for (let i = 0; i < theGame.enemies.length; i++) {
-                theGame.enemies[i].moveEnemy();
-            }
-        }
+
+
+    
         if (frameIndex % 35 == 0) {
             theGame.checkForDamage();
         }
