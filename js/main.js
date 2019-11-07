@@ -349,16 +349,29 @@ function endGame() {
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
-    let message = document.createElement('div');
-    messageContainer.classList.add('end-game-container');
-    message.classList.add('end-game-message');
-    message.innerHTML = `
-    <h1>You've died in ${theGame.round} !</h1>
-    <h2>Score: ${theGame.score}</h2>
-    <h2>Time Survived: ${theGame.time}</h2>
-    <h2>Final Score: ${theGame.finalScore}</h2>
-    `;
-    messageContainer.appendChild(message);
+    if (theGame.roundValue == 1){
+        let message1 = document.createElement('div');
+        messageContainer.classList.add('end-game-container');
+        message1.classList.add('end-game-message');
+        message1.innerHTML = `
+        <h1>YOU SURVIVED ${theGame.round} ROUND!</h1>
+        <h2>Score: ${theGame.score}</h2>
+        <h2>Time Survived: ${theGame.time}</h2>
+        <h2>Final Score: ${theGame.finalScore}</h2>
+        `;
+        messageContainer.appendChild(message1);
+    } else {
+        let message2 = document.createElement('div');
+        messageContainer.classList.add('end-game-container');
+        message2.classList.add('end-game-message');
+        message2.innerHTML = `
+        <h1>YOU SURVIVED ${theGame.round} ROUNDS!</h1>
+        <h2>Score: ${theGame.score}</h2>
+        <h2>Time Survived: ${theGame.time}</h2>
+        <h2>Final Score: ${theGame.finalScore}</h2>
+        `;
+        messageContainer.appendChild(message2);
+    }
     document.getElementById('game-container').appendChild(messageContainer);
     theGame.battleSound.pause();
     theGame.gameOverSound.play();
