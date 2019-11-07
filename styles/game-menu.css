@@ -7,7 +7,6 @@
     padding: 10px
 }
 #rightPannel {
-    font-size: 20px;
     margin-left: 20px;
     margin-right: 10px;
     background-image: url('../images/game-board/red-bricks.png');
@@ -18,6 +17,10 @@
     color: white;
     border: 2px solid white;
 
+}
+
+.score > span {
+    font-size: 20px;
 }
 
 .time {

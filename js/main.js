@@ -269,7 +269,8 @@ function endGame() {
     <h1>You've died!</h1>
     <h2>Score: ${theGame.score}</h2>
     <h2>Time Survived: ${theGame.time}</h2>
-    <h2>Final Score: ${theGame.finalScore}</h2>`;
+    <h2>Final Score: ${theGame.finalScore}</h2>
+    `;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
     theGame.battleSound.pause();
