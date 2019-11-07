@@ -6,7 +6,9 @@ class Game {
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
         this.timeDisplay = document.getElementById('time');
+        this.roundDisplay = document.getElementById('round')
         this.time = 0;
+        this.round = "I" 
         this.score = 0;
         this.finalScore = 0;
         this.skills = [];
@@ -69,6 +71,10 @@ class Game {
 
     updateTime() {
         this.timeDisplay.innerText = this.time;
+    }
+
+    updateRound(){
+        this.roundDisplay.innerText = this.round;
     }
 
     updateHealthBar() {
@@ -164,7 +170,7 @@ class Game {
                     this.player.position.up != 1 &&
                     this.player.position.up != 0
                 ) {
-                    if (this.player.position.up >= 3){
+                    if (this.player.position.up > 2){
                         this.map.mapArray[this.player.mapX - 1][this.player.mapY] -= 1;
                     }
                     else {
@@ -182,7 +188,7 @@ class Game {
                     this.player.position.down != 1 &&
                     this.player.position.down != 0
                 ) {
-                    if (this.player.position.down >= 3){
+                    if (this.player.position.down > 2){
                         this.map.mapArray[this.player.mapX + 1][
                             this.player.mapY] -=1;
                     } else {
@@ -200,7 +206,7 @@ class Game {
                     this.player.position.left != 1 &&
                     this.player.position.left != 0
                 ) {
-                 if (this.player.position.left >= 3){
+                 if (this.player.position.left > 2){
                     this.map.mapArray[this.player.mapX][
                         this.player.mapY - 1] -=1;
                  } else {
@@ -218,10 +224,14 @@ class Game {
                     this.player.position.right != 1 &&
                     this.player.position.right != 0
                 ) {
-                    if (this.player.position.right >= 3){
+                    if (this.player.position.right >2){
+                        console.log(this.player.position.right >= 3, this.player.position.right)
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1]-=1;
+                            console.log(this.player.mapY)
                     } else {
+                        console.log(this.player.mapX)
+                        console.log(this.player.mapY)
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1] = 1;
                         this.player.movePlayer('x', 'E', 10);
@@ -233,6 +243,9 @@ class Game {
             default:
                 break;
         }
+        console.log(this.player.mapX)
+        console.log(this.player.mapY)
+        console.log(this.map.mapArray[2])
         console.log(this.bricks);
     };
     wallBuilder = () => {

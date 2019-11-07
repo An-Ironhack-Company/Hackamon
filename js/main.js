@@ -200,7 +200,7 @@ function mainLoop() {
 
 
     
-        if (frameIndex % 35 == 0) {
+        if (frameIndex % 20 == 0) {
             theGame.checkForDamage();
         }
 
@@ -209,6 +209,22 @@ function mainLoop() {
             theGame.updateTime();
             theGame.time += 1;
             // console.log(theGame.time)
+        }
+        if (theGame.time >= 60 && theGame.time < 120){
+            theGame.updateRound();
+            theGame.round = "II"
+        }
+        if (theGame.time >= 120 && theGame.time < 180){
+            theGame.updateRound();
+            theGame.round = "III"
+        }
+        if (theGame.time >= 180 && theGame.time < 240){
+            theGame.updateRound();
+            theGame.round = "IV"
+        }
+        if (theGame.time >= 240 && theGame.time < 300){
+            theGame.updateRound();
+            theGame.round = "V"
         }
 
         theGame.updateBrickBar();
@@ -267,6 +283,7 @@ function drawMap() {
         let positionX = 0;
 
         for (j = 0; j < row.length; j++) {
+            // console.log("testing")
             if (row[j] === 0) {
                 ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
                 positionX += 10;
