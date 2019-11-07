@@ -232,7 +232,11 @@ function mainLoop() {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
+<<<<<<< HEAD
             }
+=======
+            }          
+>>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
         } // Round 4
         else if (theGame.time >= 180 && theGame.time < 240) {
             if (theGame.time === 180) {
@@ -244,7 +248,7 @@ function mainLoop() {
             if (frameIndex % 1023 == 0) {
                 theGame.makeHealth();
             }
-            if (frameIndex % 143 == 0) {
+            if (frameIndex % 142 == 0) {
                 theGame.createEnemy();
             }
             if (frameIndex % 8 == 0) {
@@ -253,7 +257,7 @@ function mainLoop() {
                 }
             }
         } // Round 5
-        else if (theGame.time >= 240 && theGame.time < 420) {
+        else if (theGame.time >= 240 && theGame.time < 300) {
             if (theGame.time === 240) {
                 theGame.enemies = [];
             }
@@ -263,7 +267,7 @@ function mainLoop() {
             if (frameIndex % 1453 == 0) {
                 theGame.makeHealth();
             }
-            if (frameIndex % 97 == 0) {
+            if (frameIndex % 98 == 0) {
                 theGame.createEnemy();
             }
             if (frameIndex % 5 == 0) {
@@ -339,21 +343,41 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
+<<<<<<< HEAD
     theGame.finalScore =
         theGame.score * theGame.roundValue * (theGame.time / 10);
+=======
+    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
+    console.log(theGame.score)
+    console.log(theGame.roundValue)
+    console.log(theGame.time/10)
+>>>>>>> e4fa8a8b96679ad9b3614673e6840de021c79945
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
-    let message = document.createElement('div');
-    messageContainer.classList.add('end-game-container');
-    message.classList.add('end-game-message');
-    message.innerHTML = `
-    <h1>You've died in ${theGame.round} !</h1>
-    <h2>Score: ${theGame.score}</h2>
-    <h2>Time Survived: ${theGame.time}</h2>
-    <h2>Final Score: ${theGame.finalScore}</h2>
-    `;
-    messageContainer.appendChild(message);
+    if (theGame.roundValue == 1){
+        let message1 = document.createElement('div');
+        messageContainer.classList.add('end-game-container');
+        message1.classList.add('end-game-message');
+        message1.innerHTML = `
+        <h1>YOU SURVIVED ${theGame.round} ROUND!</h1>
+        <h2>Score: ${theGame.score}</h2>
+        <h2>Time Survived: ${theGame.time}</h2>
+        <h2>Final Score: ${theGame.finalScore}</h2>
+        `;
+        messageContainer.appendChild(message1);
+    } else {
+        let message2 = document.createElement('div');
+        messageContainer.classList.add('end-game-container');
+        message2.classList.add('end-game-message');
+        message2.innerHTML = `
+        <h1>YOU SURVIVED ${theGame.round} ROUNDS!</h1>
+        <h2>Score: ${theGame.score}</h2>
+        <h2>Time Survived: ${theGame.time}</h2>
+        <h2>Final Score: ${theGame.finalScore}</h2>
+        `;
+        messageContainer.appendChild(message2);
+    }
     document.getElementById('game-container').appendChild(messageContainer);
     theGame.battleSound.pause();
     theGame.gameOverSound.play();
