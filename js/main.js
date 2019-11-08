@@ -327,6 +327,7 @@ function loadGame() {
     theGame.map.chooseMap();
     newMap = theGame.map.mapArray;
     loadMap();
+    theGame.setLoops();
     theGame.updateTime();
     theGame.updateHealthBar();
     theGame.updateBrickBar();
@@ -339,14 +340,12 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time/10);
-    // console.log(theGame.score)
-    // console.log(theGame.roundValue)
-    // console.log(theGame.time/10)
+    theGame.finalScore =
+        theGame.score * theGame.roundValue * (theGame.time / 10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
-    if (theGame.roundValue == 1){
+    if (theGame.roundValue == 1) {
         let message1 = document.createElement('div');
         messageContainer.classList.add('end-game-container');
         message1.classList.add('end-game-message');
