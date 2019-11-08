@@ -91,54 +91,56 @@ class Player {
     }
 
     gameControls = e => {
-        if (e.key === 'ArrowUp' || e.key === 'w') {
-            this.checkPosition();
-            if (theGame.player.position['up'] == 1) {
-                theGame.player.movePlayer('y', 'N', -10);
-            } else {
-                theGame.player.movePlayer('y', 'N', 0);
+        if(gameStatus === true){
+            if (e.key === 'ArrowUp' || e.key === 'w') {
+                this.checkPosition();
+                if (theGame.player.position['up'] == 1) {
+                    theGame.player.movePlayer('y', 'N', -10);
+                } else {
+                    theGame.player.movePlayer('y', 'N', 0);
+                }
             }
-        }
-        if (e.key === 'ArrowDown' || e.key === 's') {
-            this.checkPosition();
-            if (theGame.player.position['down'] == 1) {
-                theGame.player.movePlayer('y', 'S', 10);
-            } else {
-                theGame.player.movePlayer('y', 'S', 0);
+            if (e.key === 'ArrowDown' || e.key === 's') {
+                this.checkPosition();
+                if (theGame.player.position['down'] == 1) {
+                    theGame.player.movePlayer('y', 'S', 10);
+                } else {
+                    theGame.player.movePlayer('y', 'S', 0);
+                }
             }
-        }
-        if (e.key === 'ArrowRight' || e.key === 'd') {
-            this.checkPosition();
-            if (theGame.player.position['right'] == 1) {
-                theGame.player.movePlayer('x', 'E', 10);
-            } else {
-                theGame.player.movePlayer('x', 'E', 0);
+            if (e.key === 'ArrowRight' || e.key === 'd') {
+                this.checkPosition();
+                if (theGame.player.position['right'] == 1) {
+                    theGame.player.movePlayer('x', 'E', 10);
+                } else {
+                    theGame.player.movePlayer('x', 'E', 0);
+                }
             }
-        }
-        if (e.key === 'ArrowLeft' || e.key === 'a') {
-            this.checkPosition();
-            if (theGame.player.position['left'] == 1) {
-                theGame.player.movePlayer('x', 'W', -10);
-            } else {
-                theGame.player.movePlayer('x', 'W', 0);
+            if (e.key === 'ArrowLeft' || e.key === 'a') {
+                this.checkPosition();
+                if (theGame.player.position['left'] == 1) {
+                    theGame.player.movePlayer('x', 'W', -10);
+                } else {
+                    theGame.player.movePlayer('x', 'W', 0);
+                }
             }
-        }
-        if (e.key === 'f') {
-            // console.log('attack!');
-            theGame.player.attack.moveAttack(this.direction, 20);
-        }
-        if (e.key === 'b' || e.key === 'x') {
-            console.log('Waaall Buster!!!');
-            theGame.wallBuster();
-            ``;
-            theGame.smashSound.play();
-        }
-        if (e.key === 'Shift') {
-            // console.log('Built! A! Wall!');
-            theGame.walltrop();
-        }
-        if (e.key === 'c') {
-            theGame.construct();
-        }
+            if (e.key === 'f') {
+                // console.log('attack!');
+                theGame.player.attack.moveAttack(this.direction, 20);
+            }
+            if (e.key === 'b' || e.key === 'x') {
+                console.log('Waaall Buster!!!');
+                theGame.wallBuster();
+                ``;
+                theGame.smashSound.play();
+            }
+            if (e.key === 'Shift') {
+                // console.log('Built! A! Wall!');
+                theGame.walltrop();
+            }
+            if (e.key === 'c') {
+                theGame.construct();
+            }
+        };
     };
 }
