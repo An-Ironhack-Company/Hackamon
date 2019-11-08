@@ -92,7 +92,7 @@ function preLoader(url, index) {
                 loaded = true;
                 generateMap();
             }
-        };
+        }; 
         img.onerror = function() {
             reject(url);
         };
@@ -340,8 +340,7 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore =
-        theGame.score * theGame.roundValue * (theGame.time / 10);
+    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time / 10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -375,7 +374,7 @@ function endGame() {
 function winGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore = theGame.time * theGame.score;
+    theGame.finalScore = theGame.score * theGame.roundValue * (theGame.time / 10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
