@@ -298,10 +298,7 @@ class Game {
             this.player.mapX = this.player.y / 10;
             switch (this.player.direction) {
                 case 'N':
-                    if (
-                        this.player.position.up != 2 &&
-                        this.player.position.up != 3
-                    ) {
+                    if (this.player.position.up === 1) {
                         this.map.mapArray[this.player.mapX + 1][
                             this.player.mapY
                         ] = 3;
@@ -310,10 +307,7 @@ class Game {
                     }
                     break;
                 case 'S':
-                    if (
-                        this.player.position.down != 2 &&
-                        this.player.position.down != 3
-                    ) {
+                    if (this.player.position.down === 1) {
                         this.map.mapArray[this.player.mapX - 1][
                             this.player.mapY
                         ] = 3;
@@ -322,10 +316,7 @@ class Game {
                     }
                     break;
                 case 'W':
-                    if (
-                        this.player.position.left != 2 &&
-                        this.player.position.left != 3
-                    ) {
+                    if (this.player.position.right === 1) {
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1
                         ] = 3;
@@ -334,10 +325,7 @@ class Game {
                     }
                     break;
                 case 'E':
-                    if (
-                        this.player.position.right != 2 &&
-                        this.player.position.right != 3
-                    ) {
+                    if (this.player.position.left === 1) {
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY - 1
                         ] = 3;
@@ -357,10 +345,7 @@ class Game {
             this.player.mapX = this.player.y / 10;
             switch (this.player.direction) {
                 case 'N':
-                    if (
-                        this.player.position.up != 2 &&
-                        this.player.position.up != 3
-                    ) {
+                    if (this.player.position.up === 1) {
                         this.map.mapArray[this.player.mapX - 1][
                             this.player.mapY
                         ] = 3;
@@ -369,10 +354,7 @@ class Game {
                     }
                     break;
                 case 'S':
-                    if (
-                        this.player.position.down != 2 &&
-                        this.player.position.down != 3
-                    ) {
+                    if (this.player.position.down === 1) {
                         this.map.mapArray[this.player.mapX + 1][
                             this.player.mapY
                         ] = 3;
@@ -381,10 +363,7 @@ class Game {
                     }
                     break;
                 case 'W':
-                    if (
-                        this.player.position.left != 2 &&
-                        this.player.position.left != 3
-                    ) {
+                    if (this.player.position.left === 1) {
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY - 1
                         ] = 3;
@@ -393,10 +372,7 @@ class Game {
                     }
                     break;
                 case 'E':
-                    if (
-                        this.player.position.right != 2 &&
-                        this.player.position.right != 3
-                    ) {
+                    if (this.player.position.right === 1) {
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1
                         ] = 3;

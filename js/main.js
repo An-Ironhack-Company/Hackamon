@@ -11,7 +11,7 @@ let terrainArray = [];
 let gameStatus = false;
 let loaded = false;
 let soundStatus = true;
-let fullscreenStatus = false
+let fullscreenStatus = false;
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -26,6 +26,11 @@ let imageAddresses = [
 ];
 
 // LOGIC
+if (!localStorage.getItem('allScores')) {
+    let allScores = [];
+    localStorage.setItem('allScores', JSON.stringify([]));
+    console.log(localStorage.getItem('allScores'));
+}
 loadGame();
 document.onkeydown = theGame.player.gameControls;
 
@@ -78,7 +83,7 @@ fullscreenStatusButton.onclick = () => {
         document.getElementById('game-board').style.height = '100vh';
         document.getElementById('rightPannel').style.width = '16vw';
         document.getElementById('rightPannel').style.height = '500px';
-       
+
         document.getElementById('game-board').style.right = '0px';
         document.getElementById('game-board').style.top = '0px';
         document.getElementById('game-board').style.left = '0px';
@@ -89,27 +94,24 @@ fullscreenStatusButton.onclick = () => {
         document.getElementById('sound-status').style.bottom = '610px';
         document.getElementById('screen-status').style.left = '430px';
         document.getElementById('screen-status').style.bottom = '610px';
-        document.getElementById('rightPannel').style.position = 'relative'
+        document.getElementById('rightPannel').style.position = 'relative';
         document.getElementById('rightPannel').style.top = '60px';
         document.getElementById('rightPannel').style.right = '2px';
-        document.getElementById('roundTracker').style.left = '0px' 
-        document.getElementById('roundTracker').style.top = '0px' 
-        document.getElementById('roundTracker').style.zIndex = '5'
-        document.getElementById('roundTracker').style.position = 'absolute'
+        document.getElementById('roundTracker').style.left = '0px';
+        document.getElementById('roundTracker').style.top = '0px';
+        document.getElementById('roundTracker').style.zIndex = '5';
+        document.getElementById('roundTracker').style.position = 'absolute';
         document.getElementById('game-board').style.position = 'absolute';
-     
-
- } else {
+    } else {
         fullscreenStatus = false;
         fullscreenStatusButton.innerHTML =
             '<img src="./images/game-board/fullscreen.png">';
-      document.getElementById('game-board').removeAttribute('style');
-      document.getElementById('rightPannel').removeAttribute('style');
-      document.getElementById('screen-status').removeAttribute('style');
-      document.getElementById('sound-status').removeAttribute('style');
-      document.getElementById('game-status').removeAttribute('style');
-      document.getElementById('roundTracker').removeAttribute('style');
-      
+        document.getElementById('game-board').removeAttribute('style');
+        document.getElementById('rightPannel').removeAttribute('style');
+        document.getElementById('screen-status').removeAttribute('style');
+        document.getElementById('sound-status').removeAttribute('style');
+        document.getElementById('game-status').removeAttribute('style');
+        document.getElementById('roundTracker').removeAttribute('style');
     }
 };
 
@@ -389,8 +391,24 @@ function loadGame() {
 function endGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore =
-        theGame.score * theGame.roundValue * (theGame.time / 10);
+    theGame.finalScore = Math.round(
+        theGame.score * theGame.roundValue * (theGame.time / 10),
+    );
+
+    // Add to your local record
+    let allScores = JSON.parse(localStorage.getItem('allScores'));
+    allScores.push(theGame.finalScore);
+    localStorage.setItem(
+        'allScores',
+        JSON.stringify(allScores.sort().reverse()),
+    );
+    allScores == JSON.parse(localStorage.getItem('allScores'));
+    let topScores = [];
+    for (let i = 0; i < 5; i++) {
+        topScores.push(allScores[i]);
+        console.log(topScores);
+    }
+
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -403,6 +421,12 @@ function endGame() {
         <h2>Score: ${theGame.score}</h2>
         <h2>Time Survived: ${theGame.time}</h2>
         <h2>Final Score: ${theGame.finalScore}</h2>
+        <h2>Top Scores</h2>
+        <h3>${topScores[0]}</h3>
+        <h3>${topScores[1]}</h3>
+        <h3>${topScores[2]}</h3>
+        <h3>${topScores[3]}</h3>
+        <h3>${topScores[4]}</h3>
         `;
         messageContainer.appendChild(message1);
     } else {
@@ -414,6 +438,12 @@ function endGame() {
         <h2>Score: ${theGame.score}</h2>
         <h2>Time Survived: ${theGame.time}</h2>
         <h2>Final Score: ${theGame.finalScore}</h2>
+        <h2>Top Scores</h2>
+        <h3>${topScores[0]}</h3>
+        <h3>${topScores[1]}</h3>
+        <h3>${topScores[2]}</h3>
+        <h3>${topScores[3]}</h3>
+        <h3>${topScores[4]}</h3>
         `;
         messageContainer.appendChild(message2);
     }
@@ -424,8 +454,21 @@ function endGame() {
 function winGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore =
-        theGame.score * theGame.roundValue * (theGame.time / 10);
+    theGame.finalScore = Math.round(
+        theGame.score * theGame.roundValue * (theGame.time / 10),
+    );
+    // Add to your local record
+    let allScores = JSON.parse(localStorage.getItem('allScores'));
+    allScores.push(theGame.finalScore);
+    localStorage.setItem(
+        'allScores',
+        JSON.stringify(allScores.sort().reverse()),
+    );
+    allScores == JSON.parse(localStorage.getItem('allScores'));
+    let topScores = [];
+    for (let i = 0; i < 5; i++) {
+        console.log(topScores[i]);
+    }
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');
@@ -437,6 +480,12 @@ function winGame() {
     <h2>Score: ${theGame.score}</h2>
     <h2>Time Survived: ${theGame.time}</h2>
     <h2>Final Score: ${theGame.finalScore}</h2>
+    <h2>Top Scores</h2>
+        <h3>${topScores[0]}</h3>
+        <h3>${topScores[1]}</h3>
+        <h3>${topScores[2]}</h3>
+        <h3>${topScores[3]}</h3>
+        <h3>${topScores[4]}</h3>
     `;
     messageContainer.appendChild(message);
     document.getElementById('game-container').appendChild(messageContainer);
