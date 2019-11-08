@@ -78,9 +78,11 @@ class Game {
 
     checkForDamage() {
         for (let i = 0; i < this.enemies.length; i++) {
+            this.player.checkPosition();
+            this.enemies[i].checkPosition();
             if (
-                this.player.x == this.enemies[i].x &&
-                this.player.y == this.enemies[i].y
+                this.player.mapX === this.enemies[i].mapX &&
+                this.player.mapY === this.enemies[i].mapY
             ) {
                 this.damageSound.play();
                 this.player.health -= 10;
@@ -209,11 +211,6 @@ class Game {
                     this.player.position.up != 0
                 ) {
                     if (this.player.position.up >= 3) {
-                        console.log(
-                            this.map.mapArray[this.player.mapX - 1][
-                                this.player.mapY
-                            ],
-                        );
                         this.map.mapArray[this.player.mapX - 1][
                             this.player.mapY
                         ] -= 1;
@@ -289,10 +286,6 @@ class Game {
             default:
                 break;
         }
-        console.log(this.player.mapX);
-        console.log(this.player.mapY);
-        console.log(this.map.mapArray[2]);
-        console.log(this.bricks);
     };
     walltrop = () => {
         if (this.bricks > 0) {

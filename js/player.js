@@ -88,6 +88,8 @@ class Player {
             center: m[this.y / 10][this.x / 10],
         };
         this.position = position;
+        this.mapY = this.x / 10;
+        this.mapX = this.y / 10;
     }
 
     gameControls = e => {
