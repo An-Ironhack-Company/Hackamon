@@ -45,38 +45,13 @@ class Enemy {
         let currentPositionX = this.mapX;
         let currentPositionY = this.mapY;
 
-        // // Hunt the player E/W
-        // if (theGame.player.x >= this.x) {
-        //     if (this.position['right'] == 1) {
-        //         this.direction = 'E';
-        //         this.x += 10;
-        //     }
-        // } else if (theGame.player.x < this.x) {
-        //     if (this.position['left'] == 1) {
-        //         this.direction = 'W';
-        //         this.x -= 10;
-        //     }
-        // }
-        // // Hunt the player N/S
-        // if (theGame.player.y >= this.y) {
-        //     if (this.position['down'] == 1 && this.position['center'] == 1) {
-        //         this.direction = 'S';
-        //         this.y += 10;
-        //     }
-        // } else if (theGame.player.y < this.y) {
-        //     if (this.position['up'] == 1 && this.position['center'] == 1) {
-        //         this.direction = 'N';
-        //         this.y -= 10;
-        //     }
-        // }
-
         this.moveX();
         this.moveY();
+
         if (currentPositionY === this.mapY && currentPositionX === this.mapX) {
             console.log(`Couldn't move.`);
         }
-        // this.moveY();
-        // }
+
         if (this.direction !== eDirection) {
             this.loadEnemy(eDirection);
             this.direction = eDirection;
@@ -114,14 +89,6 @@ class Enemy {
             this.direction = 'E';
             this.x += 10;
             this.checkPosition();
-            // } else if (this.position['right'] != 1) {
-            //     if (this.position['down'] == 1) {
-            //         this.direction = 'S';
-            //         this.y += 10;
-            //     } else if (this.position['up'] == 1) {
-            //         this.direction = 'N';
-            //         this.y -= 10;
-            //     }
         }
     }
     moveLeft() {
@@ -129,48 +96,30 @@ class Enemy {
             this.direction = 'W';
             this.x -= 10;
             this.checkPosition();
-            // } else if (this.position['left'] != 1) {
-            //     if (this.position['down'] == 1) {
-            //         this.direction = 'S';
-            //         this.y += 10;
-            //     } else if (this.position['up'] == 1) {
-            //         this.direction = 'N';
-            //         this.y -= 10;
-            //     }
         }
     }
     moveY() {
         // Hunt the player N/S
         if (theGame.player.mapX > this.mapX) {
-            if (this.position['down'] === 1) {
-                this.direction = 'S';
-                this.y += 10;
-                this.checkPosition();
-                // } else if (this.position['down'] !== 1) {
-                //     if (this.position['right'] === 1) {
-                //         this.direction = 'E';
-                //         this.x += 10;
-                //     } else if (this.position['left'] === 1) {
-                //         this.direction = 'W';
-                //         this.x -= 10;
-                //     }
-            }
+            this.moveDown();
         }
         if (theGame.player.mapX < this.mapX) {
-            if (this.position['up'] === 1) {
-                this.direction = 'N';
-                this.y -= 10;
-                this.checkPosition();
-                // } else if (this.position['up'] !== 1) {
-                //     if (this.position['right'] === 1) {
-                //         this.direction = 'E';
-                //         this.x += 10;
-                //     } else if (this.position['left'] === 1) {
-                //         this.direction = 'W';
-                //         this.x -= 10;
-                //     }
-            }
+            this.moveUp();
         }
         this.loadEnemy(this.direction);
+    }
+    moveUp() {
+        if (this.position['up'] === 1) {
+            this.direction = 'N';
+            this.y -= 10;
+            this.checkPosition();
+        }
+    }
+    moveDown() {
+        if (this.position['down'] === 1) {
+            this.direction = 'S';
+            this.y += 10;
+            this.checkPosition();
+        }
     }
 }
