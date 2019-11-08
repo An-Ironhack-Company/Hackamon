@@ -135,7 +135,10 @@ class Player {
         }
         if (e.key === 'Shift') {
             // console.log('Built! A! Wall!');
-            theGame.wallBuilder();
+            theGame.walltrop();
+        }
+        if (e.key === 'c') {
+            theGame.construct();
         }
     };
 }
