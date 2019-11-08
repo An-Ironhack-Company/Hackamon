@@ -336,7 +336,7 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-        if (frameIndex % 8 == 0) {
+        if (frameIndex % 24 == 0) {
             theGame.checkForDamage();
         }
 
