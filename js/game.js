@@ -101,8 +101,6 @@ class Game {
 
     updateRound() {
         this.roundDisplay.innerText = this.round;
-        theGame.levelUpSound.play();
-        theGame.levelUpSound.pause();
         if (this.time > 60) {
             this.roundValue = 2;
         }
