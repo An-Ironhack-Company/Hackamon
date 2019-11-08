@@ -327,6 +327,7 @@ function loadGame() {
     theGame.map.chooseMap();
     newMap = theGame.map.mapArray;
     loadMap();
+    theGame.setLoops();
     theGame.updateTime();
     theGame.updateHealthBar();
     theGame.updateBrickBar();

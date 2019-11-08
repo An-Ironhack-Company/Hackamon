@@ -6,10 +6,10 @@ class Game {
         this.enemies = [this.enemy];
         this.scoreDisplay = document.getElementById('score');
         this.timeDisplay = document.getElementById('time');
-        this.roundDisplay = document.getElementById('round')
+        this.roundDisplay = document.getElementById('round');
         this.time = 0;
-        this.round = "I" 
-        this.roundValue = 1
+        this.round = 'I';
+        this.roundValue = 1;
         this.score = 0;
         this.finalScore = 0;
         this.skills = [];
@@ -46,8 +46,7 @@ class Game {
             this.enemies.push(spawn1);
             this.enemies.push(spawn2);
             this.enemies.push(spawn3);
-        }
-        else if (this.time < 240) {
+        } else if (this.time < 240) {
             let spawn1 = new Enemy(470, 230, 10, 10, this.map);
             let spawn2 = new Enemy(20, 10, 10, 10, this.map);
             let spawn3 = new Enemy(20, 230, 10, 10, this.map);
@@ -56,8 +55,7 @@ class Game {
             this.enemies.push(spawn2);
             this.enemies.push(spawn3);
             this.enemies.push(spawn4);
-        }
-        else if (this.time < 300) {
+        } else if (this.time < 300) {
             let spawn1 = new Enemy(470, 230, 10, 10, this.map);
             let spawn2 = new Enemy(20, 10, 10, 10, this.map);
             let spawn3 = new Enemy(20, 230, 10, 10, this.map);
@@ -66,8 +64,7 @@ class Game {
             this.enemies.push(spawn2);
             this.enemies.push(spawn3);
             this.enemies.push(spawn4);
-        }
-        else if (this.time>= 300) {
+        } else if (this.time >= 300) {
             let spawn1 = new Enemy(470, 230, 10, 10, this.map);
             let spawn2 = new Enemy(20, 10, 10, 10, this.map);
             let spawn3 = new Enemy(20, 230, 10, 10, this.map);
@@ -98,22 +95,22 @@ class Game {
         this.timeDisplay.innerText = this.time;
     }
 
-    updateRound(){
+    updateRound() {
         this.roundDisplay.innerText = this.round;
-        if (this.time > 60){
-            this.roundValue = 2
+        if (this.time > 60) {
+            this.roundValue = 2;
         }
-        if (this.time > 120){
-            this.roundValue = 3
+        if (this.time > 120) {
+            this.roundValue = 3;
         }
-        if (this.time > 180){
-            this.roundValue = 4
+        if (this.time > 180) {
+            this.roundValue = 4;
         }
-        if (this.time > 240){
-            this.roundValue = 5
+        if (this.time > 240) {
+            this.roundValue = 5;
         }
-        if (this.time > 300){
-            this.roundValue = 5
+        if (this.time > 300) {
+            this.roundValue = 5;
         }
     }
 
@@ -278,8 +275,8 @@ class Game {
                             this.player.mapY + 1
                         ] -= 1;
                     } else {
-                        console.log(this.player.mapX)
-                        console.log(this.player.mapY)
+                        console.log(this.player.mapX);
+                        console.log(this.player.mapY);
                         this.map.mapArray[this.player.mapX][
                             this.player.mapY + 1
                         ] = 1;
@@ -292,9 +289,9 @@ class Game {
             default:
                 break;
         }
-        console.log(this.player.mapX)
-        console.log(this.player.mapY)
-        console.log(this.map.mapArray[2])
+        console.log(this.player.mapX);
+        console.log(this.player.mapY);
+        console.log(this.map.mapArray[2]);
         console.log(this.bricks);
     };
     wallBuilder = () => {
@@ -356,4 +353,8 @@ class Game {
             }
         }
     };
+    setLoops() {
+        this.battleSound.loop = true;
+        this.mainSound.loop = true;
+    }
 }
