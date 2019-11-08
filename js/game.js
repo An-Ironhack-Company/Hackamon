@@ -148,7 +148,7 @@ class Game {
         newSkill04.img.src = './images/game-board/72TV3d4.png';
         let newSkill05 = new Skill(230, 190, 10, 10);
         newSkill05.img.src = './images/game-board/72TV3d4.png';
-        let newSkill06 = new Skill(120, 270, 10, 10);
+        let newSkill06 = new Skill(250, 120, 10, 10);
         newSkill06.img.src = './images/game-board/72TV3d4.png';
         let newSkill07 = new Skill(100, 30, 10, 10);
         newSkill07.img.src = './images/game-board/72TV3d4.png';

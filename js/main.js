@@ -1,7 +1,9 @@
 // RESOURCES
-const ctx = document.getElementById('game-board').getContext('2d');
+const canvas = document.getElementById('game-board');
+let ctx = canvas.getContext('2d');
 let gameStatusButton = document.getElementById('game-status');
 let soundStatusButton = document.getElementById('sound-status');
+let fullscreenStatusButton = document.getElementById('screen-status');
 
 let theGame, newMap, saved_rect;
 let terrainArray = [];
@@ -9,6 +11,7 @@ let terrainArray = [];
 let gameStatus = false;
 let loaded = false;
 let soundStatus = true;
+let fullscreenStatus = false
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
@@ -62,6 +65,51 @@ soundStatusButton.onclick = () => {
         theGame.damageSound.muted = true;
         theGame.gameOverSound.muted = true;
         theGame.smashSound.muted = true;
+    }
+};
+
+fullscreenStatusButton.onclick = () => {
+    console.log(fullscreenStatus);
+    if (fullscreenStatus != true) {
+        fullscreenStatus = true;
+        fullscreenStatusButton.innerHTML =
+            '<img src="./images/game-board/minimize.png">';
+        document.getElementById('game-board').style.width = '80vw';
+        document.getElementById('game-board').style.height = '100vh';
+        document.getElementById('rightPannel').style.width = '16vw';
+        document.getElementById('rightPannel').style.height = '500px';
+       
+        document.getElementById('game-board').style.right = '0px';
+        document.getElementById('game-board').style.top = '0px';
+        document.getElementById('game-board').style.left = '0px';
+        document.getElementById('game-board').style.bottom = '0px';
+        document.getElementById('game-status').style.left = '655px';
+        document.getElementById('game-status').style.bottom = '630px';
+        document.getElementById('sound-status').style.left = '430px';
+        document.getElementById('sound-status').style.bottom = '550px';
+        document.getElementById('screen-status').style.left = '430px';
+        document.getElementById('screen-status').style.bottom = '550px';
+        document.getElementById('rightPannel').style.position = 'relative'
+        document.getElementById('rightPannel').style.top = '90px';
+        document.getElementById('rightPannel').style.right = '2px';
+        document.getElementById('roundTracker').style.left = '0px' 
+        document.getElementById('roundTracker').style.top = '0px' 
+        document.getElementById('roundTracker').style.zIndex = '5'
+        document.getElementById('roundTracker').style.position = 'absolute'
+        document.getElementById('game-board').style.position = 'absolute';
+     
+
+ } else {
+        fullscreenStatus = false;
+        fullscreenStatusButton.innerHTML =
+            '<img src="./images/game-board/fullscreen.png">';
+      document.getElementById('game-board').removeAttribute('style');
+      document.getElementById('rightPannel').removeAttribute('style');
+      document.getElementById('screen-status').removeAttribute('style');
+      document.getElementById('sound-status').removeAttribute('style');
+      document.getElementById('game-status').removeAttribute('style');
+      document.getElementById('roundTracker').removeAttribute('style');
+      
     }
 };
 

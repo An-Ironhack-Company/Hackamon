@@ -52,8 +52,12 @@
                     </p>
                 </div>
             </div>
-<span class='roundTracker'>Round:<span id='round'>I</span></span>
-            <canvas id="game-board" width="500" height="250"></canvas>
+
+<span id='roundTracker'>Round:<span id='round'>I</span></span>
+<div id="theCanvas">
+    <canvas id="game-board" width="500" height="250"></canvas>
+
+</div>
             <section id="rightPannel">
                 <div class="score">
                     <span>Score:</span><span id="score">0</span>
@@ -70,8 +74,9 @@
             </section>
         </section>
         <div class="footer">
-            <button id="game-status"><h2>Start Game</h2></button>
-            <div id="sound-status"><img src="./images/game-board/sound-48.png"></div>
+            <button id="game-status"><h2 id="startButton">Start Game</h2></button>
+            <button id="sound-status"><img src="./images/game-board/sound-48.png"></button> 
+            <button id="screen-status"><img src="./images/game-board/fullscreen.png"></button>
         </div>
         <script src="./js/attack.js"></script>
         <script src="./js/skill.js"></script>

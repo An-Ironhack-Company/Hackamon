@@ -6,12 +6,12 @@
 }
 canvas {
     border: 1px solid black;
-    width: 1000px;
+    width: 900px;
     height:550px
 }
 
 .end-game-container {
-z-index: 2;
+    z-index: 2;
     position: absolute;
     float: left;
     display: flex;
