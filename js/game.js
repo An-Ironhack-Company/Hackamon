@@ -28,6 +28,8 @@ class Game {
         this.gameOverSound = new Audio('./sound/game-over.wav');
         this.smashSound = new Audio('./sound/smash.mp3');
         this.smashSound.volume = 0.2;
+        this.levelUpSound = new Audio('./sound/game-powerup.mp3');
+        this.levelUpSound.volume = 0.8;
     }
 
     createEnemy() {
@@ -99,6 +101,8 @@ class Game {
 
     updateRound() {
         this.roundDisplay.innerText = this.round;
+        theGame.levelUpSound.play();
+        theGame.levelUpSound.pause();
         if (this.time > 60) {
             this.roundValue = 2;
         }
