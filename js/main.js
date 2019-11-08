@@ -84,13 +84,13 @@ fullscreenStatusButton.onclick = () => {
         document.getElementById('game-board').style.left = '0px';
         document.getElementById('game-board').style.bottom = '0px';
         document.getElementById('game-status').style.left = '655px';
-        document.getElementById('game-status').style.bottom = '630px';
+        document.getElementById('game-status').style.bottom = '680px';
         document.getElementById('sound-status').style.left = '430px';
-        document.getElementById('sound-status').style.bottom = '550px';
+        document.getElementById('sound-status').style.bottom = '610px';
         document.getElementById('screen-status').style.left = '430px';
-        document.getElementById('screen-status').style.bottom = '550px';
+        document.getElementById('screen-status').style.bottom = '610px';
         document.getElementById('rightPannel').style.position = 'relative'
-        document.getElementById('rightPannel').style.top = '90px';
+        document.getElementById('rightPannel').style.top = '60px';
         document.getElementById('rightPannel').style.right = '2px';
         document.getElementById('roundTracker').style.left = '0px' 
         document.getElementById('roundTracker').style.top = '0px' 
@@ -235,19 +235,20 @@ function mainLoop() {
             if (frameIndex % 587 == 0) {
                 theGame.makeHealth();
             }
-            if (frameIndex % 489 == 0) {
+            if (frameIndex % 400 == 0) {
                 theGame.createEnemy();
             }
             if (frameIndex % 35 == 0) {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
+                    // theGame.enemies[i].moveX();
                 }
             }
         } //Round 2
         else if (theGame.time >= 60 && theGame.time < 120) {
-            if (theGame.time === 60) {
-                theGame.enemies = [];
-            }
+            // if (theGame.time === 60) {
+            //     theGame.enemies = [];
+            // }
             if (frameIndex % 587 == 0) {
                 theGame.makeSkill();
             }
@@ -257,7 +258,7 @@ function mainLoop() {
             if (frameIndex % 313 == 0) {
                 theGame.createEnemy();
             }
-            if (frameIndex % 25 == 0) {
+            if (frameIndex % 20 == 0) {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
@@ -276,7 +277,7 @@ function mainLoop() {
             if (frameIndex % 211 == 0) {
                 theGame.createEnemy();
             }
-            if (frameIndex % 10 == 0) {
+            if (frameIndex % 12 == 0) {
                 for (let i = 0; i < theGame.enemies.length; i++) {
                     theGame.enemies[i].moveEnemy();
                 }
@@ -335,7 +336,7 @@ function mainLoop() {
             drawSelf(theGame.enemies[i]);
         }
 
-        if (frameIndex % 20 == 0) {
+        if (frameIndex % 8 == 0) {
             theGame.checkForDamage();
         }
 
@@ -423,7 +424,8 @@ function endGame() {
 function winGame() {
     gameButtonManagement('end');
     gameStatus = 'end';
-    theGame.finalScore = theGame.time * theGame.score;
+    theGame.finalScore =
+        theGame.score * theGame.roundValue * (theGame.time / 10);
     ctx.clearRect(0, 0, 500, 500);
     ctx.putImageData(saved_rect, 0, 0);
     let messageContainer = document.createElement('div');

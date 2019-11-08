@@ -42,8 +42,8 @@ header {
     color: white;
     font-size: 13px;
     position: absolute;
-    left: 275px;
-    top: 80px;
+    left: 265px;
+    top: 100px;
     background-color: rgba(207, 20, 20, 0.4);
     border-bottom-right-radius: 10px;
     padding: 10px;
@@ -84,7 +84,7 @@ button {
     border-radius: 5px;
     position: relative;
     right: 30px;
-    bottom: 20px
+    bottom: 50px
     /* z-index: 3; */
 }
 
@@ -94,7 +94,8 @@ button > h2 {
 
 #sound-status {
     position: relative;
-    bottom: 20px;
+    bottom: 50px;
+    height: 50px;
     padding: 2px;
     background-color: rgba(255, 255, 255, .5);
     border: 1px solid black;
@@ -104,7 +105,8 @@ button > h2 {
 
 #screen-status {
     position: relative;
-    bottom: 20px;
+    bottom: 50px;
+    height: 50px;
     margin-left: 30px;
     padding: 12px;
     background-color:rgba(255, 255, 255, .5);
