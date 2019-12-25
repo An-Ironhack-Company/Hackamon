@@ -6,122 +6,123 @@
 @import url("background.css");
 
 * {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, span {
-    font-family: 'Press Start 2P', cursive;
+h1,
+h2,
+h3,
+span {
+  font-family: "Press Start 2P", cursive;
 }
 
 h1 {
-    color: white;
-    font-size: 2.5em;
-    margin-bottom: 0;
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: 0;
 }
 
 body {
-    background-image: url('../images/game-board/backdrop.jpg');
-    background-repeat: repeat-y;
-    background-size: cover;
-    overflow: hidden;
+  background-image: url("../images/game-board/backdrop.jpg");
+  background-repeat: repeat-y;
+  background-size: cover;
+  overflow: hidden;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 20px 0;
 }
 
 .score {
-    padding: 10px
+  padding: 10px;
 }
 
 #roundTracker {
-    color: white;
-    font-size: 13px;
-    position: absolute;
-    left: 265px;
-    top: 100px;
-    background-color: rgba(207, 20, 20, 0.4);
-    border-bottom-right-radius: 10px;
-    padding: 10px;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  left: 265px;
+  top: 100px;
+  background-color: rgba(207, 20, 20, 0.4);
+  border-bottom-right-radius: 10px;
+  padding: 10px;
 }
 
 h2 {
-    font-size: 20px; 
-    margin-right: 5px;
-    margin-top:10px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 h3 {
-    font-size: 16px; 
-    margin-right: 5px;
-    margin-top:10px;
-    margin-bottom: 10px;
+  font-size: 16wpx;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.footer {
-    margin: 2vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#footer {
+  margin: 2vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 button {
-    margin: 10px;
+  margin: 10px;
 }
 #game-status {
-    width: 250px;
-    height: 50px;
-    padding-bottom: 5px; 
-    padding-top: 5px;
-    background-color: lightblue;
-    border: 2px solid blue;
-    border-radius: 5px;
-    position: relative;
-    right: 30px;
-    bottom: 50px;
-    z-index: 3;
+  width: 250px;
+  height: 50px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: lightblue;
+  border: 2px solid blue;
+  border-radius: 5px;
+  position: relative;
+  right: 30px;
+  bottom: 50px;
+  z-index: 3;
 }
 
 button > h2 {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 #sound-status {
-    position: relative;
-    bottom: 50px;
-    height: 50px;
-    padding: 2px;
-    background-color: rgba(255, 255, 255, .5);
-    border: 1px solid black;
-    border-radius: 10px;
-
+  position: relative;
+  bottom: 50px;
+  height: 50px;
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 #screen-status {
-    position: relative;
-    bottom: 50px;
-    height: 50px;
-    margin-left: 30px;
-    padding: 12px;
-    background-color:rgba(255, 255, 255, .5);
-    border: 1px solid black;
-    border-radius: 10px;
+  position: relative;
+  bottom: 50px;
+  height: 50px;
+  margin-left: 30px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
-#screen-status img{
-    width: 30px;
-    height: 30px;
-
+#screen-status img {
+  width: 30px;
+  height: 30px;
 }

@@ -1,96 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Hackamon</title>
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300|Press+Start+2P&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./styles/styles.css" />
-    </head>
-    <body>
-        <header><h1>Welcome to Hackamon</h1></header>
-        <section id="game-container">
-
-            <!-- GUIDE -->
-            <div class="guide">
-
-                <!-- INSTRUCTIONS -->
-                <div class="instructions">
-                    <h2>Instructions</h2>
-                    <p>
-                       <span class="instruct"> 
-                           How long can you survive? 
-                           Manipulate the map by mining and building bricks.
-                           Avoid the spiders and collect as many points as possible!</span>
-                    </p>
-                </div>
-                <br>
-
-                <!-- CONTROLS -->
-                <div class="controls">
-                    <h2>Controls</h2>
-                    <p>
-                        <span class="moveGuide">Move the player:</span>
-                        <br>
-                        <img class="arrows" src="./images/game-board/arrow_orig.png">
-                        <span class="inst">Mine & build: </span>
-                        <br>
-                        <span class="mine">Mine:</span>
-                        <br>
-                        <img class="small-keys b-key" src="./images/game-board/keyboard_key_b.png" alt="B">
-                        <img class="small-keys x-key" src="./images/game-board/keyboard_key_x.png" alt="X">
-                        <br>
-                        <span class="build">Build behind:</span>
-                        <br>
-                        <img class="shift-key" src="./images/game-board/shift_key.png" alt="shift">
-                        <br>
-                        <span class="build">Build in front:</span>
-                        <br>
-
-                        <img class="small-keys c-key" src="./images/game-board/keyboard_key_c.png" alt="C">
-                    </p>
-                </div>
-            </div>
-
-<span id='roundTracker'>Round:<span id='round'>I</span></span>
-<div id="theCanvas">
-    <canvas id="game-board" width="500" height="250"></canvas>
-
-</div>
-            <section id="rightPannel">
-                <div class="score">
-                    <span>Score:</span><span id="score">0</span>
-                    <div class="stats">
-                        <div id="health">
-                            <h2 class="time">Time:<span id="time">0</span></h2>
-                            <h2>Health</h2>
-                            <div id="health-bar-container"></div>
-                            <h2>Bricks</h2>
-                            <div id="brick-bar-container"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <button id="game-status"><h2 id="startButton">Start Game</h2></button>
-            <button id="sound-status"><img src="./images/game-board/sound-48.png"></button> 
-            <button id="screen-status"><img src="./images/game-board/fullscreen.png"></button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hackamon</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300|Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header><h1>Welcome to Hackamon</h1></header>
+    <section id="game-container">
+      <!-- GUIDE -->
+      <div class="guide">
+        <!-- INSTRUCTIONS -->
+        <div class="instructions">
+          <h2>Instructions</h2>
+          <p>
+            <span class="instruct">
+              How long can you survive? Manipulate the map by mining and
+              building bricks. Avoid the spiders and collect as many points as
+              possible!</span
+            >
+          </p>
         </div>
-        <script src="./js/attack.js"></script>
-        <script src="./js/skill.js"></script>
-        <script src="./js/health.js"></script>
-        <script src="./js/terrain.js"></script>
-        <script src="./js/player.js"></script>
-        <script src="./js/Enemy.js"></script>
-        <script src="./js/map.js"></script>
-        <script src="./js/game.js"></script>
-        <script src="./js/main.js"></script>
-    </body>
+        <br />
+
+        <!-- CONTROLS -->
+        <div class="controls">
+          <h2>Controls</h2>
+          <p>
+            <span class="moveGuide">Move the player:</span>
+            <br />
+            <img class="arrows" src="./images/game-board/arrow_orig.png" />
+            <span class="inst">Mine & build: </span>
+            <br />
+            <span class="mine">Mine:</span>
+            <br />
+            <img
+              class="small-keys b-key"
+              src="./images/game-board/keyboard_key_b.png"
+              alt="B"
+            />
+            <img
+              class="small-keys x-key"
+              src="./images/game-board/keyboard_key_x.png"
+              alt="X"
+            />
+            <br />
+            <span class="build">Build behind:</span>
+            <br />
+            <img
+              class="shift-key"
+              src="./images/game-board/shift_key.png"
+              alt="shift"
+            />
+            <br />
+            <span class="build">Build in front:</span>
+            <br />
+
+            <img
+              class="small-keys c-key"
+              src="./images/game-board/keyboard_key_c.png"
+              alt="C"
+            />
+          </p>
+        </div>
+      </div>
+
+      <span id="roundTracker">Round:<span id="round">I</span></span>
+      <div id="theCanvas">
+        <canvas id="game-board" width="500" height="250"></canvas>
+      </div>
+      <section id="rightPannel">
+        <div class="score">
+          <span>Score:</span><span id="score">0</span>
+          <div class="stats">
+            <div id="health">
+              <h2 class="time">Time:<span id="time">0</span></h2>
+              <h2>Health</h2>
+              <div id="health-bar-container"></div>
+              <h2>Bricks</h2>
+              <div id="brick-bar-container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <button id="game-status"><h2 id="startButton">Start Game</h2></button>
+      <button id="sound-status">
+        <img src="./images/game-board/sound-48.png" />
+      </button>
+      <button id="screen-status">
+        <img src="./images/game-board/fullscreen.png" />
+      </button>
+    </div>
+    <script src="./js/attack.js"></script>
+    <script src="./js/skill.js"></script>
+    <script src="./js/health.js"></script>
+    <script src="./js/terrain.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/Enemy.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
