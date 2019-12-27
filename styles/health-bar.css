@@ -1,14 +1,14 @@
 .health-bar-container {
-    min-width: 250px;
-    min-height: 30px;
-    background-color: black;
+  min-width: 250px;
+  min-height: 30px;
+  background-color: black;
 }
 
 .health-bar {
-    display: inline-block;
-    margin: 1px;
-    border: 1px dotted white;
-    background-color: #00ac28;
-    min-width: 8%;
-    height: 30px;
+  display: inline-block;
+  margin: 1px;
+  border: 1px dotted white;
+  background-color: #00ac28;
+  min-width: 8%;
+  height: 30px;
 }

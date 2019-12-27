@@ -1,28 +1,28 @@
 #game-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
 }
 canvas {
-    border: 1px solid black;
-    width: 900px;
-    height:550px
+  border: 1px solid black;
+  width: 900px;
+  height: 550px;
 }
 
 .end-game-container {
-    z-index: 2;
-    position: absolute;
-    float: left;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    height: 200vh;
-    width: 100vw;
-    background-color: rgba(30, 0, 0, .8);
+  z-index: 2;
+  position: absolute;
+  float: left;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 200vh;
+  width: 100vw;
+  background-color: rgba(30, 0, 0, 0.8);
 }
 .end-game-message {
-    color: #ff0a1a;
-    text-align: center;
+  color: #ff0a1a;
+  text-align: center;
 }

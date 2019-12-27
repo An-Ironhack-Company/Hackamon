@@ -1,37 +1,36 @@
 .stats {
-    background-color: rgba(32, 176, 166, .7);
-    padding: 10px;
-    margin-top: 15px;
+  background-color: rgba(32, 176, 166, 0.7);
+  padding: 10px;
+  margin-top: 15px;
 }
 .score {
-    padding: 10px
+  padding: 10px;
 }
 #rightPannel {
-    margin-left: 10px;
-    margin-right: 10px;
-    background-image: url('../images/game-board/red-bricks.png');
-    padding: 10px;
-    border-radius: 5px;
-    width: 300px;
-    height:450px;
-    color: white;
-    border: 2px solid white;
-
+  margin-left: 10px;
+  margin-right: 10px;
+  background-image: url('../images/game-board/red-bricks.png');
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  height: 450px;
+  color: white;
+  border: 2px solid white;
 }
 
 .score > span {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .time {
-    margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 #rightPannel p {
-    font-size: 15px;
-    margin: 10px;
+  font-size: 15px;
+  margin: 10px;
 }
 
 #rightPannel span {
-    margin: 5px
+  margin: 5px;
 }

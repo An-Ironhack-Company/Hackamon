@@ -1,20 +1,20 @@
-@import url("canvas.css");
-@import url("guide.css");
-@import url("health-bar.css");
-@import url("brick-bar.css");
-@import url("game-menu.css");
-@import url("background.css");
+@import url('canvas.css');
+@import url('guide.css');
+@import url('health-bar.css');
+@import url('brick-bar.css');
+@import url('game-menu.css');
+@import url('background.css');
 
 * {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1,
 h2,
 h3,
 span {
-  font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
 }
 
 h1 {
@@ -24,7 +24,7 @@ h1 {
 }
 
 body {
-  background-image: url("../images/game-board/backdrop.jpg");
+  background-image: url('../images/game-board/backdrop.jpg');
   background-repeat: repeat-y;
   background-size: cover;
   overflow: hidden;

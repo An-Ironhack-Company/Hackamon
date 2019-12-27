@@ -1,74 +1,73 @@
 .guide {
-    width: 200px;
-    margin-right: 10px;
-    margin-left: 10px;
-    background-image: url('../images/game-board/red-bricks.png');
-    background-size: contain;
-    background-repeat: repeat-y;
-    padding: 20px;
-    border: 2px solid white;
-    border-radius: 5px;
-    color: white
+  width: 200px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-image: url('../images/game-board/red-bricks.png');
+  background-size: contain;
+  background-repeat: repeat-y;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
 }
 
-
 .guide h2 {
-    margin:10px;
-    font-size: 15px;
+  margin: 10px;
+  font-size: 15px;
 }
 
 .guide p {
-    margin-top: 10px;
-    font-size: 14px;
-    background-color: #8ea0bf;
-    padding: 10px;
-    border-radius: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  background-color: #8ea0bf;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .arrows {
-    margin-left: 10px;
-    width:150px;
-    border: 2px dotted black;
+  margin-left: 10px;
+  width: 150px;
+  border: 2px dotted black;
 }
 
-.small-keys{
-    width: 30px;
-    height:30px;
-    position: relative;
-    left: 10px;
-    top: 5px;
+.small-keys {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 10px;
+  top: 5px;
 }
 
-.shift-key{
-    width: 80px;
-    height: 30px;
-    position: relative;
-    left:10px;
-    top: 5px;
+.shift-key {
+  width: 80px;
+  height: 30px;
+  position: relative;
+  left: 10px;
+  top: 5px;
 }
 
 .mine {
-    font-size: 10px;
-    color: red;
-    position: relative;
-    left: 10px;
+  font-size: 10px;
+  color: red;
+  position: relative;
+  left: 10px;
 }
 
 .build {
-    font-size: 10px;
-    color: red;
-    position: relative;
-    left: 10px;
+  font-size: 10px;
+  color: red;
+  position: relative;
+  left: 10px;
 }
 
-.inst{
-    font-size: 10px;
+.inst {
+  font-size: 10px;
 }
 
 .moveGuide {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .instruct {
-    font-size:10px;
+  font-size: 10px;
 }

@@ -1,9 +1,9 @@
 // RESOURCES
-const canvas = document.getElementById("game-board");
-let ctx = canvas.getContext("2d");
-let gameStatusButton = document.getElementById("game-status");
-let soundStatusButton = document.getElementById("sound-status");
-let fullscreenStatusButton = document.getElementById("screen-status");
+const canvas = document.getElementById('game-board');
+let ctx = canvas.getContext('2d');
+let gameStatusButton = document.getElementById('game-status');
+let soundStatusButton = document.getElementById('sound-status');
+let fullscreenStatusButton = document.getElementById('screen-status');
 
 let theGame, newMap, saved_rect;
 let terrainArray = [];
@@ -15,21 +15,21 @@ let fullscreenStatus = false;
 let frameIndex = 0;
 let loadedImages = 0;
 let imageAddresses = [
-  "./images/environment/youngWheatLarge.png",
-  "./images/environment/tile.png",
-  "./images/game-board/red-bricks.png",
-  "./images/game-board/Purple_Brick_Background.png",
-  "./images/environment/4.png",
-  "./images/environment/5.png",
-  "./images/environment/6.png",
-  "./images/environment/7.jpg"
+  './images/environment/youngWheatLarge.png',
+  './images/environment/tile.png',
+  './images/game-board/red-bricks.png',
+  './images/game-board/Purple_Brick_Background.png',
+  './images/environment/4.png',
+  './images/environment/5.png',
+  './images/environment/6.png',
+  './images/environment/7.jpg'
 ];
 
 // LOGIC
-if (!localStorage.getItem("allScores")) {
+if (!localStorage.getItem('allScores')) {
   let allScores = [];
-  localStorage.setItem("allScores", JSON.stringify([]));
-  console.log(localStorage.getItem("allScores"));
+  localStorage.setItem('allScores', JSON.stringify([]));
+  console.log(localStorage.getItem('allScores'));
 }
 loadGame();
 document.onkeydown = theGame.player.gameControls;
@@ -37,7 +37,7 @@ document.onkeydown = theGame.player.gameControls;
 // FUNCTIONS
 // Button Functions
 gameStatusButton.onclick = () => {
-  if (gameStatus === "end") {
+  if (gameStatus === 'end') {
     window.location.reload();
   } else if (gameStatus != true) {
     gameStatus = true;
@@ -78,52 +78,52 @@ fullscreenStatusButton.onclick = () => {
     fullscreenStatus = true;
     fullscreenStatusButton.innerHTML =
       '<img src="./images/game-board/minimize.png">';
-    document.getElementById("game-board").style.width = "80vw";
-    document.getElementById("game-board").style.height = "100vh";
-    document.getElementById("rightPannel").style.width = "16vw";
-    document.getElementById("rightPannel").style.height = "500px";
+    document.getElementById('game-board').style.width = '80vw';
+    document.getElementById('game-board').style.height = '100vh';
+    document.getElementById('rightPannel').style.width = '16vw';
+    document.getElementById('rightPannel').style.height = '500px';
 
-    document.getElementById("game-board").style.right = "0px";
-    document.getElementById("game-board").style.top = "0px";
-    document.getElementById("game-board").style.left = "0px";
-    document.getElementById("game-board").style.bottom = "0px";
-    document.getElementById("game-status").style.left = "45vw";
-    document.getElementById("game-status").style.bottom = "680px";
-    document.getElementById("sound-status").style.left = "30vw";
-    document.getElementById("sound-status").style.bottom = "610px";
-    document.getElementById("screen-status").style.left = "30vw";
-    document.getElementById("screen-status").style.bottom = "610px";
-    document.getElementById("rightPannel").style.position = "relative";
-    document.getElementById("rightPannel").style.top = "60px";
-    document.getElementById("rightPannel").style.right = "2px";
-    document.getElementById("roundTracker").style.left = "0px";
-    document.getElementById("roundTracker").style.top = "0px";
-    document.getElementById("roundTracker").style.zIndex = "5";
-    document.getElementById("roundTracker").style.position = "absolute";
-    document.getElementById("game-board").style.position = "absolute";
+    document.getElementById('game-board').style.right = '0px';
+    document.getElementById('game-board').style.top = '0px';
+    document.getElementById('game-board').style.left = '0px';
+    document.getElementById('game-board').style.bottom = '0px';
+    document.getElementById('game-status').style.left = '45vw';
+    document.getElementById('game-status').style.bottom = '680px';
+    document.getElementById('sound-status').style.left = '30vw';
+    document.getElementById('sound-status').style.bottom = '610px';
+    document.getElementById('screen-status').style.left = '30vw';
+    document.getElementById('screen-status').style.bottom = '610px';
+    document.getElementById('rightPannel').style.position = 'relative';
+    document.getElementById('rightPannel').style.top = '60px';
+    document.getElementById('rightPannel').style.right = '2px';
+    document.getElementById('roundTracker').style.left = '0px';
+    document.getElementById('roundTracker').style.top = '0px';
+    document.getElementById('roundTracker').style.zIndex = '5';
+    document.getElementById('roundTracker').style.position = 'absolute';
+    document.getElementById('game-board').style.position = 'absolute';
   } else {
     fullscreenStatus = false;
     fullscreenStatusButton.innerHTML =
       '<img src="./images/game-board/fullscreen.png">';
-    document.getElementById("game-board").removeAttribute("style");
-    document.getElementById("rightPannel").removeAttribute("style");
-    document.getElementById("screen-status").removeAttribute("style");
-    document.getElementById("sound-status").removeAttribute("style");
-    document.getElementById("game-status").removeAttribute("style");
-    document.getElementById("roundTracker").removeAttribute("style");
+    document.getElementById('game-board').removeAttribute('style');
+    document.getElementById('rightPannel').removeAttribute('style');
+    document.getElementById('screen-status').removeAttribute('style');
+    document.getElementById('sound-status').removeAttribute('style');
+    document.getElementById('game-status').removeAttribute('style');
+    document.getElementById('roundTracker').removeAttribute('style');
   }
 };
 
 function gameButtonManagement(status) {
-  if (status === "end") {
-    gameStatus = "";
-    gameStatusButton.innerHTML = "<h2>Restart Game</h2>";
+  if (status === 'end') {
+    gameStatus = '';
+    gameStatusButton.innerHTML = '<h2>Restart Game</h2>';
   } else if (status === false) {
-    gameStatusButton.innerHTML = "<h2>Start Game</h2>";
+    gameStatusButton.innerHTML = '<h2>Start Game</h2>';
     theGame.battleSound.pause();
     theGame.mainSound.play();
   } else {
-    gameStatusButton.innerHTML = "<h2>Pause Game</h2>";
+    gameStatusButton.innerHTML = '<h2>Pause Game</h2>';
     theGame.mainSound.pause();
     theGame.battleSound.play();
   }
@@ -348,24 +348,24 @@ function mainLoop() {
     }
     if (theGame.time >= 60 && theGame.time < 120) {
       theGame.updateRound();
-      theGame.round = "II";
+      theGame.round = 'II';
     }
     if (theGame.time >= 120 && theGame.time < 180) {
       theGame.updateRound();
-      theGame.round = "III";
+      theGame.round = 'III';
     }
     if (theGame.time >= 180 && theGame.time < 240) {
       theGame.updateRound();
-      theGame.round = "IV";
+      theGame.round = 'IV';
     }
     if (theGame.time >= 240 && theGame.time < 300) {
       theGame.updateRound();
-      theGame.round = "V";
+      theGame.round = 'V';
     }
 
     theGame.updateBrickBar();
     gameStatus = theGame.updateHealthBar(gameStatus);
-    if (gameStatus === "end") {
+    if (gameStatus === 'end') {
       endGame();
     }
   }
@@ -388,17 +388,17 @@ function loadGame() {
 }
 
 function endGame() {
-  gameButtonManagement("end");
-  gameStatus = "end";
+  gameButtonManagement('end');
+  gameStatus = 'end';
   theGame.finalScore = Math.round(
     theGame.score * theGame.roundValue * (theGame.time / 10)
   );
 
   // Add to your local record
-  let allScores = JSON.parse(localStorage.getItem("allScores"));
+  let allScores = JSON.parse(localStorage.getItem('allScores'));
   allScores.push(theGame.finalScore);
-  localStorage.setItem("allScores", JSON.stringify(allScores.sort().reverse()));
-  allScores == JSON.parse(localStorage.getItem("allScores"));
+  localStorage.setItem('allScores', JSON.stringify(allScores.sort().reverse()));
+  allScores == JSON.parse(localStorage.getItem('allScores'));
   let topScores = [];
   for (let i = 0; i < 5; i++) {
     topScores.push(allScores[i]);
@@ -407,11 +407,11 @@ function endGame() {
 
   ctx.clearRect(0, 0, 500, 500);
   ctx.putImageData(saved_rect, 0, 0);
-  let messageContainer = document.createElement("div");
+  let messageContainer = document.createElement('div');
   if (theGame.roundValue == 1) {
-    let message1 = document.createElement("div");
-    messageContainer.classList.add("end-game-container");
-    message1.classList.add("end-game-message");
+    let message1 = document.createElement('div');
+    messageContainer.classList.add('end-game-container');
+    message1.classList.add('end-game-message');
     message1.innerHTML = `
         <h1>YOU SURVIVED ${theGame.round} ROUND!</h1>
         <h2>Score: ${theGame.score}</h2>
@@ -426,9 +426,9 @@ function endGame() {
         `;
     messageContainer.appendChild(message1);
   } else {
-    let message2 = document.createElement("div");
-    messageContainer.classList.add("end-game-container");
-    message2.classList.add("end-game-message");
+    let message2 = document.createElement('div');
+    messageContainer.classList.add('end-game-container');
+    message2.classList.add('end-game-message');
     message2.innerHTML = `
         <h1>YOU SURVIVED ${theGame.round} ROUNDS!</h1>
         <h2>Score: ${theGame.score}</h2>
@@ -443,32 +443,32 @@ function endGame() {
         `;
     messageContainer.appendChild(message2);
   }
-  document.getElementById("game-container").appendChild(messageContainer);
+  document.getElementById('game-container').appendChild(messageContainer);
   theGame.battleSound.pause();
   theGame.gameOverSound.play();
 }
 
 function winGame() {
-  gameButtonManagement("end");
-  gameStatus = "end";
+  gameButtonManagement('end');
+  gameStatus = 'end';
   theGame.finalScore = Math.round(
     theGame.score * theGame.roundValue * (theGame.time / 10)
   );
   // Add to your local record
-  let allScores = JSON.parse(localStorage.getItem("allScores"));
+  let allScores = JSON.parse(localStorage.getItem('allScores'));
   allScores.push(theGame.finalScore);
-  localStorage.setItem("allScores", JSON.stringify(allScores.sort().reverse()));
-  allScores == JSON.parse(localStorage.getItem("allScores"));
+  localStorage.setItem('allScores', JSON.stringify(allScores.sort().reverse()));
+  allScores == JSON.parse(localStorage.getItem('allScores'));
   let topScores = [];
   for (let i = 0; i < 5; i++) {
     console.log(topScores[i]);
   }
   ctx.clearRect(0, 0, 500, 500);
   ctx.putImageData(saved_rect, 0, 0);
-  let messageContainer = document.createElement("div");
-  let message = document.createElement("div");
-  messageContainer.classList.add("end-game-container");
-  message.classList.add("end-game-message");
+  let messageContainer = document.createElement('div');
+  let message = document.createElement('div');
+  messageContainer.classList.add('end-game-container');
+  message.classList.add('end-game-message');
   message.innerHTML = `
     <h1>You win!</h1>
     <h2>Score: ${theGame.score}</h2>
@@ -482,7 +482,7 @@ function winGame() {
         <h3>${topScores[4]}</h3>
     `;
   messageContainer.appendChild(message);
-  document.getElementById("game-container").appendChild(messageContainer);
+  document.getElementById('game-container').appendChild(messageContainer);
   theGame.battleSound.pause();
   theGame.gameOverSound.play();
 }
