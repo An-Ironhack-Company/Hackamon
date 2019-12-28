@@ -175,11 +175,11 @@ function generateNewMap() {
 
 function drawMap() {
   let positionY = 0;
-  for (i = 0; i < newMap.length; i++) {
+  for (let i = 0; i < newMap.length; i++) {
     let row = newMap[i];
     let positionX = 0;
 
-    for (j = 0; j < row.length; j++) {
+    for (let j = 0; j < row.length; j++) {
       if (row[j] === 0) {
         ctx.drawImage(terrainArray[0], positionX, positionY, 10, 10);
         positionX += 10;

@@ -7,7 +7,7 @@ class Attack {
         this.height = height;
         this.attacks = [];
         this.totalAttacks = 2
-    };
+    }
     
     // loadAttack
     loadAttack= () => {
@@ -27,13 +27,13 @@ class Attack {
                 this.x -= value
                 break;
             case 'S':
-                this.x += value                
+                this.x += value
                 break;
             case 'W':
                 this.y -= value
                 break;
             case 'E':
-                this.y += value                
+                this.y += value
                 break;
         }
     }
