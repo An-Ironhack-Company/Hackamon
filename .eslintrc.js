@@ -11,11 +11,14 @@ module.exports = {
     Enemy: "readonly",
     Player: "readonly",
     Attack: "readonly",
+    Map: "readonly",
     Skill: "readonly",
+    Terrain: "readonly",
+    Game: "readonly",
     theGame: "readonly"
   },
   parserOptions: {
     ecmaVersion: 2018
   },
-  rules: {}
+  rules: {"require-jsdoc" : 0}
 };

@@ -53,8 +53,8 @@ class Player {
             this.loadPlayer(direction);
         }
         this[axis] += value;
-        if (this.x != ogX || this.y != ogY) {
-        }
+        // if (this.x != ogX || this.y != ogY) {
+        // }
 
         // iterate through skills array
         for (let i = 0; i < theGame.skills.length; i++) {
@@ -143,6 +143,6 @@ class Player {
             if (e.key === 'c') {
                 theGame.construct();
             }
-        };
+        }
     };
 }
